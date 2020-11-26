@@ -1,0 +1,28 @@
+<div class="loading-screen" *ngIf="this.appDataService.screenLoader"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>
+<ng-container *ngIf="appDataService.contentMode && appDataService.contentMode !== contentMode.View">
+  <app-header></app-header>
+</ng-container>
+
+<div class="content-wrap" id="content-wrap" [ngClass]="{'content-mode-view': appDataService.contentMode === contentMode.View}">
+  <main id="content" class="content app" role="main" [ngClass]="{'course-content': appDataService.getCourseContentDisplayed()}">
+      <router-outlet></router-outlet>
+  </main>
+</div>
+
+<ng-container *ngIf="appDataService.contentMode && appDataService.contentMode !== contentMode.View">
+  <footer class="app-footer user-select-none">
+    <div>
+      <!-- Removing footer info for accounting -->
+      <div class="copyright float-left">Compro Technologies &copy; {{copyrightYear}} | v{{appVersion}} - {{releaseDate}}
+      </div>
+      <!-- <div class="copyright float-left">Compro Technologies &copy; {{copyrightYear}}</div> -->
+      <div class="dls float-right">Powered by
+        <img class="dls-logo" src="assets/img/common/Comprodls_small-black.png">
+      </div>
+    </div>
+  </footer>
+</ng-container>
+
+
+<app-modal #comingSoonModal></app-modal>
+<app-popup #popupComponent></app-popup>

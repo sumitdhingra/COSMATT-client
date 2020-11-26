@@ -1,0 +1,39 @@
+<main class="sidenav-container" (mouseleave)="onMouseLeave()">
+
+  <nav class="nav">
+    <section class="nav-name">
+      <input [ngModel]="sideNavService.itemName" (ngModelChange)="onNameChange($event)" />
+    </section>
+
+    <section class="nav-container">
+      <ul class="list-group nav-items">
+        <li class="list-group-item nav-item" 
+        *ngFor="let item of sideNavService.sideNavData.items[0].children; let i = index" 
+        [ngClass]="{active: item === sideNavService.selectedItem, disabled: item.meta.enabled === false && item !== sideNavService.selectedItem, correct : item.meta.status === metaStatus.Completed}"
+        (click)="onItemClick(item)">
+          <span class="step-numbers">
+            <span class="step-pipe"></span>
+            <span class="step-number">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-stack-1x">{{i + 1}}</i>
+              </span>
+            </span>
+          </span>
+          <span class="step-name">
+            {{item.text}}
+          </span>
+          <span class="step-separator" *ngIf="!(item.id === SizingComponentType.Summary)">
+          </span>
+          <span class="step-status" *ngIf="!(item.id === SizingComponentType.Summary)">
+            <i class="fa" [ngClass]="{'fa-times': item.meta.status === metaStatus.Incomplete, 'fa-check': item.meta.status === metaStatus.Completed}"></i>
+          </span>
+          <div class="step-triangle outer" [hidden]="item !== sideNavService.selectedItem">
+            <div class="step-triangle inner"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+</main>

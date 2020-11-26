@@ -1,0 +1,33 @@
+<div class="row no-margin widget bg-white no-padding current-status-container">
+  <div class="col-md-7 course-current-container">
+    <h4 class="title fw-semi-bold mb-md">Current Status</h4>
+
+    <div class="status-list-item">
+      <div class="status-left-text fw-bold">Pretest Status:</div>
+      <div class="status-right-text" *ngIf="currentStatus.pretestflag">Completed 
+        <span class='view-report'><a routerLink='../content/0/1'>Report</a></span>
+      </div>
+      <div class="status-right-text" *ngIf="!currentStatus.pretestflag">Not Completed 
+        <span class='view-report'><a routerLink='../content/0/1'>Attempt Pretest</a></span>
+      </div>
+    </div>
+    
+    <!--<div class="status-list-item">
+      <div class="status-left-text fw-bold">Fundamentals Module:</div>
+      <div class="status-right-text" *ngIf="currentStatus.pretestflag">Created based on your fundamentals knowledge</div>
+       <div class="status-right-text" *ngIf="!currentStatus.pretestflag">Not modified</div>
+    </div>-->
+    <div class="status-list-item">
+      <div class="status-left-text fw-bold">Assesments:</div>
+      <!-- TODO get this from dashboard as data -->
+      <div class="status-right-text">Completed - {{this.courseStatus.completed}}, Pending - {{this.courseStatus.pending}}</div>
+    </div>
+    <div class="status-list-item">
+      <div class="status-left-text fw-bold">Module in progress:</div>
+      <div class="status-right-text">{{this.currentStatus.title}}</div>
+    </div>
+  </div>
+  <div class="col-md-4 course-resume-button">
+    <button class="btn btn-inverse btn-lg mb-xs" (click)="resumeBtnClicked($event)">Resume</button>
+  </div>
+</div>

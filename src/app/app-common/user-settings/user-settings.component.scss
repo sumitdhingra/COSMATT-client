@@ -1,0 +1,138 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+/*MISC*/
+$input-error-border-color: #CB2929;
+$input-okay-border-color: green;
+$text-color-normal: $gray-dark;
+$text-color-light: #575757;
+$text-color-lighter: #9a9a9a;
+$box-bg-color: #ffffff;
+$box-border-color: #dfdfdf;
+$box-shadow: 0px 2px 4px #cecece;
+$box-height: 460px;
+
+/*HEADER*/
+$header-height: 50px;
+$heading-weight: $font-weight-semi-bold;
+$heading-size: $font-size-20;
+$heading-height: 38px;
+$heading-lr-margins: 20px;
+$heading-border-color: #c3c3c3;
+$heading-color: $text-color-light;
+
+/*FORM*/
+$form-label-size: $font-size-16;
+$form-label-color: $text-color-normal;
+$form-label-weight: $font-weight-semi-bold;
+$form-icons-size: $font-size-16;
+$form-icons-color: #9a9a9a;
+$f-label-icon-gap: 15px;
+
+$f-control-border-color: #cbcbcb;
+$f-control-border-bottom: 1px solid $f-control-border-color;
+$f-control-text-size: $font-size-14;
+$f-control-text-color: $text-color-normal;
+$f-control-left-margin: 30px;
+
+$f-save-btn-height: 40px;
+$f-save-btn-width: 88px;
+$f-save-btn-bg-color: #9a9a9a;
+$f-save-btn-color: white;
+
+.us-container {
+    
+    font-weight: $font-weight-normal;
+    color: $text-color-normal;
+    background: $box-bg-color;
+    border: 1px solid $box-border-color;
+    box-shadow: $box-shadow;
+    min-height: $box-height;
+
+    header {
+        min-height: $header-height;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        .heading-main {
+            margin: 0 $heading-lr-margins;
+            height: $heading-height;
+            font-size: $heading-size;
+            font-weight: $heading-weight;
+            flex-basis: 100%;
+            border-bottom: 1px solid $heading-border-color;
+            color: $heading-color;
+        }
+    }
+
+    .password {
+        padding: 25px 40px;
+        margin-right: 60px;
+
+        .pwd-form {
+
+            .form-group {
+                margin-top: 5px;
+                label {
+                    font-size: $form-label-size;
+                    color: $form-label-color;
+                    font-weight: $form-label-weight;
+
+                    & > .icon {
+                        font-size: $form-icons-size;
+                        color: $form-icons-color;
+                        margin-right: $f-label-icon-gap;
+                    }
+                }
+                .form-control {
+                    font-size: $f-control-text-size;
+                    margin-left: $f-control-left-margin;
+                    color: $f-control-text-color;
+                    border: none;
+                    border-radius: 0px;
+                    border-bottom: $f-control-border-bottom;
+
+                    &.error { border-bottom-color: #CB2929; }
+                    &.okay { border-bottom-color: green; }
+                }
+            }
+
+            .form-footer {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center; 
+                flex-direction: column;
+                width: 100%;
+                margin-left: 35px;
+                margin-top: 15px;
+
+                button {
+                    height: $f-save-btn-height;
+                    width: $f-save-btn-width;
+                    // color: $f-save-btn-color;
+                    // background: $f-save-btn-bg-color;
+                }
+                
+                button[disabled=disabled], button:disabled{
+                  background-color: $f-save-btn-bg-color !important;
+                }
+
+                .fa.fa-spinner {
+                    margin-top: 5px;
+                }
+
+                alert {
+                    display: inline-flex;
+                    // margin-left: 0.5rem;
+                    margin-top: 10px;
+                    /deep/ .alert {
+                        padding: 5px 15px;
+                        margin: 0 0;
+                    }
+                }
+            }
+        }
+    }
+}

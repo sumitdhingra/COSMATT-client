@@ -1,0 +1,72 @@
+<main class="ui-container" role="main">
+
+  <header>
+    <div class="heading-main">
+        Update Your Personal Information
+    </div>
+  </header>
+
+  <!-- COSMATT-1660 My Account - Remove Update Image Section -->
+  <!-- <section class="gravatar">
+    <div class="g-image">
+      <img [hidden]="hideGravImage" class="img-responsive" [src]="userInfo.userDetails.gravatarPictureUrl"/>
+      <span [hidden]="!hideGravImage" class="icon"><i class="fa fa-user"></i></span>
+    </div>
+    <div class="g-link">
+      <a (click)="onImageUpdate()" class="btn" target="_blank">Update Image</a>
+    </div>
+  </section> -->
+
+  <section class="personal">
+    <form class="prsnl-form" (submit)="onUpdate(prsnlForm)" [formGroup]="prsnlForm" novalidate>
+        <div class="row">
+          <div class="form-group mt--5px col-6">
+            <label><span class="icon"><i class="fa fa-user"></i></span>First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="" formControlName="firstName" [ngClass]="{'error' : prsnlForm.controls['firstName'].errors && !prsnlForm.controls['firstName'].pristine, 'okay' : !prsnlForm.controls['firstName'].errors && !prsnlForm.controls['firstName'].pristine}" required>
+          </div>
+          <div class="form-group mt--5px col-6">
+              <label><span class="icon" style="padding-right:16px"></span>Last Name</label>
+              <input type="text" class="form-control" name="lastName" placeholder="" formControlName="lastName" [ngClass]="{'error' : prsnlForm.controls['lastName'].errors && !prsnlForm.controls['lastName'].pristine, 'okay' : !prsnlForm.controls['lastName'].errors && !prsnlForm.controls['lastName'].pristine}" required>
+          </div>
+        </div>
+        <div class="form-group mt-5px">
+            <label><span class="icon"><i class="fa fa-envelope"></i></span>Email</label>
+            <input type="email" class="form-control" name="email" placeholder="" formControlName="email" [ngClass]="{'error' : prsnlForm.controls['email'].errors && !prsnlForm.controls['email'].pristine, 'okay' : !prsnlForm.controls['email'].errors && !prsnlForm.controls['email'].pristine}" required>
+        </div>
+        <div class="row">
+          <div class="form-group mt-5px col-6 col-sm-5 col-md-4 col-lg-3">
+            <label><span class="icon"><i class="fa fa-globe"></i></span>Country Code</label>
+            <input type="text" class="form-control" name="countryCode" placeholder="+123" formControlName="countryCode" [ngClass]="{'error' : prsnlForm.controls['countryCode'].errors && !prsnlForm.controls['countryCode'].pristine, 'okay' : !prsnlForm.controls['countryCode'].errors && !prsnlForm.controls['countryCode'].pristine}" required>
+          </div>
+          <div class="form-group mt-5px col-6 col-sm-7 col-md-8 col-lg-9">
+            <label><span class="icon"><i class="fa fa-phone"></i></span> Number</label>
+            <input type="text" class="form-control" name="contactNumber" placeholder="" formControlName="contactNumber" [ngClass]="{'error' : prsnlForm.controls['contactNumber'].errors && !prsnlForm.controls['contactNumber'].pristine, 'okay' : !prsnlForm.controls['contactNumber'].errors && !prsnlForm.controls['contactNumber'].pristine}" required>
+          </div>
+        </div>
+        <!--<div class="row">
+          <div class="form-group col">
+            <label class="fw-semi-bold">Job title</label>
+            <input type="text" class="form-control" name="jobTitle" placeholder="" formControlName="jobTitle">
+          </div>
+          <div class="form-group col">
+            <label class="fw-semi-bold">Location</label>
+            <input type="text" class="form-control" name="location" placeholder="" formControlName="location">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label class="fw-semi-bold">Company name</label>
+            <input type="text" class="form-control" name="companyName" placeholder="" formControlName="companyName">
+          </div>
+          <div class="form-group col">
+            <label class="fw-semi-bold">Personal website</label>
+            <input type="text" class="form-control" name="personalWebsite" placeholder="" formControlName="personalWebsite">
+          </div>
+        </div>-->
+        <div class="form-footer" hidden>
+          <button type="submit" class="btn btn-inverse">Save</button>
+        </div>
+      </form>
+  </section>
+
+</main>

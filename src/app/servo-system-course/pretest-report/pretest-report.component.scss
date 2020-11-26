@@ -1,0 +1,41 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+$left-box-size: 235px;
+.go-to-course-container {
+    min-height: 190px;
+    .test-summary {
+        @include media-breakpoint-up(md) {
+            float: left;
+            width: $left-box-size;
+            position: absolute;
+            margin-bottom: 0;
+        }
+        @include media-breakpoint-down(sm) {
+            border-top-right-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .summary-table {
+            margin: 0 auto;
+        }
+    }
+    .go-to-course {
+        @include media-breakpoint-up(md) {
+            margin-left: $left-box-size;
+        }
+        .goto-text {
+            padding-left: 20px;
+            padding-bottom: 20px;
+        }
+        .goto-btn {
+            @include media-breakpoint-up(md) {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin: 20px;
+            }
+        }
+    }
+}

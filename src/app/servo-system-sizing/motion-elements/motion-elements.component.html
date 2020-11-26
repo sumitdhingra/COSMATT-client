@@ -1,0 +1,52 @@
+<div class="profile-elements">
+  <h3>Profile Elements:</h3>
+  <div class="table-container">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let item of profileElementsHeader" scope="col">
+              {{toTitleCase(item[0])}}
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let item of profileElementsHeader" scope="col">
+              {{item[1]}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let profileElement of profileElements">
+            <td *ngFor="let unit of profileElementsHeader">{{formatter(profileElement[unit[0]])}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="analysis-params">
+  <h3>Analysis Params:</h3>
+  <div class="table-container">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let item of analysisParamsHeader" scope="col">
+              {{toTitleCase(item[0])}}
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let item of analysisParamsHeader" scope="col">
+              {{item[1]}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngFor="let key of analysisParamKeys">{{formatter(analysisParams[key])}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<app-sidebar [hidden]="!appDataService.contentMode || appDataService.contentMode === contentMode.View" [tocArr]="tocArray" [tocSelectedItem]="activatedItem" [sidebarState]="sidebar" (sideBarToggle)="sideBarToggle($event)" (tocSectionClicked)="navigateToCourse($event)" (clickedTOCChapter)="navigateToChapter($event)">
+</app-sidebar>
+<div class="right-container" [ngClass]="{'sidebar-open-click': sidebar.open() && sidebar.clicked, 'sidebar-open-hover': sidebar.open() && sidebar.hovered, 'content-mode-normal': appDataService.contentMode === contentMode.Normal, 'content-mode-view': appDataService.contentMode === contentMode.View}">
+  <ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+    <li class="breadcrumb-item">
+      <a routerLink='/courses'>Home</a>
+    </li>
+    
+    <li class="breadcrumb-item active">{{selectedModuleName}}</li>
+    <li class="breadcrumb-item active">Section {{getChapterSectionDisplayNumber()}}</li>
+  </ol>
+  <div class="title-header">
+    <div class="title-container">
+      <h2 class="page-title fw-normal float-left" [class.right-separator]="itemCurrentStatus === 'completed' && selectedChapterNumber != -1 && appDataService.DisplayMDContent">
+        <img src = "assets/img/common/book.svg" class="title-icon chapter-icon" alt="COSMATT">
+        {{pageTitle}}</h2>
+    </div>
+    <div class="nav-top completed-container" [ngClass]="{'sideopened': courseDataService.sidebarStatus.open()}">
+
+      <button *ngIf="itemCurrentStatus === 'completed' && selectedChapterNumber != -1 && appDataService.DisplayMDContent" class="float-left btn btn-inverse pull-right ml-sm mark-as-complete-btn"
+        [ngClass]="{'marked-completed fs-18': itemCurrentStatus === 'completed'}">
+        <i *ngIf="itemCurrentStatus === 'completed'" class="fa fa-check"></i>
+        <span class="compbtn-text">Completed</span>
+      </button>
+      <!-- <button class="btn btn-inverse float-right ml-sm" (click)="nextBtnClicked($event)" [attr.disabled]="(appDataService.selectedModule == tocArray.length - 1) && (appDataService.selectedChapter == tocArray[appDataService.selectedModule]['items'].length - 1) ? 'disabled' : null"
+                tooltip="Next Topic" placement="bottom" container="body"><i class="fa fa-2x fa-angle-right"></i></button> -->
+
+      <!-- <button class="btn btn-inverse float-right" (click)="prevBtnClicked($event)" [attr.disabled]="appDataService.selectedModule == 0 && appDataService.selectedChapter == 0 ? 'disabled' : null" tooltip="Previous Topic" placement="bottom" container="body"><i class="fa fa-2x fa-angle-left"></i></button> -->
+    </div>
+    <div class="nav-top navigator-container" [ngClass]="{'sideopened': courseDataService.sidebarStatus.open()}">
+
+      <button class="btn btn-link fs-18 ver-separaotr float-right" (click)="nextBtnClicked($event)" [attr.disabled]="(appDataService.selectedModule == tocArray.length - 1) && (appDataService.selectedChapter == tocArray[appDataService.selectedModule]['items'].length - 1) ? 'disabled' : null">
+        <span class="navbtn-text pr-2">Next Topic</span><i class="fa fa-angle-right right-arrow"></i>
+      </button>
+      <button class="btn btn-link fs-18 float-right" (click)="prevBtnClicked($event)" [attr.disabled]="appDataService.selectedModule == 0 && appDataService.selectedChapter == -1 ? 'disabled' : null">
+        <i class="fa fa-2x fa-angle-left left-arrow"></i><span class="navbtn-text pl-2">Previous Topic</span>
+      </button>
+      <!-- <button class="btn btn-inverse float-right ml-sm" (click)="nextBtnClicked($event)" [attr.disabled]="(appDataService.selectedModule == tocArray.length - 1) && (appDataService.selectedChapter == tocArray[appDataService.selectedModule]['items'].length - 1) ? 'disabled' : null"
+        tooltip="Next Topic" placement="bottom" container="body"><i class="fa fa-2x fa-angle-right"></i></button> -->
+
+      <!-- <button class="btn btn-inverse float-right" (click)="prevBtnClicked($event)" [attr.disabled]="appDataService.selectedModule == 0 && appDataService.selectedChapter == 0 ? 'disabled' : null" tooltip="Previous Topic" placement="bottom" container="body"><i class="fa fa-2x fa-angle-left"></i></button> -->
+    </div>
+  </div>
+
+  <div class="course-md">
+    <app-lo-viewer  [selectedChapterNumber] = "selectedChapterNumber" [selectedModuleNumber] = "selectedModuleNumber">
+      <div #whiteBackground>
+      </div>
+    </app-lo-viewer>
+    <app-md-viewer [hidden]="testObject != null" [mdContent]="mdContent" [loading] = "loading" [assetsPath]="publicAssetsPath" [embeddedAssessmentContent]="embeddedTestArray" [numberFormatterOptions]="appDataService.numberFormatterOptions" (onCheckMyWorkClicked)="onCheckMyWorkClicked($event)" (onAssessmentSubmit)="eomTestCompleted($event)" (navigateToSection)="navigateToSection($event)" *ngIf="appDataService.DisplayMDContent"></app-md-viewer>
+
+    <app-eom-test *ngIf="testObject && testObject.test && !testObject.test.attemptedStatus" [testObject]="testObject" (onTestSubmit)="eomTestCompleted($event)"
+      (onCheckMyWorkClicked)="onCheckMyWorkClicked($event)"></app-eom-test>
+
+    <div class="widget navigation row no-margin w-100" [hidden]="loading">
+      <div class="col-sm-12 no-padding">
+
+        <button class="btn btn-link fs-18" (click)="prevBtnClicked($event)" [attr.disabled]="appDataService.selectedModule == 0 && appDataService.selectedChapter == -1 ? 'disabled' : null"
+          placement="top">
+          <span class="fa fa-angle-left left-arrow"></span><span class="hidden-sm-down pl-2">Previous Topic</span>
+        </button>
+
+        <button class="btn btn-link float-right fs-18" [ngClass]="{'ver-separaotr':!testObject && selectedChapterNumber != -1}"
+          (click)="nextBtnClicked($event)" [attr.disabled]="(appDataService.selectedModule == tocArray.length - 1) && (appDataService.selectedChapter == tocArray[appDataService.selectedModule]['items'].length - 1) ? 'disabled' : null"
+          placement="top">
+          <span class="hidden-sm-down pr-2">Next Topic</span><span class="fa fa-angle-right right-arrow"></span>
+        </button>
+
+        <button *ngIf="!testObject && showMarkAsCompleteBtn &&  selectedChapterNumber != -1 && appDataService.DisplayMDContent"
+          class="btn btn-inverse pull-right ml-sm mark-as-complete-btn" (click)="markAsCompleteBtnClicked($event)" [attr.disabled]="itemCurrentStatus === 'completed' ? 'disabled' : null" [ngClass]="{'marked-completed fs-18': itemCurrentStatus === 'completed'}">
+          <span *ngIf="itemCurrentStatus === 'completed'" class="fa fa-check"></span>
+          {{ itemCurrentStatus === 'completed' ? 'Completed' : 'Mark as Complete' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

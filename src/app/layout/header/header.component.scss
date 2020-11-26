@@ -1,0 +1,126 @@
+@import "../../../scss/theme/variables";
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+$settings-padding: 10px;
+$user-menu-padding: 5px;
+.navbar-brand {
+    // padding: 12px 20px;
+    // font-weight: normal;
+    // padding: 7px 20px;
+    // font-size: 26px;
+    // font-family: "Oswald", "Arial", "Tahoma";
+    // color: $white;
+    text-align: center;
+    // background-color: rgb(57, 97, 142);
+    // height: 50px;
+    max-width: 361px;
+    margin-left: 20px;
+    margin-right: 16px;
+
+    padding: 0px;
+
+    img {
+      // height: auto;
+      // width: 100%;
+      // margin-top: -5px;
+      // filter: brightness(0) invert(1);
+    }
+    cursor: pointer;
+
+    &:focus, &:hover {
+      color: $white !important;
+    }
+
+    &.is-login-page {
+        cursor: default !important;
+    }
+}
+
+.navbar {
+    -webkit-box-shadow: 0px 0 5px 0px #888;
+    -moz-box-shadow: 0px 0 5px 0px #888;
+    box-shadow: 0px 0 5px 0px #888;
+    max-height: 50px;
+}
+
+.navbar-dashboard .navbar-nav .nav-item .nav-link {
+    color: $navbar-dashboard-link-color;
+}
+.vertical-align{
+    border-left: 1px solid grey;
+    height: 30px;
+}
+#logo-divider {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    width: 1px;
+    margin-right: 16px;
+    height: 50px;
+}
+.logo-divider {
+    background-color:black;
+    width: 1px;
+    height: 36px;
+}
+
+@media screen and (max-width: 990px){
+    #logo-divider { display: none; }
+    .logo-image { display: none; }
+    .cosmatt-logo-black {
+        text-align: start;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.settings-menu {
+    top: 40%;
+    left: -103%;
+    >ul {
+        padding-left: $settings-padding;
+        padding-right: $settings-padding;
+    }
+    .unit-theme-settings {
+        margin-top: 10px;
+        display: none;
+    }
+    .color-theme-heading {
+        font-size: 1rem;
+    }
+    .color-themes-list {
+        li {
+            a {
+                &.red {
+                    color: map-get($themes, 'red');
+                }
+                &.blue {
+                    color: map-get($themes, 'blue');
+                }
+                &.green {
+                    color: map-get($themes, 'green');
+                }
+                &.selected {
+                    >.fa-square {
+                        display: none;
+                    }
+                    >.fa-check-square {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.user-options-menu {
+    .dropdown-item {
+        padding-top: $user-menu-padding;
+        padding-bottom: $user-menu-padding;
+    }
+}
+
+.reset-section {
+    border-top: 1px solid;
+    padding-top: 4px;
+}

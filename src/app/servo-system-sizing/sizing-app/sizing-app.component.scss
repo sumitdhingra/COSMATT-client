@@ -1,0 +1,11 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.save-to-disk-btn {
+    position: fixed;
+    bottom: 34px;
+    left: 0;
+    color: white;
+    z-index: 9999999;
+}

@@ -1,0 +1,111 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+
+.inertia-calculator-component {
+  width: 100%;
+}
+
+#inertia-calculator-container {
+  padding-bottom: 60px;
+  width: 100%;
+}
+
+#inertia-calculator-container #inertia-calculator-plot-area {
+  width: 100%;
+  height: 100%;
+}
+
+#inertia-calculator{
+  padding-top: 0px!important;
+  padding-right: 0px!important;
+  padding-left: 0px!important;
+  padding-bottom: 15px!important;
+  .MathJax_SVG_Display{
+    width: 100%;
+    .MathJax_SVG{
+      width: 100%;
+    }
+  }
+  h2{
+    border-bottom: none; 
+  }
+  .modeViewDiv h4{
+    color: #343434;
+    font-weight: 400;
+  }
+  .ICHeading{
+    display: none;
+  }
+  ul{
+    padding-left: 0px;
+    margin: 0px!important;
+    li{
+        margin: 0!important;
+    }
+  }
+  .nav-tabs{
+    background-color: #F6F6F6;
+    .tabControl{
+      margin: 0!important;
+    }
+  }
+  .tab-content{
+      background-color: unset;
+  }
+  h5{
+    display: block;
+  }
+  table tr th, table tr td{
+    border-color: #ccc!important;
+    text-transform: none;
+    font-family: "Open sans", Arial, Tahoma;
+  }
+  table thead{
+    background-color: #EEEEEE!important;
+  }
+  .containerDiv .tabControlParent .thumbnailImage .thumbnail .cross-button{
+      position: inherit!important;
+    }
+  .containerDiv .tabControlParent .cross-button{
+    bottom: 125px!important;
+  }
+  &.lowerResolution{
+    .containerDiv .tabControlParent .cross-button{
+      bottom: 178px!important;
+    }
+  }
+}
+
+#inertia-calculator .containerDiv.complex-shape .tab-content-parent{
+    top: 0px!important;
+}
+
+#inertia-calculator .containerDiv .solidCylinderShape .form-horizontal .calcModeDiv .calcModeDivOptions .nav-tabs .verticalDiv, #inertia-calculator .containerDiv .solidCylinderShape .form-horizontal .calcModeDiv .calcModeDivOptions .nav-tabs li{
+  margin-right: 23px!important;
+}
+#inertia-calculator .containerDiv .hollowCylinderShape .form-horizontal .calcModeDiv .calcModeDivOptions .nav-tabs .verticalDiv, #inertia-calculator .containerDiv .hollowCylinderShape .form-horizontal .calcModeDiv .calcModeDivOptions .nav-tabs li{
+  margin-right: 20px!important;
+}
+
+#inertia-calculator.mediumResolution .containerDiv.complex-shape .tabContentParent{
+  top: 10px;
+}
+#inertia-calculator .containerDiv.complex-shape .tabContentParent{
+  top: 0px!important; 
+}
+#inertia-calculator.lowerResolution .totalInertiaView #imageInfo .formulaSection{
+  top: 371px;
+}
+
+#inertia-calculator.lowerResolution .containerDiv .tab-content-parent{
+  left: 17.5%!important;
+  width: 83%!important;
+}
+
+#inertia-calculator .multiplier-view .form-group label:after{
+  left: -84px;
+}
+  
+#inertia-calculator.lowerResolution .containerDiv .multiplier-view label:after{
+  left: -79px;
+}

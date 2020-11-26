@@ -1,0 +1,43 @@
+
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.current-status-container {
+   
+    .status-list-item {
+        display: table-row;
+    }
+    .status-right-text {
+        font-weight: 400;
+        display: table-cell;
+        padding: 0.55rem;
+        max-width: 380px;
+        vertical-align: top;
+         @include media-breakpoint-down(sm) {
+            max-width: 300px;
+            padding: 0.22rem;
+         }   
+    }
+    .status-left-text {
+        display: table-cell;
+        padding: 0.55rem 2.65rem 0.55rem 0.55rem;
+        max-width: 250px;
+        vertical-align: top;
+    }
+    .course-resume-button {
+        text-align: right !important;
+        margin: auto;       
+        margin-right: 0;
+         @include media-breakpoint-down(sm) {
+            text-align: center !important;
+         }   
+    }
+    .course-current-container {
+        padding-left: 0;
+    }
+    .view-report{
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+}

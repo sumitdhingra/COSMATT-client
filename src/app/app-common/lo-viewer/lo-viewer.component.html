@@ -1,0 +1,40 @@
+
+<section class=" no-margin border-top-theme lo-viewer widget" widget>
+    <ng-content></ng-content>
+    <div id="lo-content">
+        <div id="lo-content-container">
+            <div id="lo-button-container" [hidden]="loaderForLOComponent">
+                <button class=" collapsed background-color-theme lo-button btn fs-14 float-right" [attr.data-target] = "'#'+'lo-list-container'" data-toggle="collapse" [ngClass] ="{'hidden' : ((selectedChapterObj.length ==0) || (matchingLOFound == false))}">
+                    <span class="pr-2">Learning Objectives</span>
+                    <span class="collapse-toggle">
+                        <i class="toggle fa fa-chevron-up"></i>
+                      </span>
+                  </button>
+                </div> 
+            <div id="lo-list-container" class ="collapse" [ngClass] ="{'no-lo-items' : LearinigObjectivesMap.length == 0, 'show': tocService.isOnlyChapterSelected(appDataService.selectedChapter) == null}">
+                
+                    <div *ngFor="let lo of LearinigObjectivesMap;let j=index" class="lo lo-container" [ngClass]="{'first': j === 0, 'last': j === LearinigObjectivesMap.length - 1}">
+                        <div class="outer-lo">
+                            <span class="outer-number-icon fs-12">{{lo['id']}}
+                            </span>     
+                            <span class="outer-lo-text">{{lo['text']}}
+                            </span>
+                        </div>
+                        <div *ngFor="let item of lo['learning-objectives'];let i=index" class="lo" [ngClass]="{'first': i === 0, 'last': i === lo['learning-objectives'].length - 1}">
+                            <!-- <span class="inner-circle-icon">
+                                <span class="inner"></span>
+                                <div class="timeline-join" [ngClass]="{'first': i === 0, 'last': i === lo['learning-objectives'].length - 1}"></div> //Uncomment this line of code to start displaying a graphical line with dots before sub-LO's serial number.
+                            </span> -->
+                            <span class="inner-number-icon fs-12">{{item['id']}}
+                            </span>
+                            <span class="inner-lo-text">{{item['text']}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="gray-separator" [hidden]="loaderForLOComponent" [ngClass]="{'zero-height': appDataService.selectedChapter == '-1'}"></div>
+            </div>
+            
+        </div>      
+    </div>
+    <div class="loading-screen" [hidden]="!loaderForLOComponent"><i class="fa fa-spinner fa-spin fa-2x fa-fw"></i></div>
+  </section>

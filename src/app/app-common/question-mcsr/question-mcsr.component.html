@@ -1,0 +1,19 @@
+<div class="question-container">
+  <div class="question value4">
+    {{quesData.content.canvas.data.questiondata[0].text}}
+  <!-- <app-question-mcq *ngIf="questionType =='MCQ'" [quesDataMcq]="quesData"></app-question-mcq>-->
+  </div>
+
+  <div class="options-container mt-md mb-md">
+    <div class="option abc-radio abc-radio-primary mb-sm no-padding" *ngFor="let optn of quesData.content.interactions.i1.MCSR; let i = index">
+      <input type="radio" name="assessmentOptionsRadio" [id]="'radio' + (i+1)" (change)="optionSelected($event)" [value]="(i)"
+        [checked]="responses[quesIndex] && responses[quesIndex].response == i+1" [attr.disabled]="responses[quesIndex] && responses[quesIndex].responseSubmitted ? 'disabled' : null">
+        <label [for]="'radio' + (i+1)" [innerHTML]="quesData.content.interactions.i1.MCSR[i].choice"></label>
+    </div>
+  </div>
+
+<!--  <div class="alert" *ngIf="responses[quesIndex] && responses[quesIndex].responseSubmitted ? 'disabled' : null" [ngClass]="getResponseStatus().alertClass">
+    <span class="fw-semi-bold">{{getResponseStatus().msg}}</span> {{quesData.options[responses[quesIndex].response - 1].feedback}}
+  </div>-->
+
+</div>

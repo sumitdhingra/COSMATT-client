@@ -1,0 +1,167 @@
+<div class="axis-container border-top-theme">
+  <section class="axis-left-container">
+    <div class="side-navigator-container">
+      <section class="no-margin">
+        <app-side-navigator (onItemClicked)="onSideNavigatorItemClicked($event)" (onSideNavigatorItemNameChanged)="onSideNavigatorItemNameChanged($event)">
+        </app-side-navigator>
+      </section>
+    </div>
+    <div class="sizing-app-saver-container">
+      <app-sizing-app-saver (onSaveButtonClick)="onSaveButtonClickHandler($event)"></app-sizing-app-saver>
+    </div>
+  </section>
+  <div class="axis-body ">
+    <section class="axis-widget-container no-margin" widget>
+      <div class=" axis-header ">
+        <div class="title-header">
+          <div class="step-number-container">
+              <span class="fa-stack step-circle fa-lg">
+                  <i class="fa fa-circle fa-stack-2x step-number-circle"></i>
+                  <i class="fa fa-stack-1x item-number fw-semi-bold">{{axis.sizingComponentsSequence.indexOf(axis.selectedSizingComponent)+1}}</i>
+                </span>
+          </div>
+          <div class="title-container fw-semi-bold page-heading-color float-left">
+              <span class="fa title-icon mr-sm" [ngClass]="{'motion-type-heading-img-bg' : axis.selectedSizingComponent===SizingComponentType.MotionType,
+               'motion-profile-heading-img-bg' : axis.selectedSizingComponent===SizingComponentType.MotionProfile,
+               'rotary-load-heading-img-bg' : axis.selectedSizingComponent===SizingComponentType.RotaryLoad,
+               'fa-cogs' : axis.selectedSizingComponent===SizingComponentType.Transmission,
+               'fa-lightbulb-o' : axis.selectedSizingComponent===SizingComponentType.SolutionAnalysis,
+               'summary-heading-img-bg' : axis.selectedSizingComponent===SizingComponentType.Summary}">
+              </span>
+              <span class="heading">{{pageHeading}}
+                </span>
+                <span class="heading-separator" [class.right-separator]="axis.componentsValidityStatus[axis.selectedSizingComponent]">
+                  </span>
+          </div>
+          <div class="nav-top completed-container" *ngIf = "!isLastComponent">
+            <i class="fs-18 fa" [ngClass]="{'fa-check valid-form': axis.componentsValidityStatus[axis.selectedSizingComponent], 'fa-times invalid-form' : !axis.componentsValidityStatus[axis.selectedSizingComponent] }"></i>
+          </div>
+          <div class="nav-top navigator-container">
+            <button class="btn btn-link float-right padding-0" [hidden]="isLastComponent || isSecondLastComponent" [disabled]="disableNext" (click)="onNextClick()">
+              <span class="fs-18 navbtn-text pr-2 btn-link-text">Proceed to {{SizingComponentTitle[nextSizingComponent(axis.selectedSizingComponent)]}}</span>
+              <i class="fa fa-angle-right right-arrow"></i>
+            </button>
+            <button class="btn btn-link float-right padding-0" [hidden]="!isSecondLastComponent" placement="top" (click)="onNextClick()">
+              <span class="fs-18 hidden-sm-down pr-2 btn-link-text">View Summary</span>
+              <i class="fa fa-angle-right right-arrow"></i>
+            </button>
+
+            <!-- print and finish button for summary page -->
+            <button class="fs-18 fw-normal btn btn-link summary-print-btn padding-0" [hidden]="!isLastComponent" placement="top" (click)="onPrintClick()">
+              <span class="fa fa-print print-icon"></span>
+              <span class="hidden-sm-down">Print</span>
+            </button>
+            <!-- <span class="summary-vertical-line padding-0" [hidden]="!isLastComponent">
+              </span> -->
+            
+            <!-- <button class="fs-18 btn fw-normal btn-link float-right summary-finish-btn padding-0" [hidden]="!isLastComponent" placement="top">
+              <span class=" hidden-sm-down">Finish</span>
+            </button> -->
+          </div>
+        </div>
+      </div>
+      <hr class="header-separation">
+      <div *ngIf="axis.componentViewMode == ComponentViewMode.Form" class="component-sub-heading d-flex flex-row justify-content-between">
+        <div class="sub-heading fw-normal">
+          <p [title]="pageSubHeading">{{pageSubHeading}}</p>
+        </div>
+        <!-- COSMATT-1579 : Removed left-separator from "axis.selectedSizingComponent!==SizingComponentType.MotionType" to "false"-->
+        <div class="page-heading-color motion-element-btn-container" [class.left-separator]= "false" [ngClass]="(this.axis.componentsValidityStatus[SizingComponentType.MotionProfile]==true)?'':'cursor-not-allowed'">
+          <span *ngIf="axis.componentViewMode == ComponentViewMode.Form && (axis.selectedSizingComponent!==SizingComponentType.MotionType && axis.selectedSizingComponent!==SizingComponentType.Summary )"
+            class="motion-element-btn btn" (click)="onMotionElementsClick()" (mouseover)="mouseOvered=true"
+            (mouseout)="mouseOvered=false" tooltip = "View Motion Parameters" placement ="bottom" [ngClass]="(this.axis.componentsValidityStatus[SizingComponentType.MotionProfile]==true)?'':'disable-motion-Ele-button'">
+            <i [ngClass]="{'far': !mouseOvered, 'fas': mouseOvered }" class="question-mark fa-question-circle"></i>
+          <span class="motion-element fs-16">Motion Elements</span>
+          </span>
+        </div>
+      </div>
+      <button *ngIf="axis.componentViewMode == ComponentViewMode.Tabular" class="padding-0 btn btn-inverse" (click)="onMotionElementsBackClick()">
+        <span class="fa fa-arrow-circle-left"></span> Back
+      </button>
+      <div class="component-body">
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.MotionType && axis.componentViewMode == ComponentViewMode.Form">
+          <app-motion-type [motionTypeFormData] ="axis.componentsFormData.motionType" (formDataUpdateEvent)="onComponentFormDataUpdate($event)" (proceedToNextEvent)= "onNextClick()" (formValidEvent)="onFormValidityChange($event)"></app-motion-type>
+        </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.MotionProfile && axis.componentViewMode == ComponentViewMode.Form">
+          <app-motion-profile [motionProfileFormData]="axis.componentsFormData.motionProfile" (profileElementListUpdateEvent)="onComponentProfileElementListUpdate($event)"
+            (formDataUpdateEvent)="onComponentFormDataUpdate($event)" (formValidEvent)="onFormValidityChange($event)">
+          </app-motion-profile>
+        </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.RotaryLoad && axis.componentViewMode == ComponentViewMode.Form">
+          <app-rotary-load [rotaryLoadFormData]="axis.componentsFormData.rotaryLoad" [profileElementCollection]="profileElementCollection"
+            [analysisParams]="analysisParams" (profileElementListUpdateEvent)="onComponentProfileElementListUpdate($event)"
+            (formDataUpdateEvent)="onComponentFormDataUpdate($event)" (formValidEvent)="onFormValidityChange($event)"></app-rotary-load>
+        </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.Transmission && axis.componentViewMode == ComponentViewMode.Form">
+          <app-transmission [transmissionFormData]="axis.componentsFormData.transmission" [profileElementCollection]="profileElementCollection"
+            (profileElementListUpdateEvent)="onComponentProfileElementListUpdate($event)" (formDataUpdateEvent)="onComponentFormDataUpdate($event)"
+            [analysisParams]="analysisParams" (formValidEvent)="onFormValidityChange($event)"></app-transmission>
+        </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.SolutionAnalysis && axis.componentViewMode == ComponentViewMode.Form">
+          <app-solution-analysis [solutionAnalysisFormData]="axis.componentsFormData.solutionAnalysis" (profileElementListUpdateEvent)="onComponentProfileElementListUpdate($event)"
+            (formDataUpdateEvent)="onComponentFormDataUpdate($event)" [profileElementCollection]="profileElementCollection"
+            [analysisParams]="analysisParams" [transmissionFormData]="axis.componentsFormData.transmission" (formValidEvent)="onFormValidityChange($event)">
+          </app-solution-analysis>
+        </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.Summary && axis.componentViewMode == ComponentViewMode.Form">
+          <app-summary [formData]="axis.componentsFormData" [analysisParams]="analysisParams" [validityStatus]="axis.componentsValidityStatus" (formValidEvent)="onFormValidityChange($event)"
+          (onSaveButtonClick)="onSaveButtonClickHandler($event)">
+          </app-summary>
+        </div>
+        <div *ngIf="axis.componentViewMode == ComponentViewMode.Tabular">
+          <app-motion-elements [profileElements]="profileElements" [analysisParams]="analysisParams">
+          </app-motion-elements>
+        </div>
+        <div class="modal fade" id="appModal" role="dialog" tabindex="-1" data-keyboard="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="header-container">
+                    <i class="fa fa-question-circle-o"></i>
+                    <span class="motion-elemen-popup">Motion Elements</span>
+                  </div>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                  <div *ngIf="axis.componentViewMode == ComponentViewMode.Form && this.showMotionEle == true">
+                    <app-motion-elements-popup [profileElements]="profileElements">
+                    </app-motion-elements-popup>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onMotionElementsBackClick()">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div *ngIf="axis.selectedSizingComponent===SizingComponentType.LinearLoad && axis.componentViewMode == ComponentViewMode.Form">
+          Replace me (this div) with Linear Load Component
+        </div>
+      </div>
+      <hr class="footer-separation">
+      <div class="axis-footer ">
+        <div class="navigation row no-margin">
+          <div class="col-sm-12 no-padding">
+            <button class="padding-0 btn btn-link fs-18 component-back-btn" placement="top" [hidden]="disablePrevious" (click)="onPreviousClick()">
+              <i class="fa fa-angle-left left-arrow"></i>
+              <span class="hidden-sm-down pl-2 btn-link-text">Back to {{SizingComponentTitle[previousSizingComponent(axis.selectedSizingComponent)]}}</span>
+            </button>
+            <button class="padding-0 btn btn-link float-right fs-18" [hidden]="isLastComponent || isSecondLastComponent" [disabled]="disableNext" placement="top" (click)="onNextClick()">
+              <span class="hidden-sm-down pr-2 btn-link-text">Proceed to {{SizingComponentTitle[nextSizingComponent(axis.selectedSizingComponent)]}}</span>
+              <i class="fa fa-angle-right right-arrow"></i>
+            </button>
+            <!-- Change [hidden] when summary page is created -->
+            <button class="padding-0 btn btn-link float-right fs-18" [hidden]="!isSecondLastComponent" placement="top" (click)="onNextClick()">
+              <span class="hidden-sm-down pr-2 btn-link-text">View Summary</span>
+              <i class="fa fa-angle-right right-arrow"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>

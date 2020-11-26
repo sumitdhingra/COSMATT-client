@@ -1,0 +1,91 @@
+@import "../../../scss/theme/_variables.scss";
+$settings-padding: 10px;
+$user-menu-padding: 5px;
+$app-header-container-bg: #F6F6F6;
+$inline-item-height: 38px;
+$inline-item-height-details: 16px;
+$navbar-header-height: 68px;
+$application-name-focus-border: 1px solid #01579B;
+
+.app-header-navbar {
+    -webkit-box-shadow: 0px 0 5px 0px #888;
+    -moz-box-shadow: 0px 0 5px 0px #888;
+    box-shadow: 0px 0 5px 0px #888;
+}
+
+.app-header-container {
+    max-height: $navbar-header-height !important;
+    height: $navbar-header-height;
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    margin-top: -30px;
+    margin-left: -30px;
+    z-index: auto;
+    background-color: $app-header-container-bg;
+    .header-item-list {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        ;
+        display: flex;
+        align-items: center;
+    }
+    .margin-top-bottom-3 {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    .margin-top-bottom-7 {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+    .right-separator {
+        border-right: 1px solid #d1d1d1;
+    }
+    .header-item-list .list-inline-item {
+        height: $inline-item-height;
+    }
+    .list-item2 {
+        width: 70%;
+    }
+    .home-icon {
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        margin-right: 18px;
+        margin-left: 30px;
+    }
+    .note-icon {
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        margin-right: 25px;
+        margin-left: 30px;
+        color: #01579b;
+    }
+    .sizing-app-name {
+        margin-left: 13px;
+        .form-control.name-input {
+            background-color: $app-header-container-bg;
+            border: 0px;
+            border-bottom: 1px solid #d1d1d1;
+            border-radius: 0px;
+            font-size: 24px;
+            @media (max-width: 1279px) { font-size: 20px; }
+            color: $gray-dark;
+            padding: 0px;
+            width: 42%;
+            &:focus {
+                outline: none;
+                border-bottom: $application-name-focus-border
+            }
+        }
+    }
+    .sizing-app-details {
+        right: 50px;
+        position: absolute;
+        padding-top: 5px;
+        .list-inline-item {
+            height: $inline-item-height-details;
+        }
+    }
+}

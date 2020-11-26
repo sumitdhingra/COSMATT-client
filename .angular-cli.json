@@ -1,0 +1,84 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+
+        "name": "cosmatt"
+    },
+    "apps": [{
+        "root": "src",
+        "outDir": "dist",
+        "assets": [
+            "assets",
+            "favicon.ico"
+        ],
+        "index": "index.html",
+        "main": "main.ts",
+        "polyfills": "polyfills.ts",
+        "test": "test.ts",
+        "tsconfig": "tsconfig.app.json",
+        "testTsconfig": "tsconfig.spec.json",
+        "prefix": "app",
+        "styles": [
+            "scss/application.scss",
+            "../node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css",
+            "./assets/Foliojs/dist/css/Folio.css",
+            "./assets/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css",
+            "./assets/jquery.spinner/dist/css/bootstrap-spinner.min.css"
+        ],
+        "scripts": [
+            "../node_modules/jquery/dist/jquery.min.js",
+            "../node_modules/stickyfilljs/dist/stickyfill.js",
+            "../node_modules/tether/dist/js/tether.min.js",
+            "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "../node_modules/easy-pie-chart/dist/jquery.easypiechart.min.js",
+            "../node_modules/jquery-flot/jquery.flot.js",
+            "../node_modules/jquery-flot/jquery.flot.resize.js",
+            "../node_modules/jquery-flot/jquery.flot.time.js",
+            "../node_modules/flot-axislabels/jquery.flot.axislabels.js",
+            "../node_modules/flot.tooltip/js/jquery.flot.tooltip.js",
+            "../node_modules/bootstrap-slider/dist/bootstrap-slider.min.js",
+            "./assets/libs-frontend-testrunner/dist/js/testrunner-all.js",
+            "./assets/jquery.spinner/dist/js/jquery.spinner.js",
+            "./assets/Foliojs/dist/js/Folio.js",
+            "./assets/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.js",
+            "../node_modules/libs-frontend-cosmatt/libs-frontend-spreadsheetLeonardo/dist/scripts.bundle.js",
+            "../node_modules/libs-frontend-cosmatt/libs-frontend-spreadsheetLeonardo/dist/styles.bundle.js",
+            "../node_modules/libs-frontend-cosmatt/number-formatter/dist/cosmatt-number-formatter.js",
+            "../node_modules/comprodls-identity-client-sdk/dist/index.js"
+        ],
+        "environmentSource": "environments/environment.ts",
+        "environments": {
+            "dev": "environments/environment.ts",
+            "prod": "environments/environment.prod.ts",
+            "stg": "environments/environment.stg.ts",
+            "dev-build": "environments/environment.dev-build.ts"
+        }
+    }],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [{
+            "project": "src/tsconfig.app.json"
+        },
+        {
+            "project": "src/tsconfig.spec.json"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "scss",
+        "component": {
+            "inlineTemplate": false,
+            "spec": true
+        }
+    }
+}

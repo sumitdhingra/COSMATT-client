@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/">
+    <title>Compro's Online Skill Mastery And Training Tool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" href="assets/favicon.ico?v=3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="COSMATT provides an interactive way to learn how electric servo systems work and how to choose servo motors and drives to achieve optimal performance.">
+
+    <!--Fix mathjax 404 errors-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ showMathMenu: false, skipStartupTypeset: false, showProcessingMessages: false, elements: ["md-content"], SVG: { useFontCache: false }, jax: ["input/TeX", "output/SVG"], extensions: ["tex2jax.js"], TeX: { extensions: ["AMSmath.js",
+        "AMSsymbols.js", "noErrors.js", "noUndefined.js"] } });
+    </script>
+    <script>
+        window.__theme = 'bs4';
+    </script>
+    <script type="text/javascript" src="//apis.google.com/js/api.js"></script>
+    <script type="text/javascript" src="//apis.google.com/js/client.js"></script>
+    <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+</head>
+
+<body>
+    <div class="cosmatt-app">
+        <app-root></app-root>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Remove Norton Toolbar if present
+            var toolbarElement = document.getElementById("coFrameDiv");
+            if (toolbarElement) {
+                toolbarElement.parentNode.removeChild(toolbarElement);
+            }
+        };
+    </script>
+    </script>
+    <script>
+        // Google analytics code
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    </script>
+
+    <script>
+        // Userback.io code
+        Userback = window.Userback || {};
+        (function (id) {
+            if (document.getElementById(id)) { return; }
+            var s = document.createElement('script');
+            s.id = id;
+            s.async = 1;
+            s.src = 'https://static.userback.io/widget/v1.js';
+            var parent_node = document.head || document.body;
+            parent_node.appendChild(s);
+        })('userback-sdk');
+    </script>
+    
+    <script type="text/javascript" defer src="https://leonardo-sdk-stg.herokuapp.com/leonardo-items.js"></script>
+</body>
+
+</html>

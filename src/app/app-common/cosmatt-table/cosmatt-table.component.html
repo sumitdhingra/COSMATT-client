@@ -1,0 +1,45 @@
+<div>
+    <div *ngIf="search" class="form-group has-search">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Search" (keyup)="onSearch($event)">
+    </div>
+    <table class="table" [ngClass]="{'border-all': rows.length}" [style.width.px]="width">
+      <thead>
+        <tr>
+          <ng-container *ngFor="let column of columns">
+              <th *ngIf="column.sort" scope="col" [sortable]="column.prop" (sort)="onSort($event)" class="sort-header">
+                  <span class="title">{{(column.name!==undefined?column.name:column.prop) | titlecase}}</span> 
+                  <div class="sort-arrows">
+                      <i class="up-arrow fas fa-sort-up"></i>
+                      <i class="down-arrow fas fa-sort-down"></i>
+                  </div>
+              </th>
+              <th *ngIf="!column.sort" scope="col">
+                <span class="title">{{(column.name!==undefined?column.name:column.prop) | titlecase}}</span> 
+              </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody [ngClass]="{'pointer': select}">
+      <ng-container *ngIf="rows.length; else empty_rows">
+            <tr *ngFor="let row of rows" [ngClass]="{'active': selected === row}" 
+                (click)="select && onSelect($event, row)">
+                    <ng-container *ngFor="let column of columns">
+                      <td>
+                        <template [ngTemplateOutlet]="templates[column.name] ? templates[column.name] : (templates[column.prop] ? templates[column.prop] : default)" 
+                                  [ngTemplateOutletContext]="{row: row, value: row[column.prop]}"></template>
+                      </td>
+                    </ng-container>
+                  </tr>
+      </ng-container>
+      <ng-template #empty_rows>
+        <div class="no-result">No results found.</div>
+      </ng-template>
+      </tbody>
+    </table>
+    
+        
+    <ng-template #default let-value="value">
+        <span>{{value}}</span>
+    </ng-template>
+</div>

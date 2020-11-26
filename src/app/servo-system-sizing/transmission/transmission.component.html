@@ -1,0 +1,51 @@
+<section class="trans-main container-fluid">
+  <div class="row">
+
+    <div class="col-12 col-lg-8 trans-form">
+      <div class="row">
+        <div class="col-4 col-lg-5 col-xl-4 label">
+          <span>Transmission Ratio:</span>
+        </div>
+        <div class="col-8 col-lg-4 col-xl-4">
+          <!-- <app-unit-combobox id="trans-ratio" [configData]="getComboBoxConfig('transmissionRatio')"></app-unit-combobox> -->
+          <input type="text" name="transRatio" id="trans-ratio" [ngModel]="transmissionFormData.transmissionRatio" (ngModelChange)="handleRatioInput($event)" class="form-control"/>
+        </div>
+        <!-- <div class="col-4 col-lg-2 col-xl-4">
+
+        </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-lg-5 col-xl-4 label">
+          <span>Efficiency:</span>
+        </div>
+        <div class="col-8 col-lg-4 col-xl-4">
+          <app-unit-combobox id="trans-efficiency" [configData]="getComboBoxConfig('transmissionEfficiency')"></app-unit-combobox>
+        </div>
+        <!-- <div class="col-4 col-lg-2 col-xl-4">
+
+        </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-lg-5 col-xl-4 label">
+          <span>Transmission Inertia:</span>
+        </div>
+        <div class="col-8 col-lg-4 col-xl-4">
+          <app-unit-combobox id="trans-inertia" [configData]="getComboBoxConfig('transmissionInertia')"></app-unit-combobox>
+        </div>
+        <!-- <div class="col-4 col-lg-2 col-xl-4">
+
+        </div> -->
+      </div>
+    </div>
+    <div class="col-lg-1 hidden-1023 d-inline-flex justify-content-center">
+        <div class="vertical-border">
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 trans-image">
+      <img class="img-fluid" src="./assets/img/transmission/transGraphic.svg?v2" />
+    </div>
+
+  </div>
+</section>

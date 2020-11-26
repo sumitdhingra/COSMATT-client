@@ -1,0 +1,29 @@
+.course-foreword{
+    .course-foreword-section{       
+        border-bottom: 1px solid #dedede;
+        margin: 0;
+        padding-top: 21px;
+        padding-bottom: 30px;
+        .foreword-title{
+            font-family: "Open Sans";
+            font-size: 26px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .course-foreword-content{
+            padding: 10px 10px 10px 10px;
+            margin-left: 30px;
+            background: #FbFbFb;
+            font-weight: 400;
+            font-size: 14px;
+            color: #5f5f5f;
+            font-family: "Open Sans";
+            p{
+                font-weight: normal;
+                color: #5f5f5f;
+            }
+        }
+    }
+    
+}

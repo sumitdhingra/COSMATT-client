@@ -1,0 +1,59 @@
+<main class="ma-container" role="main">
+
+    <header>
+      <div class="h-main">
+        <ol class="breadcrumb cosmatt-breadcrumbs">
+          <li class="breadcrumb-item">
+            <a routerLink='/courses'>Home</a>
+          </li>
+          <li class="breadcrumb-item" [hidden]="appDataService.previousUrl === './courses' || appDataService.previousUrl === '/courses' || appDataService.previousUrl === './my-account'">
+            <a routerLink="{{appDataService.previousUrl}}">{{appDataService.previousPageTitle.replace('- COSMATT', '')}}</a>
+          </li>
+          <li class="breadcrumb-item active">
+            My Account
+          </li>
+        </ol>
+        <span class="icon fa fa-user"></span>
+        <span class="label">My Account</span>
+        <button (click)="onClickBackBtn()" class="btn btn-inverse ml-auto">Resume <i class="fa fa-arrow-circle-right"></i></button>
+      </div>
+      <!-- SD Feedback - Remove My Account sub heading -->
+      <!-- <div class="h-sub">
+        <span class="label">You can change your account settings here.</span>
+      </div> -->
+    </header>
+
+
+    <section class="content-main">
+
+      <section id="tabs">
+        <ul class="nav flex-column" id="accountTab" role="tablist">
+          <li class="nav-item" (click)="switchSection($event)">
+            <a class="nav-link" id="profileTab" data-target="info" target="_self">User Profile</a>
+          </li>
+          <li class="nav-item" (click)="switchSection($event)">
+            <a class="nav-link" id="passwordTab" data-target="settings" target="_self">Update Password</a>
+          </li>
+          <li class="nav-item" (click)="switchSection($event)">
+            <a class="nav-link" id="subsnbillTab" data-target="details" target="_self">Subscription Details</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="profile">
+        <section id="info">
+          <app-user-info [user-info]="userInfo"></app-user-info>
+        </section>
+
+        <section id="settings">
+          <app-user-settings></app-user-settings>
+        </section>
+
+        <section id="details">
+          <app-subscription-details></app-subscription-details>
+        </section>
+      </section>
+
+    </section>
+
+</main>

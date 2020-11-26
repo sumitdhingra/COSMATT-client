@@ -1,0 +1,26 @@
+<div class="profile-elements">
+   
+    <div class="table-container">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th *ngFor="let item of profileElementsHeader" scope="col">
+                {{toTitleCase(item[0])}}
+              </th>
+            </tr>
+            <tr>
+              <th *ngFor="let item of profileElementsHeader" scope="col" class="units-cell fw-normal">
+                {{item[1]}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let profileElement of profileElementsClone">
+              <td *ngFor="let unit of profileElementsHeader">{{formatter(profileElement[unit[0]])}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

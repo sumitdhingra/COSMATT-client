@@ -1,0 +1,833 @@
+@import "../../../scss/theme/_variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+$border-top-width: 3px;
+$vertical-rule-height: 70px;
+$box-min-height: 134px;
+
+$box-icon-size: 32px;
+$box-icon-size-lowres: 24px;
+$box-heading: $font-size-18;
+$box-heading-lowres: $font-size-14;
+$box-body: $font-size-20;
+$box-body-lowres: $font-size-16;
+
+$col-2-new-width: 17.5555%;
+$col-3-new-width: 26.3325%;
+$col-2-new-width-lowres: 17.5555%;
+$col-3-new-width-lowres: 25.3401%;
+
+$start-date-icon-color: #546e7a;
+$days-elapsed-icon-color: #0db0c4;
+$time-spent-icon-color: #a1887f;
+
+.box-row {
+  background: $body-bg;
+  justify-content: space-between;
+  min-height: $box-min-height;
+  margin: 0 0;
+
+  @include media-breakpoint-up(lg) {
+    & > .col-lg-2 {
+      -ms-flex: 0 0 $col-2-new-width;
+      flex: 0 0 $col-2-new-width;
+      max-width: $col-2-new-width;
+    }
+
+    & > .col-lg-3 {
+      -ms-flex: 0 0 $col-3-new-width;
+      flex: 0 0 $col-3-new-width;
+      max-width: $col-3-new-width;
+    }
+  }
+
+  .box {
+    margin: 0 0;
+    padding: 10px 10px;
+
+    background: $white;
+    border-top-width: $border-top-width;
+    border-top-left-radius: $border-radius-sm;
+    border-top-right-radius: $border-radius-sm;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box-icon {
+      font-size: $box-icon-size;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .fa-calendar-alt {
+        color: #546e7a;
+      }
+      .fa-clock {
+        color: #00acc1;
+      }
+      .fa-hourglass-start {
+        color: #a1887f;
+      }
+
+      .pie-chart-container {
+        height: $box-icon-size;
+        width: $box-icon-size;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .chart-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .box-content {
+      padding: 0 0px;
+      margin: 0 0;
+
+      .box-heading {
+        font-size: $font-size-18;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+        padding: 0;
+      }
+      .box-body {
+        font-size: $font-size-20;
+        font-weight: $font-weight-semi-bold;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        text-overflow: ellipsis;
+        // white-space: nowrap;
+        // overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: 0;
+      }
+    }
+
+    &.studnets-enrolled {
+      padding: 0px;
+
+      justify-content: space-between;
+      align-items: flex-start;
+      // background: $table-bg-accent;
+      // justify-content: space-between;
+      .box-title {
+        height: 30px;
+        color: #ffffff;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: $font-size-16;
+      }
+      .box-content {
+        padding: 0px 0px 0px 15px;
+
+        & > .box-heading {
+          margin-bottom: 5px;
+          font-size: $font-size-18;
+          font-weight: $font-weight-semi-bold;
+          .info-icon {
+            display: none;
+            margin-left: 5px;
+          }
+        }
+
+        & > .box-body {
+          font-size: $font-size-14;
+          margin-top: 5px;
+          font-weight: $font-weight-normal;
+
+          justify-content: space-around;
+          align-items: flex-start;
+          display: inline-block;
+          .box-body-details{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;  
+          }
+          .box-body-number {
+            font-weight: $font-weight-semi-bold;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .box-aside {
+        padding: 0px 15px 0px 0px;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .v-rule {
+          width: 1px;
+          height: $vertical-rule-height;
+          background: lightgray;
+          margin-right: 15px;
+          cursor: initial;
+
+          display: inline-block;
+        }
+
+        .resume-button {
+          display: inline-flex;
+          justify-content: space-around;
+          align-items: center;
+          padding-left: 5px;
+          padding-right: 5px;
+          font-size: $font-size-14;
+
+          .button-get-started {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    &.time-spent {
+      .box-content {
+        .box-body {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-width + 16px) and (max-width: 1600px) {
+  .col-1279-1600-12{
+    
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .box-row {
+    .box {
+      &.studnets-enrolled {
+        .box-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .box-content {
+          padding: 0px 15px 0px 15px;
+          & > .box-heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px;
+            .info-icon {
+              display: none;
+            }
+          }
+          & > .box-body {
+            margin-top: 0px;
+            display: flex;
+          }
+        }
+        .box-aside {
+          padding: 5px;;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          .v-rule {
+  
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $breakpoint-width +16) {
+  .col-1279-12 {
+    position: relative;
+    min-height: 1px;
+
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .box-row {
+    @media screen and (min-width: 992px) and (max-width: $breakpoint-width +16) {
+      & > .col-lg-2 {
+        -ms-flex: 0 0 $col-2-new-width-lowres;
+        flex: 0 0 $col-2-new-width-lowres;
+        max-width: $col-2-new-width-lowres;
+      }
+
+      & > .col-lg-3 {
+        -ms-flex: 0 0 $col-3-new-width-lowres;
+        flex: 0 0 $col-3-new-width-lowres;
+        max-width: $col-3-new-width-lowres;
+      }
+    }
+
+    .box {
+      &.overall-progress {
+        padding: 10px 2px !important;
+      }
+      &.start-date,
+      &.days-elapsed,
+      &.overall-progress,
+      &.time-spent {
+        padding: 10px 5px;
+        .box-icon {
+          margin-top: auto;
+          padding: 0 5px;
+          font-size: $box-icon-size-lowres;
+
+          /deep/ .pie-chart-container canvas {
+            height: $box-icon-size-lowres;
+            width: $box-icon-size-lowres;
+          }
+        }
+        .box-content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 0;
+
+          .box-heading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: $font-weight-normal;
+            font-size: $font-size-14;
+          }
+          .box-body {
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: $font-weight-semi-bold;
+            font-size: $font-size-16;
+          }
+        }
+      }
+
+      &.studnets-enrolled {
+        .box-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .box-content {
+          .box-heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px;
+            font-size: $font-size-16;
+            .info-icon {
+              display: inline;
+            }
+          }
+          .box-body {
+            display: none;
+          }
+        }
+        .box-aside {
+          justify-content: center;
+          padding: 5px;
+          .v-rule {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-width + 16px) and (max-width: 1440px) {
+  // .studnets-enrolled {
+  //   > .col-8, > .col-4 {
+  //     -ms-flex: 0 0 50% !important;
+  //     flex: 0 0 50% !important;
+  //     max-width: 50% !important;
+  //   }
+  // }
+}
+@media screen and (max-width: 1367px) {
+  // .col-1280-2 {
+  //   position: relative;
+  //   min-height: 1px;
+
+  //   -ms-flex: 0 0 16.6666%;
+  //   flex: 0 0 16.6666%;
+  //   max-width: 16.6666%;
+  // }
+
+  // .col-1280-10 {
+  //   position: relative;
+  //   min-height: 1px;
+
+  //   -ms-flex: 0 0 83.3333%;
+  //   flex: 0 0 83.3333%;
+  //   max-width: 83.3333%;
+  // }
+
+  // .box-row {
+  //   .box {
+  //     &.overall-progress {
+  //       .box-icon {
+  //         padding: 0 0 !important;
+  //       }
+  //       .box-content {
+  //         padding: 0 0 !important;
+  //         .box-body {
+  //         }
+  //       }
+  //     }
+  //     &.time-spent {
+  //       .box-content {
+  //         .box-body {
+  //           display: inline-block;
+  //           padding: 0 0;
+  //           @include media-breakpoint-down(md) { text-align: center; }
+  //           text-overflow: ellipsis;
+  //           white-space: nowrap;
+  //           overflow: hidden;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+@media screen and (min-width: 1264px) and (max-width: 1599px) {
+  // .box-row {
+  //   .box {
+  //     &.start-date, &.days-elapsed, &.overall-progress, &.time-spent {
+  //       padding: 10px 5px;
+  //       .box-icon {
+  //         padding: 0 5px;
+  //       }
+  //       .box-content {
+  //         padding: 0 5px;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+// @import "../../../scss/theme/_variables";
+// @import "../../../../node_modules/bootstrap/scss/_variables";
+// @import "../../../../node_modules/bootstrap/scss/mixins";
+
+// $border-top-width: 3px;
+// $vertical-rule-height: 80px;
+// $box-min-height: 134px;
+
+// $box-icon-size: 32px;
+// $box-icon-size-lowres: 24px;
+// $box-heading: $font-size-18;
+// $box-heading-lowres: $font-size-14;
+// $box-body: $font-size-20;
+// $box-body-lowres: $font-size-16;
+
+// $col-2-new-width: 15.5555%;
+// $col-3-new-width: 34.3325%;
+// $col-2-new-width-lowres: 16.5555%;
+// $col-3-new-width-lowres: 25.3401%;
+
+// $se-box-body-margin-bottom: 10px;
+// $se-box-body-margin-bottom-low: 5px;
+// $se-box-heading-margin-bottom: 10px;
+// $se-box-heading-margin-bottom-low: 5px;
+
+// $start-date-icon-color: #546E7A;
+// $days-elapsed-icon-color: #0DB0C4;
+// $time-spent-icon-color: #A1887F;
+
+// .box-row {
+
+//   background: $body-bg;
+//   justify-content: space-between;
+//   min-height: $box-min-height;
+//   margin: 0 0;
+
+//   @include media-breakpoint-up(lg) {
+//     & > .col-lg-2 {
+//       -ms-flex: 0 0 $col-2-new-width;
+//       flex: 0 0 $col-2-new-width;
+//       max-width: $col-2-new-width;
+//     }
+
+//     & > .col-lg-3 {
+//       -ms-flex: 0 0 $col-3-new-width;
+//       flex: 0 0 $col-3-new-width;
+//       max-width: $col-3-new-width;
+//     }
+//   }
+
+//   .box {
+
+//     margin: 0 0;
+//     padding: 10px 15px;
+
+//     background: $white;
+//     border-top-width: $border-top-width;
+//     border-top-left-radius: $border-radius-sm;
+//     border-top-right-radius: $border-radius-sm;
+
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     .box-icon {
+//       font-size: $box-icon-size;
+
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+
+//       .fa-calendar { color: #546E7A; }
+//       .fa-clock-o { color: #546E7A; }
+//       .fa-check-circle { color: #546E7A; }
+//       .fa-user { color: #546E7A; }
+
+//       .pie-chart-container {
+//         height: $box-icon-size;
+//         width: $box-icon-size;
+//         position: relative;
+
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+
+//         .chart {
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//         }
+//       }
+//     }
+
+//     .box-content {
+
+//       padding: 0 5px;
+//       margin: 0 0;
+
+//       .box-heading {
+//         font-size: $font-size-18;
+
+//         display: flex;
+//         justify-content: flex-start;
+//         align-items: flex-end;
+
+//         padding: 0;
+//       }
+//       .box-body {
+//         font-size: $font-size-16;
+//         font-weight: $font-weight-normal;
+
+//         display: flex;
+//         justify-content: flex-start;
+//         align-items: flex-start;
+//         flex-wrap: wrap;
+
+//         padding: 0;
+//       }
+//     }
+
+//     &.studnets-enrolled {
+//       background: $table-bg-accent;
+//       justify-content: space-between;
+//       align-items: flex-start;
+//       padding: 0px;
+//       .box-title{
+//         height: 30px;
+//         color: #FFFFFF;
+//         display: flex;
+//         justify-content: flex-start;
+//         align-items: center;
+//         font-size: 16px;
+//       }
+//       .box-content {
+
+//         padding: 0 15px;
+
+//         & > .box-heading {
+//           margin-bottom: $se-box-heading-margin-bottom;
+//           align-items: center;
+//         }
+
+//         & > .box-body {
+//           margin-bottom: $se-box-body-margin-bottom;
+//           display: flex;
+//           justify-content: space-between;
+//           .box-body-label{
+//             &.label-1, &.label-2{
+//               padding-right: 15px;
+//             }
+
+//           }
+
+//         }
+//       }
+
+//       .box-aside {
+
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         padding: 5px 0px;
+//         .v-rule {
+//           width: 1px;
+//           height: $vertical-rule-height;
+//           background: lightgray;
+//           margin-right: 10px;
+//           cursor: initial;
+
+//           display: inline-block;
+//         }
+
+//         .resume-button {
+//           display: inline-flex;
+//           justify-content: space-around;
+//           align-items: center;
+//           padding-left: 5px;
+//           padding-right: 5px;
+//           font-size: $font-size-14;
+
+//           .button-get-started {
+//             margin-left: 5px;
+//           }
+//         }
+//       }
+
+//     }
+
+//     &.time-spent {
+
+//       .box-content {
+
+//         .box-body {
+
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (min-width: $breakpoint-width + 1px) and (min-height: $breakpoint-height + 1px) and (max-width: 1440px) {
+//   .studnets-enrolled {
+//     > .col-7, > .col-5 {
+//       -ms-flex: 0 0 50% !important;
+//       flex: 0 0 50% !important;
+//       max-width: 50% !important;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+//   .col-1279-12 {
+//     position: relative;
+//     min-height: 1px;
+
+//     -ms-flex: 0 0 100%;
+//     flex: 0 0 100%;
+//     max-width: 100%;
+//   }
+
+//     .box-row {
+//       @media screen and (min-width: 992px) and (max-width: $breakpoint-width),
+//       screen and (min-height: 600px) and (max-height: $breakpoint-height) {
+//         & > .col-lg-2 {
+//           -ms-flex: 0 0 $col-2-new-width-lowres;
+//           flex: 0 0 $col-2-new-width-lowres;
+//           max-width: $col-2-new-width-lowres;
+//         }
+
+//         & > .col-lg-3 {
+//           -ms-flex: 0 0 $col-3-new-width-lowres;
+//           flex: 0 0 $col-3-new-width-lowres;
+//           max-width: $col-3-new-width-lowres;
+//         }
+//       }
+
+//     .box {
+//       &.overall-progress { padding: 10px 2px !important; }
+//       &.start-date, &.days-elapsed, &.overall-progress, &.time-spent {
+//         padding: 10px 5px;
+//         .box-icon {
+//           margin-top: auto;
+//           padding: 0 5px;
+//           font-size: $box-icon-size-lowres;
+
+//           /deep/ .pie-chart-container canvas {
+//             height: $box-icon-size-lowres;
+//             width: $box-icon-size-lowres;
+//           }
+//         }
+//         .box-content {
+//           justify-content: center;
+//           align-items: center;
+//           padding: 0 0;
+//           .box-heading {
+//             justify-content: center;
+//             align-items: center;
+//             font-weight: $font-weight-normal;
+//             font-size: $font-size-16;
+//           }
+//           .box-body {
+//             justify-content: center;
+//             align-items: center;
+//             text-align: center;
+//             font-weight: $font-weight-semi-bold;
+//             font-size: $font-size-14;
+//           }
+//         }
+//       }
+
+//       &.studnets-enrolled {
+//         .box-title{
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//         }
+//         .box-content {
+//           .box-heading {
+//             align-items: center;
+//             justify-content: center;
+//             font-weight: $font-weight-normal;
+//             font-size: $font-size-16;
+//             margin-bottom: $se-box-heading-margin-bottom-low;
+//           }
+//           .box-body {
+//             display: inline-box;
+//             text-align: center;
+//             // text-overflow: initial;
+//             // white-space: normal;
+//             // overflow: initial;
+//             align-items: center;
+//             justify-content: center;
+//             font-weight: $font-weight-normal;
+//             font-size: $font-size-14;
+
+//             margin-bottom: $se-box-body-margin-bottom-low;
+//           }
+//         }
+//         .box-aside {
+//           justify-content: center;
+//           .v-rule {
+//             display: none;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+// }
+
+// @media screen and (max-width: 1367px) {
+
+//   // .col-1280-2 {
+//   //   position: relative;
+//   //   min-height: 1px;
+
+//   //   -ms-flex: 0 0 16.6666%;
+//   //   flex: 0 0 16.6666%;
+//   //   max-width: 16.6666%;
+//   // }
+
+//   // .col-1280-10 {
+//   //   position: relative;
+//   //   min-height: 1px;
+
+//   //   -ms-flex: 0 0 83.3333%;
+//   //   flex: 0 0 83.3333%;
+//   //   max-width: 83.3333%;
+//   // }
+
+//   .box-row {
+//     .box {
+//       &.overall-progress {
+//         .box-icon {
+//           padding: 0 0 !important;
+//         }
+//         .box-content {
+//           padding: 0 0 !important;
+//           .box-body {
+//           }
+//         }
+//       }
+//       &.time-spent {
+//         .box-content {
+//           .box-body {
+//             display: inline-block;
+//             padding: 0 0;
+//             @include media-breakpoint-down(md) { text-align: center; }
+//             text-overflow: ellipsis;
+//             white-space: nowrap;
+//             overflow: hidden;
+//           }
+//         }
+//       }
+//       &.studnets-enrolled {
+//         .box-aside {
+//           justify-content: center;
+//           .v-rule {
+//             display: none;
+//           }
+//         }
+
+// }
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 1264px) and (max-width: 1599px) {
+
+//   .box-row {
+//     .box {
+//       &.start-date, &.days-elapsed, &.overall-progress, &.time-spent {
+//         padding: 10px 5px;
+//         .box-icon {
+//           padding: 0 5px;
+//         }
+//         .box-content {
+//           padding: 0 5px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 1600px) {
+
+//   .box-row {
+//     .box {
+//       padding-right: 20px;
+//       &.studnets-enrolled {
+//         .box-content {
+//           padding: 0 15px;
+//         }
+//         .box-aside {
+//           .v-rule {
+//             margin-right: 20px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

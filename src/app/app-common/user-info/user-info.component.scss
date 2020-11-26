@@ -1,0 +1,171 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+/*MISC*/
+$input-error-border-color: #CB2929;
+$input-okay-border-color: green;
+$text-color-normal: $gray-dark;
+$text-color-light: #575757;
+$text-color-lighter: #9a9a9a;
+$box-bg-color: #ffffff;
+$box-border-color: #dfdfdf;
+$box-shadow: 0px 2px 4px #cecece;
+/* $box-height: 630px; */
+$box-height: 360px; /* COSMATT-1660: My Account - Remove Update Image Section */
+
+/*HEADER*/
+$header-height: 50px;
+$heading-weight: $font-weight-semi-bold;
+$heading-size: $font-size-20;
+$heading-height: 38px;
+$heading-lr-margins: 20px;
+$heading-border-color: #c3c3c3;
+$heading-color: $text-color-light;
+
+/*GRAVATAR*/
+$g-height: 237px;
+$g-image-size: 80px;
+$g-link-width: 116px;
+$g-link-height: 36px;
+$g-link-color: #0d4da5;
+$g-bg-color: $addition-bg;
+
+/*FORM*/
+$form-label-size: $font-size-16;
+$form-label-color: $text-color-normal;
+$form-label-weight: $font-weight-semi-bold;
+$form-icons-size: $font-size-16;
+$form-icons-color: #9a9a9a;
+$f-label-icon-gap: 15px;
+
+$f-control-border-color: #cbcbcb;
+$f-control-border-bottom: 1px solid $f-control-border-color;
+$f-control-text-size: $font-size-14;
+$f-control-text-color: $text-color-normal;
+$f-control-left-margin: 30px;
+
+$f-save-btn-height: 40px;
+$f-save-btn-width: 88px;
+$f-save-btn-bg-color: #9a9a9a;
+$f-save-btn-color: white;
+
+
+.ui-container {
+
+    font-weight: $font-weight-normal;
+    color: $text-color-normal;
+    background: $box-bg-color;
+    border: 1px solid $box-border-color;
+    box-shadow: $box-shadow;
+    min-height: $box-height;
+
+    header {
+        min-height: $header-height;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        .heading-main {
+            margin: 0 $heading-lr-margins;
+            height: $heading-height;
+            font-size: $heading-size;
+            font-weight: $heading-weight;
+            flex-basis: 100%;
+            border-bottom: 1px solid $heading-border-color;
+            color: $heading-color;
+        }
+    }
+
+    .gravatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: $g-bg-color;
+        min-height: $g-height;
+
+        .g-image > img {
+            height: $g-image-size;
+            width: $g-image-size;
+        }
+        .g-image .icon {
+            font-size: $g-image-size;
+            color: $form-icons-color;
+        }
+        .g-link {
+            margin-top: 20px;
+            & > a {
+                width: $g-link-width;
+                height: $g-link-height;
+                color: $g-link-color;
+                background: $g-bg-color;
+                border-color: $g-link-color;
+            }
+        }
+    }
+
+    .personal {
+        padding: 25px 40px;
+        margin-right: 60px;
+        @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+          margin-right: 40px;
+        }
+
+        .prsnl-form {
+
+            .form-group {
+
+                &.mt--5px{ margin-top: -5px; }
+                &.mt-5px { margin-top: 5px; }
+
+                label {
+                    font-size: $form-label-size;
+                    color: $form-label-color;
+                    font-weight: $form-label-weight;
+
+                    & > .icon {
+                        font-size: $form-icons-size;
+                        color: $form-icons-color;
+                        margin-right: $f-label-icon-gap;
+                    }
+                }
+                .form-control {
+                    font-size: $f-control-text-size;
+                    margin-left: $f-control-left-margin;
+                    color: $f-control-text-color;
+                    border: none;
+                    border-radius: 0px;
+                    border-bottom: $f-control-border-bottom;
+
+                    &:disabled {
+                        background: white;
+                    }
+                }
+            }
+
+            .form-footer {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin-left: 35px;
+                margin-top: 28px;
+
+                button {
+                    height: $f-save-btn-height;
+                    width: $f-save-btn-width;
+                    // color: $f-save-btn-color;
+                    // background: $f-save-btn-bg-color;
+                }
+            }
+
+            input.error {
+                border-color: $input-error-border-color;
+            }
+            input.okay {
+                border-color: $input-okay-border-color;
+            }
+        }
+    }
+}

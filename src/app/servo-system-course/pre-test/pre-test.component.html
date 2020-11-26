@@ -1,0 +1,31 @@
+<!--<ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+  <li class="breadcrumb-item"><a routerLink='/app/courses'>Home</a></li>
+  <li class="breadcrumb-item"><a routerLink='../introduction'>Servo System Training</a></li>
+  <li class="breadcrumb-item active">Pretest</li>
+</ol>
+<h2 class="page-title fw-normal"><span class="fa fa-book title-icon mr-sm"></span>Fundamentals - <span class="fw-semi-bold">Pretest</span>
+</h2>-->
+<div>
+  <!--<p class="fw-normal">The Pretest is intended to judge your pre-requites knowledge for Servo System Training course. Course content will be
+        customized based on your knowledge.</p>-->
+  <p class="fw-normal mb-0">Click<a class="text-link" (click)="skipPreTest()"> here </a>to skip pretest.
+  </p>
+</div>
+<!--<app-assessment *ngIf="assessmentContent" [assessmentContent]="assessmentContent" (responseEmitter)="onResponse($event, assessmentContent)"></app-assessment>-->
+
+<div class="modal fade" id="reportModal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fw-semi-bold" id="myModalLabel">Confirm Submission</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to submit your test?</p>
+      </div>
+      <div class="modal-footer text-right">
+        <button type="button" class="btn btn-default btn-md mb-xs" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-inverse btn-md mb-xs" data-dismiss="modal" (click)="dialogSubmitClicked()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

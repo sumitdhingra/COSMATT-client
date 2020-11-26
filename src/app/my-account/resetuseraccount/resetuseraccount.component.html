@@ -1,0 +1,27 @@
+<div class="modal fade" id="reportModal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fw-semi-bold" id="myModalLabel">Confirm Submission</h4>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="resetStart == undefined && success == undefined">
+          <span>Are you sure you want to reset your account?</span> 
+          <br>
+          <br>
+          <span><b>NOTE</b>: This action will delete all your saved data.</span>
+        </p>
+        <div class="loading-screen2 text-center">
+          <div>{{ (resetStart == true) ? 'Resetting user account...' : ( success == true ? 'Account Reset Successful' : ( success == false ? 'Account Reset Unsuccessful' : ''))}}</div>
+          <div [hidden]="resetStart == undefined || resetStart == false">
+            <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer text-right">
+        <button type="button" [disabled]="resetStart == true" (click)="cancellingResetMyAccount()" *ngIf="success == undefined" class="btn btn-default btn-md mb-xs" data-dismiss="modal">No</button>
+        <button type="button" [disabled]="resetStart == true" (click)="resetMyAccount()" class="btn btn-inverse btn-md mb-xs">{{ (success != undefined) ? 'Redirect To Login Page' : 'Yes'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

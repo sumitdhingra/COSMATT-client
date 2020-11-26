@@ -1,0 +1,16 @@
+.table-container {
+    padding: 10px;
+    .table>thead>tr>th {
+        text-transform: none;
+        text-align: center;
+    }
+    .table>tbody>tr>td {
+        text-transform: none;
+        text-align: center;
+    }
+}
+
+.profile-elements,.analysis-params{
+    padding: 10px;
+    max-width: 90%;
+}

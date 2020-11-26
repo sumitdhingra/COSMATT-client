@@ -1,0 +1,46 @@
+<nav sidebar id="sidebar" role="navigation" class="sidebar toc-background-color-theme" (window:resize)="onResize($event)">
+  <div class="title-text fw-bold">Table of Contents
+    <span class="cross-icon float-right sidebar-close-button-hover-background-color" (click)="closeSideMenu()"><span class="left"></span>
+    <span class="right"></span></span>
+  </div>
+  <div class="js-sidebar-content">
+    <ul class="sidebar-nav module-container">
+      <li class="module" *ngFor="let module of tocArr; let i = index" [id]="module['item-code']" >
+        <a class="collapsed module-title toc-hover-background-color-theme" [attr.data-target]="'#sidebar-' + module['item-code']" [class.toc-active-background-color-theme]="i == appDataService.selectedModule" data-toggle="collapse" *ngIf="module['item-type'] == 'folder'">
+          <span (click)="tocModuleClicked(i,-1)" class="chapter-name fs-16 fw-normal" placement="right" container="body"><span class="fw-semi-bold">{{(i+1)+'.&nbsp;'}} </span> {{module.name}}</span>
+          <span class="collapse-toggle">
+            <i class="toggle fa fa-chevron-up"></i>
+          </span>
+          <span class="module-status" [ngClass]="{'fa fa-check-circle':module.__analytics.percentageCompletion==100}"><span [ngClass]="{'ver-separator':module.__analytics.percentageCompletion==100}"></span></span>
+        </a>
+        <ul [id]="'sidebar-' + module['item-code']" class="collapse chapter-container">
+          <li class="chapter-title-container" *ngFor="let chapter of module.items; let j = index" [id]="chapter['item-code']" >
+            <!--<a (click)="tocItemClicked(i,j)" [routerLink]="['../..',i,j]">-->
+            <a (click)="tocItemClicked(i,j)" [ngClass]="{'toc-active-background-color-theme active': i == appDataService.selectedModule && j == appDataService.selectedChapter}" class="section-item toc-hover-background-color-theme">
+              <!-- title="{{chapter.name}}" -->
+              <!-- <span class="chapter-attemp-status mr-sm fa" [ngClass]="{'fa-check': chapter.__analytics.status === 'completed', 'fa-circle': chapter.__analytics.status === 'in_complete' }"></span> -->
+              <span *ngIf="chapter.__analytics.status === 'completed'" class="mr-2 chapter-status chapter-completed">
+                  <span class="fa fa-check"></span>
+              </span>
+
+              <span *ngIf="chapter.__analytics.status === 'in_complete'" class="mr-2 chapter-status chapter-in-complete">
+                <span class="inner"></span>
+              </span>
+
+              <span *ngIf="chapter.__analytics.status === 'not_started'" class="mr-2 chapter-status chapter-not-started">
+                  <span class="inner toc-background-color-theme"></span>
+              </span>
+
+              <div class="timeline-join toc-timeline-background-color-theme" [ngClass]="{'first': j === 0, 'last': j === module.items.length - 1}"></div>
+
+              <span class="chapter-title" placement="right" container="body">
+                <span class="s-no fw-semi-bold">{{(i+1)+'.'+(j+1)+'&nbsp;'}}</span>
+              <span class="title toc-section-title-color-theme fw-normal">{{chapter.name}}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

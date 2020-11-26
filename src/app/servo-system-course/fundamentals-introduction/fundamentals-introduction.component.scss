@@ -1,0 +1,48 @@
+#intro-content {
+    font-family: "Open Sans";
+    font-size: 1.1em!important;
+    color: #000;
+    font-weight: normal;
+    h1 {
+        font-size: 2.3em;
+        font-weight: 400;
+        color: #333;
+    }
+    h2 {
+        font-size: 1.5em;
+        border-top: 1px solid #a7a9ac;
+        border-bottom: none;
+        color: #008fce;
+        padding-top: 5px;
+        font-weight: 600;
+        + ul {
+            margin: 15px
+        }
+    }
+    ul li,
+    ul li p,
+    li,
+    ul {
+        margin: 5px;
+    }
+    p em {
+        color: #F3722D;
+        font-style: normal;
+    }
+    p {
+        margin: 15px 0;
+    }
+}
+
+.content-viewer {
+    padding: 30px;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}

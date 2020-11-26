@@ -1,0 +1,39 @@
+<section>
+  <div class="title-container bb">
+    <span class="title">
+      <span class="title-icon"><i class="fa fa-signal" aria-hidden="true"></i></span><span class="label">Engagement</span>
+    </span>
+  </div>
+  <table class="widget pie-chart-table table bg-white no-margin">
+    <tbody>
+      <tr>
+        <!--<td *ngFor="let item of pieChartData.data; let idx = index" class="pie-chart-td text-center bt-0" [ngClass]="{'section-right-border': idx < pieChartData.data.length - 1 }"
+          [style.width]="100/pieChartData.data.length + '%'">
+          <label class="mt-sm mb-sm pie-chart-title">{{item.title}}</label>
+          <div class="pie-chart-container">
+            <span class="chart" [attr.data-percent]="item.percentage"></span>
+            <span class="percentage-value">{{item.percentage}}%</span>
+          </div>
+          <span class="font-weight-bold pie-chart-caption">
+            <label class="mt-sm mb-sm font-weight-bold">{{item.attempted}}</label>&nbsp;/
+            <label class="mt-sm mb-sm font-weight-bold">{{item.total}}</label>
+            <span class="text-warning">Completed</span>
+          </span>
+        </td>-->
+        <td *ngFor="let key of chartDataKeys let idx = index" class="pie-chart-td text-center bt-0" [ngClass]="{'section-right-border': idx < chartDataKeys.length - 1 }"
+          [style.width]="100/chartDataKeys.length + '%'">
+          <label class="mt-sm mb-sm pie-chart-title">{{pieChartDataTemp[key].title}}</label>
+          <div class="pie-chart-container">
+            <span class="chart" [attr.data-percent]="pieChartDataTemp[key]['percentage']"></span>
+            <span class="percentage-value">{{pieChartDataTemp[key]['percentage']}}%</span>
+          </div>
+          <span class="font-weight-bold pie-chart-caption">
+            <label class="mt-sm mb-sm font-weight-bold">{{pieChartDataTemp[key].completed}}</label>&nbsp;/
+            <label class="mt-sm mb-sm font-weight-bold">{{pieChartDataTemp[key].total}}</label>
+            <span class="text-warning">{{pieChartDataTemp[key].labelText}}</span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

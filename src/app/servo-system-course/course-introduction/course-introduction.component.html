@@ -1,0 +1,106 @@
+<div class="course-about-page">
+
+  <header class="about-page-header">
+    <ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+      <li class="breadcrumb-item"><a routerLink='/courses'>Home</a></li>
+      <li class="breadcrumb-item active">About</li>
+    </ol>    
+
+    <div class="float-right no-margin hidden-sm-down">
+      <button *ngIf="appDataService.getUserType() == userType.NewUser" class="btn btn-inverse" (click)="getStartedBtnClicked($event)">Start Course
+          <span class="circle bg-white button-get-started">
+            <i class="fa fa-arrow-right text-inverse"></i>
+          </span>
+        </button>
+
+      <button *ngIf="appDataService.getUserType() == userType.ExistingUser" class="btn btn-inverse" (click)="getStartedBtnClicked($event)">Resume
+          <span class="circle bg-white button-get-started">
+            <i class="fa fa-arrow-right text-inverse"></i>
+          </span>
+        </button>
+    </div>
+    <!-- </h2> -->
+
+    <div class="hidden-md-up mb-2">
+      <button *ngIf="appDataService.getUserType() == userType.NewUser" class="btn btn-inverse btn-block" (click)="getStartedBtnClicked($event)">Start Course
+        <span class="circle bg-white button-get-started">
+          <i class="fa fa-arrow-right text-inverse"></i>
+        </span>
+      </button>
+
+      <button *ngIf="appDataService.getUserType() == userType.ExistingUser" class="btn btn-inverse btn-block" (click)="getStartedBtnClicked($event)">Resume
+        <span class="circle bg-white button-get-started">
+          <i class="fa fa-arrow-right text-inverse"></i>
+        </span>
+      </button>
+    </div>
+  </header>
+  <div class="course-intro-container row">
+    <nav class="left-nav-sidebar">
+      <div class="left-nav-cotainer sticky">
+        <ul class="left-pane-list">
+            <li class="list-item" *ngFor="let leftItem of this.courseLeftMenu;let loop=index" [ngClass]="{'active': loop==0}"><a [ngClass]="{'active': loop==0}" class="nav-link" [attr.data-target]="leftItem.id" target="_self" (click)="switchSection($event)">{{leftItem.text}}</a></li>         
+        </ul>
+      </div>
+    </nav>
+    <section class="right-container ">
+      <div class="row">
+        <div class="col-md-12 course-intro-widget page-section" id="titleAuthor">
+          <app-course-authors [courseAuthors]="courseAuthors" [titleData]="titleData" [publicAssetsPath]="this.productService.getPublicAssetsPath()"></app-course-authors>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 about-course-widget page-section" id="introduction">
+          <app-about-course [mdContent]="aboutCourseMdContent" [courseObjective]="courseObjective"></app-about-course>
+        </div>
+        <!-- <div class="col-12 mb-3 course-obj-widget">
+          <app-course-objective [courseObjective]="courseObjective"></app-course-objective>
+        </div> -->
+      </div>
+      <div class="row">
+        <div class="col-md-12 course-toc-widget page-section" id="courseContent">
+          <app-course-toc [tocArray]="this.tocArray" [courseObjective]="courseObjective"></app-course-toc>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 course-foreword-widget page-section" id="foreword">
+          <app-course-foreword [mdContent]="forewordMdContent" [publicAssetsPath]="this.productService.getPublicAssetsPath()"></app-course-foreword>
+        </div>
+      </div>
+
+     
+
+
+
+    </section>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right no-margin get-started-btnconta hidden-sm-down">
+        <button *ngIf="appDataService.getUserType() == userType.NewUser" class="btn btn-inverse" (click)="getStartedBtnClicked($event)">Start Course
+                  <span class="circle bg-white button-get-started">
+                    <i class="fa fa-arrow-right text-inverse"></i>
+                  </span>
+                </button>
+        <button *ngIf="appDataService.getUserType() == userType.ExistingUser" class="btn btn-inverse" (click)="getStartedBtnClicked($event)">Resume
+                  <span class="circle bg-white button-get-started">
+                    <i class="fa fa-arrow-right text-inverse"></i>
+                  </span>
+                </button>
+      </div>
+      <div class="get-started-btnconta hidden-md-up">
+        <button *ngIf="appDataService.getUserType() == userType.NewUser" class="btn btn-inverse btn-block" (click)="getStartedBtnClicked($event)">Start Course
+                  <span class="circle bg-white button-get-started">
+                    <i class="fa fa-arrow-right text-inverse"></i>
+                  </span>
+                </button>
+        <button *ngIf="appDataService.getUserType() == userType.ExistingUser" class="btn btn-inverse btn-block" (click)="getStartedBtnClicked($event)">Resume
+                  <span class="circle bg-white button-get-started">
+                    <i class="fa fa-arrow-right text-inverse"></i>
+                  </span>
+                </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,264 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+$author-top-band-height: 110px;
+$author-modal-top-band-height: 138px;
+$author-box-padding: 20px;
+$author-relative-margin: $author-box-padding;
+$author-contact-font-color: #555555;
+.course-authors {
+.author-section{
+       
+        border-bottom: 1px solid #c4c4c4;
+        margin: 0;
+        .page-title-block{
+            margin-bottom: 40px;
+            .page-title{
+                .course-title{
+                    font-family: 'Oswald';
+                    font-size: 26px;
+                    font-weight: 300;
+                    color: #964e4e;
+                    margin-top: 15px;
+                    margin-bottom: 5px;
+                }
+                .author-by{
+                    font-family: "Open Sans";
+                    display: inline;           
+                    font-size: 16px;
+                    font-style: italic;
+                    color: #808080;
+                    font-weight: 600;
+                }
+                .author-name{
+                    display: inline;
+                    font-family: "Open Sans";
+                    color: #168401;
+                    font-size: 16px;
+                    font-weight: 600;
+                    font-style: italic;
+                    .author-comma{
+                        display: inline;
+                    }
+                    .display-none{
+                        display: none;
+                    }
+                }
+            }
+            .horiozntal-line{
+                border-top: 2px solid #000;
+                margin-top: 22px;
+                margin-bottom: 22px;
+                width: 70%;
+            }
+            .publisher-section{
+                .publisher-name{
+                    font-family: "Open Sans";
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #626262;
+                }
+                .publisher-url{
+                    
+                    
+                }
+               
+            }
+        }
+        .authore-title{
+            font-family: "Open Sans";
+            font-size: 26px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .author-block{
+            margin-bottom: 15px;
+            margin-left: 15px;
+        }
+        .publisher-copyright{
+            font-family: "Open Sans";
+            font-size: 16px;
+            font-weight: normal;
+            color: #626262;
+            margin-top: 15px;
+            a{
+                
+                color: #095799;
+
+            }
+        }
+    }
+    
+  
+    
+    .col-container{
+        @include media-breakpoint-down(md) {
+            margin-bottom: 20px;
+        }
+    }
+   
+    .course-author-box {
+        background-color: $white;
+        padding: $author-box-padding;
+        border: 1px solid #dedede;
+        @include media-breakpoint-up(sm) {
+            min-height: 540px;
+         }      
+        .top-band {
+            margin: -20px;
+            margin-bottom: 0;
+            height: 70px;
+            background-color: $gray-semi-lighter;
+        }
+        .intials-band {
+            height: $author-top-band-height;
+            transform: translateY(-50%);
+            margin-bottom: -1*$author-top-band-height/4;
+            .initials {
+                border-radius: 50%;
+                display: inline-block;
+                font-size: $author-top-band-height/2;
+                height: $author-top-band-height;
+                width: $author-top-band-height;
+                padding-top: 5px;
+                .author-img{
+                    height: $author-top-band-height;
+                    width: $author-top-band-height;
+                   
+                }
+            }
+
+        }
+        .description {
+            margin-top: 10px;
+            overflow: hidden;
+            color: #5f5f5f;
+          
+            &.description-collapsed {
+                height: 110px;
+                padding-left: 10px;
+            }
+        }
+        .name {
+            color: #333;
+        }
+        .designation {
+            color: #5f5f5f;
+            @include media-breakpoint-up(sm) {
+                min-height: 45px;
+             } 
+            
+        }
+        .see-more-link{
+            a{
+                color: #095799;
+            }
+            a:hover{
+                color: #095799;
+                text-decoration: underline;
+            }
+        }
+       
+        .hr-separator {
+            border-style: dashed;
+            border-color: #999999;
+            margin-top: $author-relative-margin;
+            margin-bottom: $author-relative-margin;
+        }
+        .contact-number,
+        .location,
+        .email {
+            a {
+                font-family: "Open Sans";
+                color: #095799;
+              
+                &:hover,
+                &:focus {
+                    color: #095799;
+                    text-decoration: underline;
+                }
+            }
+            a i {
+                font-family: "Open Sans";
+                color: #095799;
+            }
+            a i:hover {
+               
+                color: #095799;
+               
+            }
+            a i.fa:before {
+                font-family: "FontAwesome";
+            }
+        }
+        .email {
+            margin: 15px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .contact-number {
+            border-right: 1px dashed $author-contact-font-color;
+        }
+        .social-links {
+            .linkedin-logo-color {
+                color: #0077B5;
+            }
+            .twitter-logo-color {
+                color: #00aced;
+            }
+        }
+        .social-links-empty {
+            .fa::before {
+                content: "\200B";
+            }
+        }
+       
+       
+        
+      
+    }
+ 
+    .publisher-section{
+        line-height: 2;
+    }
+    .padding-zero{
+        padding: 0
+    }
+    .modal-dialog{
+        max-width: 800px;
+    }
+    .close-button{
+        font-size: 25px;
+    }
+    .modal-body{
+        .designation{
+            color: #6d6969;
+        }
+        .author-img-cursor{           
+            cursor: auto;
+        } 
+        .modal-author-img{
+            height: $author-modal-top-band-height;
+            width: $author-modal-top-band-height;    
+        }
+        .modal-initials {
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 40px;
+            height: $author-modal-top-band-height;
+            width: $author-modal-top-band-height;
+            padding-top: 15px;
+           
+        }
+        .modal-intials-band {
+            height: $author-modal-top-band-height;
+            transform: translateY(-50%);
+            margin-bottom: -1*$author-modal-top-band-height/4;
+        }  
+        button.close{
+            z-index: 1;
+        }  
+    }
+}

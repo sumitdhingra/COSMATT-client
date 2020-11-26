@@ -1,0 +1,271 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+$highlight-color: #c5c5c5;
+$page-title-height: 37px;
+.assessment-container {
+  &.boxed {
+    box-shadow: 6px 6px 9px #ddd;
+    border: 1px solid #ddd;
+    border-top: 3px solid;
+  }
+  &.minimal {
+    margin-top: -25px;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    .question-container {
+      // margin: 15px 0px;
+      left: 0px;
+    }
+    .separator {
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 100%;
+      background-color: #d1d1d1;
+      &.hidden-loading{
+        display: none;
+      }
+    }
+    
+  }
+  &.full-page-view {
+    /* Currently doesn't do much
+    TODO - Use this mode when EOM component is removed and assessments are launched directly as Summative End of Section assessments. */
+    border-top: 5px solid;
+  }
+
+  .assessment-header {
+    background-color: #f5f5f5;
+    // height: 58px;
+    margin: -15px -20px 0px;
+    display: flex;
+    align-items: center;
+    color: #343434;
+    font-size: 16px;
+    padding: 11px 15px;
+    .total-questions {
+      min-width: 140px;
+    }
+    .question-separator {
+      width: 1px;
+      height: 36px;
+      background-color: #d1d1d1;
+    }
+    .quesState {
+      // max-width: 400px;
+      .ques-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: 468px;
+        .question-palette {
+          display: inline-flex; //COSMATT-902 ; changing display property from inline-block since flex layout is not supported by inline-block elements
+          // height: 37px;
+          // overflow: hidden;
+          max-width: 390px;
+        }
+        // .prev-ques {}
+        .ques-nav-item {
+          font-size: 16px;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: #9f9f9f;
+          position: relative;
+          margin-bottom: 5px;
+          cursor: pointer;
+          // .ques-inst {}
+          .value {
+            font-size: 0.9em;
+            border-radius: 50%;
+            position: relative;
+            top: 1px;
+            left: 1px;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+              background-color: #dedede;
+              border-color: #a3a3a3;
+              color: #353535;
+            }
+          }
+          &.selected-question {
+            // background-color: #cb2929;
+            color: #fff;
+            .value {
+              background-color: inherit;
+              color: #fff;
+            }
+          }
+          .current-question-pointer {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            display: inline-block;
+            border-top: 8px solid;
+            position: absolute;
+            top: -14px;
+            left: calc(50% - 7px);
+          }
+        }
+        .next-ques {
+          margin-left: auto;
+        }
+        .next-ques,
+        .prev-ques {
+          &.disabled {
+            background-color: #c5c5c5 !important;
+          }
+          &:hover {
+            background-color: #a3a3a3;
+          }
+          .value {
+            background-color: #f5f5f5;
+            color: #555555 !important;
+            font-size: 16px;
+            &.disabled {
+              background-color: #f5f5f5 !important;
+              color: #c5c5c5 !important;
+              cursor: not-allowed;
+            }
+            &:hover {
+              background-color: #dedede;
+              border-color: #a3a3a3;
+            }
+          }
+        }
+      }
+    }
+    .next-prev {
+      margin-left: auto;
+      min-width: 300px;
+      padding-left: 20px;
+      @media screen and (max-width: 1328px) {
+        display: none;
+      }
+    }
+  }
+
+  .loading-screen2 {
+    z-index: 999;
+    position: absolute;
+    height: calc(100% - 108px);
+    width: calc(100% - 40px);
+    background-color: white;
+    .fa-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  .question-container {
+    // margin: 15px 0px;
+    left: -20px;
+    position: relative;
+    /* Removing min-height as per Leonardo requirement */
+    /* min-height: 400px; */
+    &.full-page-view {
+      min-height: calc(100vh - #{$footer-height} - #{$content-padding-top} - #{$page-title-height} - #{$content-padding-vertical} - 60px - 135px);
+    }
+  }
+
+  .interaction {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+
+    button {
+      flex-basis: 80px;
+      &.reset-btn {
+        margin-right: -10px;
+      }
+      
+    }
+    .hidden{
+      display: none;
+    }
+
+    &.minimal {
+      margin-top: 0;
+      justify-content: center;
+      .hidden-loading{
+        display: none;
+      }
+    }
+    
+
+    .btn-link {
+      color: #01579b;
+      &:disabled,
+       :hover,
+       :focus,
+       :active {
+        color: inherit;
+      }
+    }
+  }
+}
+
+.separator {
+  display: inline-flex;
+  height: 1px;
+  width: 100%;
+  background-color: #d1d1d1;
+}
+
+.vertical-separator {
+  width: 1px;
+  display: inline-flex;
+  background: #d1d1d1;
+  height: 30px;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.bg-attempted {
+  background-color: #e9e9e9;
+  color: #343434;
+}
+
+.bg-not-attempted {
+  background-color: white;
+  color: #343434;
+}
+
+.bg-correct-answer {
+  background-color: #d8f5d8;
+  color: #343434;
+}
+
+.bg-incorrect-answer {
+  background-color: #ffddd6;
+  color: #343434;
+}
+
+.disabled-nav {
+  cursor: not-allowed !important;
+  background-color: #919191 !important;
+  border-color: #919191;
+  color: white !important;
+}
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.fc-white {
+  color: #ffffff;
+}

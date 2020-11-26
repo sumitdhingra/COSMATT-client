@@ -1,0 +1,31 @@
+<div class="app-header-navbar app-header-container">
+    <ul class="list-inline header-item-list">
+        <li class="list-inline-item list-item1 right-separator">
+            <div class ="icon home-icon margin-top-bottom-3">
+                <a (click) = "homeIconClicked()"> <i class="fa fa-home fs-32"></i></a>
+            </div>
+        </li>
+        <!-- right-separator -->
+        <li class="list-inline-item list-item2">
+            <form class="form-inline sizing-app-name">
+                <input class="form-control name-input mr-sm-2" type="search" placeholder={{appName}} value={{appName}} aria-label="Search" (change)="onInputChange($event)">
+            </form>
+        </li>
+        <!-- <li class="list-inline-item list-item1">
+            <div class ="icon note-icon margin-top-bottom-7">
+                <a> <i class="fa fa-file-text fs-24"></i></a>
+            </div>
+        </li> -->
+
+        <li class="list-inline-item list-item3">
+            <ul class="list-group list-inline sizing-app-details  margin-top-bottom-3">
+                <li class ="list-inline-item header-label" for="Created By:">
+                    Created By: <span class="fs-14 fw-semi-bold">{{sizingAppDataService.user.name}}</span>
+                </li>
+                <!-- <li class =" list-inline-item header-label" for="Saved Application:">
+                    Saved Location: <span class="fs-14 fw-semi-bold">Google Drive ({{user.name}})</span>
+                </li> -->
+            </ul>
+        </li>
+    </ul>
+</div>

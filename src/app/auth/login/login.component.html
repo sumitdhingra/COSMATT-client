@@ -1,0 +1,74 @@
+<main id="content" class="widget-login-container" role="main">
+  <app-early-access-modal #appEarlyAccess></app-early-access-modal>
+  <div>
+    <section>
+      <header class="widget-header text-gray-dark">
+        <div class="title-line1">
+          <span class="page-tiitle text-gray2">Login</span>
+        </div>
+        <div class="title-line2 fw-semi-bold text-gray2">
+          <span class="login-text">C</span>OMPRO'S&nbsp;<span class="login-text">O</span>NLINE&nbsp;<span
+            class="login-text">S</span>KILL&nbsp;<span class="login-text">M</span>ASTERY&nbsp;<span
+            class="login-text">A</span>ND&nbsp;<span class="login-text">T</span>RAINING&nbsp;<span
+            class="login-text">T</span>OOL
+        </div>
+        <div class="title-line3 fw-normal">
+          A new approach for quantitative assessment and courseware
+        </div>
+      </header>
+    </section>
+    <section class="widget widget-login border-top-app-theme mt-4">
+      <div class="widget-body" [ngClass]="{'invalid-cred':appDataService.loginErrorMessage}">
+        <alert type="danger" *ngIf="appDataService.loginErrorMessage" class="center-align">
+          {{appDataService.loginErrorMessage}}
+        </alert>
+        <!-- <p class="widget-login-info">
+            Login using your username and password
+          </p> -->
+        <form class="login-form mt-lg" (submit)="onLogin(loginForm)" #loginForm="ngForm" novalidate>
+          <div class="mb-5" [ngClass]="{'form-group': true, 'form-submitted': formSubmitted}">
+            <label class="mb-3 input-label fw-bold">E-mail</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter E-mail" [(ngModel)]="username"
+              required autofocus>
+          </div>
+          <div class="mb-4" [ngClass]="{'form-group': true, 'form-submitted': formSubmitted}">
+            <label class="mb-3 input-label fw-bold">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" [(ngModel)]="password" required>
+          </div>
+          <div class="forgot-container fw-normal">
+            <div class="abc-checkbox display-inline-block">
+              <input type="checkbox" id="checkbox1" name="rememberMe" [(ngModel)]="rememberMe" (click)="this.appDataService.gaEventTrack('KEEP_ME_SIGNED_IN')">
+              <label for="checkbox1"><span style="margin-left:5px;">Keep me signed in</span> </label>
+            </div>
+            <div class="forgot-separator display-inline-block"></div>
+            <div class="display-inline-block">
+              <a class="link-color" tabindex (click)="onForgotPassword()">Forgot Password?</a>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-inverse btn-sm ml-2 custom-hidden">Login</button>
+        </form>
+        <div class="submit-btn float-right">
+          <!-- <button type="button" class="btn btn-secondary btn-sm" (click)="modalService.open()">Create an Account</button> -->
+          <div (click)="onLogin(loginForm)"><span class="fa fa-arrow-circle-right"></span></div>
+        </div>
+      </div>
+      <footer class="login-footer">
+        <div class="link-container">
+          <span class="link-style">
+              <a id="federated-fb" class="ic ic-facebook mdc-typography--subtitle2" href="javascript:void(0);"
+              (click)="socialSignIn('Facebook')"><span class="social-icon"></span>Continue with Facebook</a>
+          </span>
+          <span class="link-style">
+              <a id="federated-google" class="ic ic-google mdc-typography--subtitle2" href="javascript:void(0);"
+              (click)="socialSignIn('Google')"><span class="social-icon"></span>Continue with Google</a>
+          </span>
+        </div>
+        <div class="sign-up fw-normal">
+          <div>
+            Don't have an account? <span><a class="link-color" tabindex (click)="onSignUp()">Get Early Access</a></span>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </div>
+</main>

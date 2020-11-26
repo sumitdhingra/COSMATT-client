@@ -1,0 +1,21 @@
+.modal {
+    top: 30%;
+	.modal-content {
+		border-radius: 10px;
+		width: 375px;
+		margin: auto;
+		.modal-body {
+			p {
+				font-weight: normal;
+			}
+		}
+	}
+	.app-modal-panel {
+		padding: 15px;
+	}
+	.app-modal-footer {
+		background: #d1d1d1;
+		border-bottom-left-radius: inherit;
+		border-bottom-right-radius: inherit;
+	}
+}

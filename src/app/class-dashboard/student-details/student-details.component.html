@@ -1,0 +1,30 @@
+<div class="student-details">
+    <app-cosmatt-table 
+      [columns]="columns" 
+      [rows]="rows"
+      [search]="true"
+      [width]="175"
+      [select]="true"
+      [selected]="student"
+      (onselect)="onSelect($event)"
+    >
+    <ng-template let-value="value" cosmattTableCell="name">
+        <div class="name-column">{{value | titlecase}}</div>
+    </ng-template>
+  </app-cosmatt-table>
+
+  <div class="analytics-viewer">
+    <header>
+      <div><span><b>Progress: </b></span><span class="student-name">{{studentName | titlecase}}</span></div>
+      <span (click)="closeStudentDetails()" class="cross-icon"><i class="fas fa-times"></i></span>
+    </header>
+    <div class="analytics-viewer-dashboard">
+      <div> 
+          <div class="loading-screen2" [hidden]="loader">
+                  <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+          </div>
+      <app-dashboard *ngIf="dashBoardData"  [courses] = "courses" [dashBoardData] = "dashBoardData" studentClassProgress = 'true'></app-dashboard>
+      </div>
+    </div>
+  </div>
+</div>

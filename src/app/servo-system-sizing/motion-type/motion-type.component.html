@@ -1,0 +1,57 @@
+<div id="motion-type-list-container">
+    <div class="row justify-content-center motion-types-container">
+      <ng-template #template>
+        <div class="modal-body bg-white confirm-modal-body text-center">
+          <header class="confirm-modal-heading-container">
+              <span class="modal-title pull-left fw-semi-bold fs-16">Confirmation</span>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </header>
+          <section class="confirm-modal-container">
+            <div class="modal-content-container">
+              <div class="modal-message">
+                <span class="fs-mini">Your current selection is</span>
+                <span class="fw-semi-bold">{{currentSelection}}</span>
+              </div>
+              <div class="fw-semi-bold modal-sub-message">
+                <span>Are you sure you want to change Motion Type ?</span>
+              </div>
+            </div>
+          </section>
+          <footer class="confirm-modal-footer">
+            <button type="button" class="btn btn-sm bg-white bt br bl bb" (click)="confirm()">Yes</button>
+            <button type="button" class="btn btn-sm btn-inverse" (click)="decline()">No</button>
+          </footer>
+        </div>
+      </ng-template>
+      <div class="motion-type-container col-12 col-lg-6" *ngFor="let motion of motionsArr">
+        <section id="{{motion.type}}" class="widget motion-type-widget mb-0" (click)="setMotionType($event, template)">
+          <div class="widget-body clearfix text-gray-dark motion-type-widget-body">
+            <div class="motion-type-heading widget-top-overflow">
+              <div>
+                <img class="motion-type-img float-left" [ngClass]="{'rotary-img':motion.type === 'ROTARY', 'linear-img':motion.type === 'LINEAR'}"
+                  [src]="motion.type === 'ROTARY' ? 'assets/img/MotionType/RotaryMotion1.png': 'assets/img/MotionType/LinearMotion1.png'">
+              </div>
+            </div>
+            <div class="motion-type-details-container">
+              <div class="motion-type-name">
+                <div class="motion-type-title fw-semi-bold">{{motion.name}}</div>
+              </div>
+              <div class="motion-type-details">
+                <p class="motion-description mb-md fw-normal">{{motion.description}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- <footer class="motion-type-widget-footer">
+              <div class="btn-container text-center">
+                <button class="btn btn-inverse btn-{{motion.name}}" type="submit" value = "{{motion.type}}" (click)="setMotionType($event)">Start
+                  <span class="fa fa-arrow-circle-right fs-18 btn-motion-type-selection-fa"></span>
+                </button>
+              </div>
+            </footer> -->
+
+        </section>
+      </div>
+  </div>
+</div>

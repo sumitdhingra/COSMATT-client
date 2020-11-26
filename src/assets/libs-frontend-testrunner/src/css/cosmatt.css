@@ -1,0 +1,18 @@
+.activity-body .smart-form p, .row .question-text, .mcqsr-body .form > div {
+    color:#343434;
+    font-size:16px;
+    font-weight:bold
+}
+
+.mcq-body.mcq-multiple ol > li {
+    color:#343434;
+    font-weight:bold
+}
+
+.mcqsr-body .form .mcqsr-img-options {
+    padding: 0px;
+}
+
+.smart-form .checkbox:hover i, .smart-form .input:hover input, .smart-form .radio:hover i, .smart-form .select:hover select, .smart-form .textarea:hover textarea, .smart-form .toggle:hover i {
+    border-color: #075b9d;
+}

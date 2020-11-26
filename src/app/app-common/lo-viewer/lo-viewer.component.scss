@@ -1,0 +1,128 @@
+@import "../../../scss/theme/variables";
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.lo-viewer{
+    background-color: #FFFFFF;
+    padding: 0px;
+    margin-bottom: -30px;
+    #lo-content{
+        #lo-content-container{
+            #lo-button-container{
+                height: 25px;
+                .lo-button.btn{
+                    padding: 0px 5px 0px 5px !important;
+                    color: #fff;
+                    margin-right: 15px;
+                    position: absolute;
+                    z-index: 1;
+                    right: 0px;
+                    margin-top: -5px; 
+                    &.hidden{
+                      display: none;
+                    }
+                }
+                .lo-button.btn.collapsed .toggle {
+                    -webkit-transform: rotate(-180deg);
+                    transform: rotate(-180deg);
+                }
+            }
+            #lo-list-container{
+                position: relative;
+                .lo{
+                  position: relative;
+                  margin-left: 45px;
+                  display: block;
+                }
+                .lo-container{
+                  &.last{
+                    padding-bottom: 25px
+                  }
+                }
+                
+              .inner-circle-icon {
+                height: 15px;
+                width: 15px;
+                display: inline-flex;
+                border-radius: 50%;
+                text-align: center;
+                padding-top: 3px;
+                .inner {
+                  height: 15px;
+                  width: 15px;
+                  background-color: #FFFFFF;
+                  border-radius: 50%;
+                  border: solid 2px #1f69a2;
+                  display: inline-block;
+                  vertical-align: middle;
+                  z-index :1;
+                  position :absolute;
+                }
+                .timeline-join {
+                  position: absolute;
+                  width: 2px;
+                  background-color: #1f69a2;
+                  top: 11px;
+                  bottom: -11px;
+                  z-index: 0;
+                  margin-left:6px;
+                  &.first {
+                    //top: 50%;
+                  }
+                  &.last {
+                    bottom: 100%;
+                  }
+                }
+              }
+              .inner-number-icon, .outer-number-icon {
+                height: 15px;
+                width: 50px;
+                display: inline-flex;
+                border-radius: 10px;
+                border: 1px solid #1f69a2;
+                background-color: #E2F6FD;
+                align-items: center;
+                justify-content: center;
+                color: #1f69a2;
+                margin-left: 10px;
+                position: absolute;
+                margin-top: 5px
+                
+              }
+              .outer-number-icon{
+                width: 40px;
+              }
+              .inner-lo-text, .outer-lo-text {
+                display: inline-flex;
+                margin-left: 65px;
+                max-width: 88%;
+                padding-bottom: 5px;
+              }
+              .outer-lo-text{
+                margin-left: 55px;
+              }
+              .gray-separator{
+                height: 25px;
+                background-color: $body-bg;
+                margin-bottom: 30px;
+              }
+              .zero-height{
+                height: 0px;
+              }
+            }
+            #lo-list-container.no-lo-items{
+              display: none !important;
+            }
+            .collapsing{
+                overflow: hidden;
+                -webkit-transition-property: height, visibility;
+                transition-property: height, visibility;
+                -webkit-transition-duration: 0.01ms;
+                transition-duration: 0.01ms;
+                -webkit-transition-timing-function: ease;
+                transition-timing-function: ease;
+
+            }
+          }
+      }
+  }

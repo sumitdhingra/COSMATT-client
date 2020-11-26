@@ -1,0 +1,30 @@
+.profile-elements{
+    .table-container {
+        padding: 10px;
+        .table>thead>tr>th {
+            text-transform: none;
+            text-align: center;
+            vertical-align: middle;
+            color: #343434;
+            background-color: #eeeeee;
+        }
+        .table>tbody>tr>td {
+            text-transform: none;
+            text-align: center;
+            color: #343434;
+        }
+        .table>thead>tr>th.units-cell{
+            color: #cb3434;
+            background-color: #f4f4f4;
+            font-weight: 400;
+        }
+        .table th, .table td{
+            max-width: 120px;
+            min-width: 100px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}

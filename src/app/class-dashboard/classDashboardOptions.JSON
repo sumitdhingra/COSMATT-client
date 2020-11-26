@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Class Analytics",
+      "icon": "fa fas fa-chart-bar",
+      "class": "class-analytics"
+    },
+    {
+      "name": "Class Students",
+      "icon": "fa fas fa-user-friends",
+      "class": "students-summary"
+    },
+    {
+      "name": "Student Progress",
+      "icon": "fa fa-user",
+      "class": "student-details"
+    }
+  ]

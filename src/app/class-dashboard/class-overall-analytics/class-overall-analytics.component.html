@@ -1,0 +1,110 @@
+<div class="row box-row">
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme start-date">
+    <div class="col-3 col-1279-12 box-icon">
+      <i class="fa far fa-calendar-alt"></i>
+    </div>
+    <div class="col-9 col-1279-12 row box-content">
+      <div class="col-12 box-heading" title="Start Date">Start Date</div>
+      <div class="col-12 box-body"
+        title="{{classData.startDate ? utilsService.convertDateUtcToDateString(classData.startDate): 'Not Started'}}">
+        {{classData.startDate ? utilsService.convertDateUtcToDateString(classData.startDate): 'Not Started'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme days-elapsed">
+    <div class="col-3 col-1279-12 box-icon">
+      <i class="far fa-clock"></i>
+    </div>
+    <div class="col-9 col-1279-12 row box-content">
+      <div class="col-12 box-heading" title="Days Elapsed">Days Elapsed</div>
+      <div class="col-12 box-body" title="{{classData.daysElapsed ? classData.daysElapsed + ' days': '0 days'}}">
+        {{classData.daysElapsed ? classData.daysElapsed + ' days': '0 days'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme overall-progress">
+    <div class="col-3 col-1280-2 col-1279-12 box-icon">
+      <div class="pie-chart-container">
+        <span class="chart-icon" [attr.data-percent]="classAverageCompletion"></span>
+      </div>
+    </div>
+    <div class="col-9 col-1280-10 col-1279-12 row box-content">
+      <div class="col-12 box-heading" title="Average Completion">Average Completion</div>
+      <div class="col-12 box-body" title="{{classAverageCompletion}}%">
+        <!-- {{courseData.courseProgress ? courseData.courseProgress : 0}}% -->
+        <!-- <span class="text-warning">&nbsp;Complete</span> -->
+        {{classAverageCompletion}}%
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme time-spent">
+    <div class="col-3 col-1279-12 box-icon">
+      <i class="fa fa-hourglass-start"></i>
+    </div>
+    <div class="col-9 col-1279-12 row box-content">
+      <div class="col-12 box-heading" title="Total Time Spent">Total Time Spent</div>
+      <!-- <div class="col-12 box-body" title="{{totalTimeSpent}}"> -->
+          <div class="col-12 box-body" [title]="totalTimeSpent">
+              <span class="" *ngFor="let time of getSplitTime(totalTimeSpent); let index_time = index">
+                {{(index_time+1) !== getSplitTime(totalTimeSpent).length ? (time+',&nbsp;') : (time + '&nbsp;')}}
+              </span>
+            </div>
+        <!-- {{totalTimeSpent}} -->
+      <!-- </div> -->
+    </div>
+  </div>
+  <div class="col-12 col-md-12 col-lg-3 row box border-top-theme studnets-enrolled">
+    <div class="col-12 col-1279-12 background-color-theme box-title">
+      <span class="box-heading">Students Enrolled</span>
+    </div>
+    <div class="col-8 col-1279-12 col-1279-1600-12 row box-content">
+      <div class="col-12 box-heading"
+        title="Total Students: {{classDataService.NumberOfStudents ? classDataService.NumberOfStudents : '0' }}">
+        <span><i class="fa fas fa-user-friends"></i> Total Students:
+          {{classDataService.NumberOfStudents ? classDataService.NumberOfStudents : '0' }}</span>
+        <span class="info-icon" title="{{SEDetailedTitleString}}"> <i class="fa fa-info-circle"
+            aria-hidden="true"></i></span>
+      </div>
+      <div class="col-12 box-body" title="{{SEDetailedTitleString}}">
+        <div class="box-body-details">
+          <span>
+            <span
+              class="box-body-number number-1">{{studentsEnrolledStats['students-not-started'] ? studentsEnrolledStats['students-not-started'] : '0'}}
+            </span>
+            <span class="box-body-label label-1">Not Started | </span>
+          </span>
+          <span>
+            <span
+              class="box-body-number number-2">{{studentsEnrolledStats['students-in-progress'] ? studentsEnrolledStats['students-in-progress'] : '0'}}
+            </span>
+            <span class="box-body-label label-2">In Progress | </span>
+          </span>
+          <span>
+            <span
+              class="box-body-number number-3">{{studentsEnrolledStats['students-completed'] ? studentsEnrolledStats['students-completed']  : '0'}}
+            </span>
+            <span class="box-body-label label-3">Finished</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- <div class="col-12 box-body" title="{{courseData.lastActivity ? (lastActivityChapterNo + '.' + lastActivitySectionNo + ' ' + courseData.lastSection) : '-'}}">{{courseData.lastActivity ? (lastActivityChapterNo + '.' + lastActivitySectionNo + ' ' + courseData.lastSection)
+          : '-'}}
+        </div> -->
+    </div>
+    <div class="col-4 col-1279-12 col-1279-1600-12 box-aside">
+      <div class="v-rule">
+      </div>
+      <button class="btn btn-inverse btn-sm resume-button" (click)="lastActivityLinkClicked()"> View Course
+        <!-- {{appDataService.getUserType() === userType.ExistingUser ? 'Resume' : 'Start Course'}} -->
+        <!-- <span class="circle bg-white button-get-started">
+            <i class="fa fa-arrow-right text-inverse"></i>
+          </span> -->
+      </button>
+    </div>
+  </div>
+</div>

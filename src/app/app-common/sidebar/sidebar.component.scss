@@ -1,0 +1,94 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+.sidebar-container {
+  transition: translate3d 0.3s ease-in-out;
+  @include media-breakpoint-up(lg) {
+    width: 60px;
+  }
+  @include media-breakpoint-down(lg) {
+    width: 56px;
+  }
+  @include media-breakpoint-down(md) {
+    width: 52px;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 48px;
+  }
+  @include media-breakpoint-down(xs) {
+    width: 44px;
+  }
+  position: fixed;
+  min-height: calc(100vh - #{$footer-height});
+  left: 0;
+  top: $navbar-height;
+  display: flex;
+  // background-color: $accounting-sidebar-background-color;
+  // z-index: 9999999;
+  /* COSMATT-1718 - Advance Course pop-up - Not as per Spec */
+  z-index: 1040;
+  .sidebar-items-container {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    width: 100%;
+    // border-right: 1px solid $sidebar-item-border-color;
+    z-index: 9999999;
+    position: relative;
+    // background-color: $accounting-sidebar-background-color;
+    .sidebar-item {
+      // color: $white;
+      @include media-breakpoint-up(lg) {
+        padding: 18px;
+      }
+      @include media-breakpoint-down(lg) {
+        padding: 16px;
+      }
+      @include media-breakpoint-down(md) {
+        padding: 14px;
+      }
+      @include media-breakpoint-down(sm) {
+        padding: 12px;
+      }
+      @include media-breakpoint-down(xs) {
+        padding: 10px;
+      }
+      width: 100%;
+      text-align: center;
+      // border-bottom: 1px solid $sidebar-item-border-color;
+      position: relative;
+      display: inline-block;
+      // TODO hover state ??
+      // &:hover {
+      //   background-color: $accounting-sidebar-hover-color;
+      // }
+      &.clicked {
+        // background-color: $sidebar-bg-color;
+        // color: #ffffff !important;
+      }
+      .fa {
+        font-size: $font-size-24;
+      }
+      .icon {
+        display: block;
+        top: 3px;
+        left: $sidebar-padding-horizontal;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+      }
+      .fs-21 {
+        font-size: 21px !important;
+      }
+    }
+
+  }
+
+  .sidebar-component-container {
+    app-toc:not(.display) {
+      transform: translate3d(-($sidebar-width + 50px), 0, 0);
+    }
+  }
+}
+

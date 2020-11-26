@@ -1,0 +1,366 @@
+@import "../../../scss/theme/_variables";
+
+.title-icon {
+  padding-right: 5px;
+}
+
+.col-xxl-3 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 1366px) {
+  .col-xxl-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+.title {
+  .title-font {
+    font-size: $font-size-18
+  }
+
+  .progress-symbol-section {
+    .progress-symbol {
+      margin: 4px 8px 0px 3px;
+      font-size: 18px;
+    }
+
+    .progress-symbol-text {
+      font-size: small;
+    }
+  }
+}
+
+#chapterProgressAccordion {
+  min-height: 513px;
+
+  .card {
+    &>.ch-chapter.card-header {
+      min-height: 64px;
+    }
+
+    .card-header {
+      background-color: #ffffff;
+      padding-top: 8px;
+      padding-bottom: 8px;
+
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      .accordion-toggle {
+        flex-basis: 100%;
+
+        .fs-18 {
+          color: $gray-dark;
+        }
+
+        .progressbar-container {
+          width: 100%;
+          min-width: 50px;
+          max-width: 250px;
+        }
+
+        .chapter-title {
+          font-weight: $font-weight-normal;
+          color: $gray-dark;
+          font-size: $font-size-18;
+
+          @media screen and (max-width: $breakpoint-width),
+          screen and (max-height: $breakpoint-height) {
+            font-size: $font-size-16;
+          }
+        }
+      }
+
+      .progress-td {
+
+        // width: 50%;
+        // vertical-align: middle;
+        // display: inline-block;
+        .progressbar-container {
+
+          // width: 100%;
+          // display: inline-block;
+          .progress {
+            height: 10px;
+            background-color: #D0D0D0;
+
+            .progress-bar {
+              background-color: #0064B4;
+            }
+          }
+        }
+
+        // .progress-text {
+        //     margin-top: 3px;
+        //     // text-align: center;
+        //     display: inline-block;
+        // }
+
+      }
+    }
+
+    .card-block {
+      padding-bottom: 0;
+      padding-top: 0;
+
+      .side-td {
+        border-top: none;
+        display: inline-flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .small-circle {
+          width: 22px;
+          height: 22px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid darkgray;
+          border-radius: 50%;
+
+          .fa-check {
+            color: #3FA612;
+          }
+        }
+
+        .fa.fa-circle {
+          color: darkgray;
+          padding-left: 4px;
+          padding-right: 3px;
+        }
+
+        .far.fa-circle {
+          color: darkgray;
+          font-size: 10px;
+          padding-left: 4px;
+          padding-right: 5px;
+        }
+      }
+
+      .title-td {
+        width: 44%;
+      }
+
+      .progress-status-td {
+        // text-align: right;
+      }
+    }
+
+    .card-block>table {
+      table-layout: fixed;
+    }
+  }
+
+  .section-item {
+    cursor: pointer;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+}
+
+// .font-size-small {
+//     font-size: 0.85rem;
+// }
+.section-row {
+  padding: .45rem;
+  padding-left: 45px;
+  padding-right: 20px;
+  color: #555555;
+  font-weight: 400;
+
+  .section-name {
+    font-size: 16px;
+    position: relative;
+    top: 7px
+  }
+
+  .bullet {
+    font-size: 20px;
+    padding-right: 5px;
+  }
+
+  .studentTimespent {
+    padding-right: 3px;
+  }
+
+  .small-circle {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid darkgray;
+    border-radius: 50%;
+    position: relative;
+    left: 4px;
+
+    .fa-check {
+      color: #3FA612;
+    }
+  }
+  .fa.fa-circle {
+    color: darkgray;
+    padding-left: 4px;
+    padding-right: 3px;
+  }
+
+  .far.fa-circle {
+    color: darkgray;
+    font-size: 10px;
+    padding-left: 4px;
+    padding-right: 5px;
+  }
+  .display-inline-flex {
+    display: inline-flex;
+  }
+}
+
+.text-gray {
+  color: gray !important;
+}
+
+.no-border-top {
+  border-top: none;
+}
+
+.completed-symbol-style {
+  color: $brand-success;
+  margin-left: -5px;
+  font-size: 20px;
+}
+
+.inProgress-symbol-style {
+  color: $brand-primary;
+  margin-left: -6px;
+  font-size: 18px;
+}
+
+.not-started-symbol-style {
+  margin-left: -5px;
+  font-size: 19px;
+}
+
+.accordion-toggle {
+  .arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: left;
+    color: grey;
+    padding-right: 20px;
+  }
+}
+
+.accordion-toggle.collapsed {
+  .arrow:before {
+    content: "\e080";
+  }
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.items-table {
+  .first-td {
+    width: 9%
+  }
+
+  .second-td {
+    width: 5%
+  }
+
+  .third-td {
+    width: 44%
+  }
+
+  .arrow:before {
+    padding-right: 6px
+  }
+
+  cursor : initial !important;
+}
+
+.progress-td {
+  // width: 10%;
+  vertical-align: middle;
+
+  .progressbar-container {
+    width: 80%;
+    display: inline-block;
+
+    .progress {
+      height: 10px;
+      background-color: #D0D0D0;
+
+      .progress-bar {
+        background-color: #0064B4;
+      }
+    }
+  }
+
+  .progress-text {
+    margin-top: -2px;
+  }
+}
+
+.section-table {
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: initial !important;
+}
+
+.section-item:last-of-type table {
+  border-bottom-width: 0px;
+}
+
+.margin-y-8 {
+  margin: 8px 0;
+}
+
+.padding-l-30 {
+  padding-left: 30px;
+}
+
+
+@media screen and (max-width: 1263px) {
+  .d-none-1263 {
+    display: none;
+  }
+  }
+  
+@media screen and (max-width: 1263px) and (min-width: 992px) {
+  .d-none-1263 {
+    display: none;
+  }
+  .timespent-block{
+    border-right: none;
+    width: 100%;
+    span{
+      float: right;
+    }
+  }
+  .students-completed-block{
+    width: 100%;
+    span{
+      float: right;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+<app-class-navbar (classSidebarStatus)="recieveSidebarStatus($event)" (clickedItemId)="recieveClickedItemId($event)"></app-class-navbar>
+<div class="right-container"
+  [ngClass]="{'sidebar-open-click': class_sidebarStatus.open() && class_sidebarStatus.clicked, 'sidebar-open-hover': class_sidebarStatus.open() && class_sidebarStatus.hovered}">
+
+
+  <ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+    <li class="breadcrumb-item">
+      <a routerLink='/courses'>Home</a>
+    </li>
+    <li class="breadcrumb-item active">{{this.classDashboardOptions[this.clickedItemId].name}}</li>
+  </ol>
+  <div class="row">
+
+    <div class="col-12 widget-column mt-0">
+      <span class="dashboard-title">
+        <i class="fa fa-dashboard"></i>
+        <!-- Class Progress - -->
+        <span class="course-name">{{this.classDataService.ActiveClassData.title}}</span>
+      </span>
+    </div>
+
+    <div class="col-12 widget-column">
+      <section class="course-intro">
+        <app-class-overall-analytics></app-class-overall-analytics>
+      </section>
+
+    </div>
+    <!-- <div class="col-4 col-md-12 col-lg-4 widget-column">
+        <section class="course-intro">
+            <app-students-enrolled ></app-students-enrolled>
+          </section>
+      </div> -->
+
+    <div *ngIf= "clickedItemId == 0" class="col-12 col-lg-6 widget-column">
+      <section class="progress-viewer border-top-theme">
+        <div class="progress-viewer-title bb">
+          <span>
+            <span class="icon"><i class="fa fa-tasks" aria-hidden="true"></i></span><span class="label">Progress</span>
+          </span>
+        </div>
+
+        <ul class="nav bb">
+          <li class="nav-item">
+            <a class="nav-link"
+              [ngClass]="{'active':progressView=='chapters', 'btn-default':progressView=='objectives'}"
+              (click)="onProgressViewSelectionChange('chapters')">
+              <span class="icon"><i class="fa fa-list"></i></span><span class="label">Chapters</span>
+            </a>
+          </li>
+          <li class="nav-item separator">
+            <a class="nav-link">
+              <div class="v-rule"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              [ngClass]="{'active':progressView=='objectives', 'btn-default':progressView=='chapters'}"
+              (click)="onProgressViewSelectionChange('objectives')">
+              <span class="icon"><i class="fa fa-bullseye"></i></span><span class="label">Objectives</span>
+            </a>
+          </li>
+        </ul>
+
+        <section class="chapter-progress-viewer" *ngIf="progressView=='chapters'">
+          <app-chapter-progress-viewer [totalStudents]="totalStudents" [progressList]="courseTopics" userRole= "teacher">
+          </app-chapter-progress-viewer>
+        </section>
+        <section class="objective-progress-viewer" *ngIf="progressView=='objectives'">
+          <app-class-objective-progress-viewer></app-class-objective-progress-viewer>
+        </section>
+      </section>
+    </div>
+
+    <div *ngIf= "clickedItemId == 0" class="col-12 col-lg-6 widget-column">
+      <div class="row">
+        <div class="col-12">
+          <section class="pie-chart border-top-theme">
+            <app-class-students-logins></app-class-students-logins>
+          </section>
+        </div>
+        <div class="col-12">
+          <section class="time-spent border-top-theme">
+            <app-class-time-spent></app-class-time-spent>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf= "clickedItemId == 1" class="col-12 col-lg-12 widget-column temp">
+        <section class="student-list border-top-theme">
+          <app-students-summary (onViewAnalytics)="onViewAnalytics($event)"></app-students-summary>
+        </section>
+    </div>
+    <div *ngIf= "clickedItemId == 2" class="col-12 col-lg-12 widget-column temp">
+      <section class="student-list border-top-theme">
+        <app-student-details [student]="selectedStudent" (studentChange)="onStudentChange($event)"
+            (closeStudentDetail)="onStudentDetailsClose()"
+        ></app-student-details>
+      </section>
+    </div>
+
+    <div *ngIf= "clickedItemId == 3" class="col-12 col-lg-12 widget-column">
+      <section class="course-outline">
+        <app-class-course-outline [totalStudents]="totalStudents" [progressList]="courseTopics"></app-class-course-outline>
+      </section>
+    </div>
+  </div>
+</div>

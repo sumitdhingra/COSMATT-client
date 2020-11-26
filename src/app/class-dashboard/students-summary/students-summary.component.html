@@ -1,0 +1,49 @@
+<div class="students-summary">
+  <app-cosmatt-table 
+          [columns]="columns" 
+          [rows]="rows"
+          [search]="true"
+    >
+    <ng-template let-value="value" cosmattTableCell="index">
+        {{value}}.
+    </ng-template>
+    <ng-template let-value="value" cosmattTableCell="name">
+        {{value | titlecase}}
+    </ng-template>
+    <ng-template let-value="value" cosmattTableCell="status">
+        <div *ngIf="value === 'completed'"><i class="status-icon fas fa-check check"></i> Completed</div>
+        <div *ngIf="value === 'in_progress'"><i class="status-icon far fa-clock"></i> In Progress</div>
+        <div *ngIf="value === 'not_started'"><i class="status-icon cross fas fa-times"></i> Not Started</div>
+    </ng-template>
+    <ng-template let-value="value" cosmattTableCell="Progress">
+      <div class="progress-container">
+          <div class="middle-bar" [style.left.%]="classAverageCompletion"></div>
+          <div class="outer-bar">
+            <div class="inner-bar" [ngClass]="(value > classAverageCompletion)?'above-average':'below-average'" [style.width.%]="value">
+            </div>
+          </div>
+      </div>
+      <div *ngIf="value <= ((0.15)*classAverageCompletion)" class="fs-mini">
+        Unsatisfactory
+      </div>
+      <div *ngIf="value > ((0.15)*classAverageCompletion) && value <= classAverageCompletion" class="fs-mini">
+        Satisfactory
+      </div>
+      <div *ngIf="value > classAverageCompletion && value < maxCompletion" class="fs-mini">
+        Good
+      </div>
+      <div *ngIf="value == maxCompletion" class="fs-mini">
+        Excellent
+      </div>
+    </ng-template>
+    <ng-template let-value="value" cosmattTableCell="average">
+        {{value | number:'1.0-0'}} %
+    </ng-template>
+    <ng-template let-value="value" cosmattTableCell="timespent">
+        {{value | millisecondsToDyHrMin}}
+    </ng-template>
+    <ng-template let-row="row" cosmattTableCell="uuid">
+        <a href="javascript:void(0)" (click)="onViewAnalyticsClick(row)" class="view-analytics">View Details</a>
+    </ng-template>
+  </app-cosmatt-table>
+</div>

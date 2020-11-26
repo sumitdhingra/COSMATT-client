@@ -1,0 +1,56 @@
+.view-analytics {
+    color: #205F9F;
+    text-decoration: underline;
+}
+
+.status-icon {
+    margin-right: 5px;
+    font-size: 20px;
+    position: relative;
+    top: 1px;
+    color:#909090;
+    // &:before {
+    //     font-family: "FontAwesome";
+    // }
+}
+// .check::before {
+//     content: "\f00c";
+// }
+// .cross::before {
+//     content: "\f00d";
+// }
+// .clock::before {
+//     content: "\f017";
+// }
+
+.progress-container {
+    width: 80%;
+    height: 16px;
+    margin: auto;
+    position: relative;
+    .middle-bar {
+        height: 16px;
+        width: 1px;
+        position: absolute;
+        top: -3px;
+        background-color: black; 
+    }
+    .outer-bar {
+        height: 10px;
+        background: #d1d1d1;
+        margin-top: 5px;
+        .inner-bar {
+            height: 100%;
+        }
+        .below-average {
+            background: #ff7a18;
+        }
+        .above-average {
+            background: #45c002;
+        }
+    }   
+}
+
+.students-summary {
+    padding: 0.5rem;
+}

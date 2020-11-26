@@ -1,0 +1,27 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+
+.motion-profile-sizing-component {
+  width: 100%;
+}
+
+#motion-profile-sizing-container {
+  width: 100%;
+}
+
+#motion-profile-sizing-container #motion-profile-sizing-plot-area {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-title {
+  color: $blue;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+//Commenting below css to remove right border from motion profile sizing component
+// #motion-profile-sizing-container .cosmatt-motionProfile #graphContainer .graphArea:not(:last-child){
+//   padding-right: 15px!important;
+//   border-right: 1px dotted #999999;
+// }

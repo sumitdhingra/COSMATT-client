@@ -1,0 +1,61 @@
+.course-toc{
+    .course-toc-section{       
+        border-bottom: 1px solid #c4c4c4;
+        margin: 0;
+        padding-top:20px; 
+        .contents-title{
+            font-family: "Open Sans";
+            font-size: 26px;
+            font-weight: 600;
+            color: #333;
+        }
+        .chapter-container{
+            padding: 0px 20px 15px 30px;
+           // border-bottom: 1px solid #e0dfdf;
+            
+            .chapter-name{
+                font-family: "Open Sans";
+                font-weight: 600;
+                font-size: 18px;  
+                color: #666;
+                padding-bottom: 4px;
+            }
+            .chapter-desc{
+                font-family: "Open Sans";
+                font-size: 14px;
+                font-weight: normal;
+                color: #5f5f5f;
+            }
+            .bottom-border {
+                border-bottom: 1px solid #e0dfdf;
+                padding: 5px 10px 10px 10px;
+            }
+        }
+        .first-chapter{
+            padding-top: 13px;
+        }
+        .no-bottom-border{
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .course-objective-title{
+            font-family: Open Sans;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            display: inline;
+        }
+        .learn-list{
+            margin-left: 15px;
+        }
+        .learning-section{
+            margin-top: 20px;
+            
+        }
+
+    }
+    
+    
+}

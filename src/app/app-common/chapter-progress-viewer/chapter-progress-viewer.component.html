@@ -1,0 +1,150 @@
+<!--<div class="title mb-md">-->
+<!--<span class="fa fa-list mr-sm title-font"></span>
+    <span class="title-font fw-semi-bold">{{progressList.title}}</span> -->
+<!-- <div class="pull-right fw-normal progress-symbol-section">
+        <span class="fa fa-check-circle completed-symbol-style progress-symbol"></span><span class="progress-symbol-text">Completed</span>&nbsp; |
+        <span class="fa fa-circle-o-notch inProgress-symbol-style progress-symbol"></span><span class="progress-symbol-text">In Progress</span>&nbsp; |
+        <span class="fa fa-circle-o not-started-symbol-style progress-symbol"></span><span class="progress-symbol-text">Not Started Yet!</span>
+    </div> -->
+<!--</div>-->
+
+<div *ngIf="progressList" id="chapterProgressAccordion" class="fw-normal" role="tablist" aria-multiselectable="true">
+  <div *ngFor="let chapter of progressList.data; let idx = index" class="card bb">
+    <div class="card-header d-inline-flex align-items-center bb-0 ch-chapter" role="tab" [id]="'heading' + chapter['item-code']">
+      <!--<a data-toggle="collapse" class="accordion-toggle" [ngClass]="'collapsed'" data-parent="#chapterProgressAccordion" [href]="'#collapse'+ chapter['item-code']" [attr.aria-expanded]="'false'" [attr.aria-controls]="'collapse'+ chapter['item-code']">-->
+      <a data-toggle="collapse" class="accordion-toggle" [ngClass]="'collapsed'" [href]="'#collapse'+ chapter['item-code']" [attr.aria-expanded]="'false'"
+        [attr.aria-controls]="'collapse'+ chapter['item-code']">
+        <div class="row mx-auto align-items-center">
+          <div class="col-6 col-md-6 col-lg-6 col-xl-5 pl-0 pr-1 d-inline-flex">
+            <span class="arrow fs-16"></span>
+            <span class="chapter-title">{{idx+1}}. {{chapter.title}}</span>
+          </div>
+          <div class="col-6 col-md-6 col-lg-6 col-xl-7 pl-0">
+            <div class=" progress-td row justify-content-end align-items-center px-0">
+              <div *ngIf="userRole==='student'" class="col-auto font-size-small pl-0 pr-2 br d-none-1263">
+                <span  class="d-md-inline  d-xl-inline" *ngFor="let val of chapterSectionAnalytics[chapter.title].totalTimeSpent; let val_i = index" >
+                  {{val}}
+                </span>
+                <!-- [ngClass]="{'text-gray': val_i % 2 != 0}"
+                <!-- <span class="d-sm-inline d-md-none d-lg-inline d-xl-none fa fa-clock-o" [title]="chapterSectionAnalytics[chapter.title].totalTimeSpentOriginal">
+
+                </span> -->
+                <!--<span class="fa fa-clock-o" [title]="chapterSectionAnalytics[chapter.title].totalTimeSpentOriginal"></span>-->
+                <!--<span class="text-muted">|</span>-->
+              </div>
+              <div *ngIf="userRole==='teacher'" class="col-auto font-size-small pl-0 pr-2 br timespent-block">
+                <span class="d-md-inline d-xl-inline">
+                  {{this.utilsService.convertMillisecondsToDyHrMin(chapter.__analytics.totalTimeSpent)}}
+                </span>
+              </div>
+              <!--<div class="col font-size-small pl-0 pr-2"><span>ABCD</span></div>-->
+              <div class="col-auto font-size-small pr-2 pl-2 pr-xl-2" *ngIf="userRole==='student'">
+                <span class="">{{chapterSectionAnalytics[chapter.title].sectionsCompleted}}</span>
+                <span > of </span>
+                <span class="">{{chapterSectionAnalytics[chapter.title].sectionsTotal}}</span> Completed
+              </div>
+              <div class="col-auto font-size-small pr-2 pl-2 pr-xl-2 students-completed-block" *ngIf="userRole==='teacher'">
+                <span class="">{{chapter.__analytics.studentsCompleted}} of {{totalStudents}} Students Completed</span>
+              </div>
+              <div *ngIf="userRole==='student'" class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-2 px-0">
+                <div class="progressbar-container mt-sm">
+                  <div class="bg-gray-lighter m-t-2" [title]="chapter.progress + '%'">
+                    <div class="progress">
+                      <div class="progress-bar progress-primary" role="progressbar" [style.width]="chapter.progress + '%'" [style.height]="'12px'"
+                        aria-valuenow="item.progress" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    <div [id]="'collapse'+ chapter['item-code']" class="collapse" role="tabpanel" [attr.aria-labelledby]="'heading' + chapter['item-code']">
+      <div class="card-block section-table">
+        <table class="widget progress-list table bg-white table-hover no-margin fw-normal">
+          <tbody>
+            <!--<tr>
+                            <td class="no-padding">
+                                <table class="table bg-white table-hover no-margin no-padding bb-0 items-table">
+                                    <thead class="thead-default">-->
+            <!--     -->
+            <!--<th class="bb bt-0 third-td">Section</th>
+                                        <th class="bb bt-0">Time Spent</th>
+                                        <th class="bb bt-0"><span class="pull-right">Status</span></th>-->
+            <!--</thead>
+                                </table>
+                            </td>
+                        </tr>-->
+            <tr *ngFor="let section of chapter.items; let sdx = index" class="section-item bb">
+              <!-- (click)="sectionItemClicked(idx, sdx)"> -->
+              <div class="row align-items-center section-row">
+                <div class="col-5 col-md-5 col-lg-5 col-xl-5 pl-0 pr-1 d-inline-flex section-name">
+                  <span class="arrow fs-16"></span>
+                  <ul>
+                    <li>
+                        <span class="chapter-title">{{section.name}}</span>
+                  </li>
+                </ul>
+                
+                </div>
+                
+                <div *ngIf="userRole==='teacher'" class="col-7 col-md-7 col-lg-7 col-xl-7 pl-0">
+                  <div class="progress-td row justify-content-end align-items-start px-0">
+                    <div class="font-size-small pr-2 pl-2 pr-lg-3 pr-xl-2 timespent-block br " >
+                      <span>
+                        {{this.utilsService.convertMillisecondsToDyHrMin(section['__analytics'].timespent)}}
+                      </span>
+                    </div>
+                    <div class="font-size-small pr-2 pl-2 pr-lg-3 pr-xl-2 students-completed-block" >
+                      <span class="">{{section['__analytics'].studentsCompleted}} of {{totalStudents}} Students Completed</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="userRole==='student'" class="col-7 col-md-7 col-lg-7 col-xl-7 pl-0" [ngSwitch]="section['__analytics'].status">
+                  <div class="progress-td row justify-content-end align-items-center px-0 ">
+                    <div class="font-size-small pl-0 pr-2 display-inline-flex align-items-center studentTimespent" >
+                          <ng-container *ngSwitchCase="'completed'">
+                              <span *ngIf="section['__analytics'].timespent && section['__analytics'].timespent > 1000; else noTimespent1">
+                                <span class="fs-14" *ngFor="let vall of splitTimeString(this.utilsService.convertMillisecondsToDyHrMin(section['__analytics'].timespent)); let vall_i = index" [ngClass]="{'text-gray': vall_i % 2 != 0}">
+                                  {{vall}}
+                                  <!--{{section['__analytics'].timespent ?  : 'Not Started'}}-->
+                                </span>
+                              </span>
+                              <ng-template #noTimespent1><span class="text-gray font-size-small">less than 1 min</span></ng-template>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'in_complete'">
+                              <span *ngIf="section['__analytics'].timespent && section['__analytics'].timespent > 1000; else noTimespent2">
+                                <span class="fs-14" *ngFor="let vall of splitTimeString(this.utilsService.convertMillisecondsToDyHrMin(section['__analytics'].timespent)); let vall_i = index" [ngClass]="{'text-gray': vall_i % 2 != 0}">
+                                  {{vall}}
+                                  <!--{{section['__analytics'].timespent ?  : 'Not Started'}}-->
+                                </span>
+                              </span>
+                              <ng-template #noTimespent2><span class="text-gray font-size-small">less than 1 min</span></ng-template>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'not_started'">
+                                <span class="text-gray font-size-small">Not Started</span>
+                              </ng-container>
+                   
+                    <span class="font-size-small text-muted">&nbsp;&nbsp;|</span>
+                    <div class="align-items-center">
+                      <span *ngSwitchCase="'completed'" ><div class="small-circle"><i class="fa fa-check"></i></div></span>
+                      <span *ngSwitchCase="'in_complete'"><i class="fa fa-circle"></i></span>
+                      <span *ngSwitchCase="'not_started'"><i class="far fa-circle"></i></span>
+                    </div>
+                  </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

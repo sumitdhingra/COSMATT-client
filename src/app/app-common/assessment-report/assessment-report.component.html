@@ -1,0 +1,30 @@
+<section class="search-result-item" *ngFor="let ques of responses; let i=index">
+  <div class="image-link result-item-image">
+    <div class="text-center">
+      <label class="question-index fw-semi-bold">Question: {{i+1}}</label><br>
+      <!--<span class="ques-status text-white fw-semi-bold" [ngClass]="{'bg-success': getQuestionStatus(i) == 'correct', 'bg-danger':getQuestionStatus(i) != 'correct'}">{{getQuestionStatus(i) == 'correct'? 'Correct' : getQuestionStatus(i) == 'incorrect' ? 'Incorrect' : 'Not Attempted'}}</span>-->
+    </div>
+  </div>
+  <div class="search-result-item-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="ques-text mb-lg">
+          <h5 class="search-result-item-heading">
+            {{ques.questioncontext}}
+          </h5>
+        </div>
+        <p class="answers no-margin">
+          <span class="">Marked Answer: </span>
+          <span *ngIf="ques.quesState" [innerHTML]="ques.interactions[0].answer"></span>
+          <span *ngIf="!ques.quesState">Not Attempted</span>
+          <span class="ques-status fw-normal fa" [ngClass]="{'text-success fa-check-circle': getQuestionStatus(i) == 'correct', 'text-danger fa-times-circle':getQuestionStatus(i) == 'incorrect'}">
+        
+            </span>
+          <br />
+          <span class="">Correct Answer: </span>
+          <span [innerHTML]="ques.interactions[0].correctanswer"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

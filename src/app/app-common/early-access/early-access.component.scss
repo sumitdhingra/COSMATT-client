@@ -1,0 +1,49 @@
+input,button {
+  border-radius: 0;
+}
+
+.modal-dialog {
+  max-width: initial !important;
+  @media (min-width: 516px) { width: 500px; }
+  @media (min-width: 768px) { width: 600px; }
+}
+
+button.close {
+  margin-left: auto;
+  top: 0;
+}
+
+
+.modal-header {
+  ::before {
+    display: none;
+  }
+  padding-bottom: 15px !important;
+}
+
+.form-check-label {
+  padding-left: 0;
+  margin-left: 20px;
+  .form-check-input {
+    margin-left: -20px;
+    margin-top: 5px;
+  }
+}
+
+.modal-footer {
+  ::before {
+    display: none;
+  }
+  width: 100%;
+
+  button.btn.btn-signup {
+    margin-left: auto;
+    color: #fff;
+    background-color: #FFAB00;
+    border-color: #e69a00;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.65px;
+  }
+}
+
+

@@ -1,0 +1,50 @@
+<div id="rotary-load-comp-div">
+  <div class="container-fluid">
+    <div class="row ">
+      <!-- col 1 -->
+      <div class="col-12 col-lg-8 border1 rotary-load-inputs fw-normal">
+
+        <div class="row">
+          <div class="col-4 col-lg-6 col-xl-4 border1 rotary-load-input-label" style="text-align: right">Load Inertia:</div>
+          <div class="col-4 col-lg-5 col-xl-4 border1">
+            <app-unit-combobox #loadInertia [configData]="loadInertiaComboConfig()"></app-unit-combobox>
+          </div>
+          <div class="col-4 col-lg-1 col-xl-4 border1 inertia-launcher-container">
+            <a class="inertia-launcher" tooltip ="Calculate Inertia" placement = "top" appWidgetLauncher [widgetType]="widgetType.InertiaCalculator" [widgetSettings]="getInertiaCalculatorSettings()" (widgetOutput)="onInertiaCalculatorOutput($event)">
+              <i class="fa fa-calculator"></i>
+              <span class="hidden-1279 inertia-calculator-label">Inertia Calculator</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4 col-lg-6 col-xl-4 border1 rotary-load-input-label" style="text-align: right">Friction Torque:</div>
+          <div class="col-4 col-lg-5 col-xl-4 border1">
+            <app-unit-combobox #frictionTorque [configData]="frictionTorqueComboConfig()"></app-unit-combobox>
+          </div>
+          <div class="col-4 col-lg-1 col-xl-4 border1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-4 col-lg-6 col-xl-4 border1 pl-0 rotary-load-input-label" style="text-align: right">Externally Applied Torque:</div>
+          <div class="col-4 col-lg-5 col-xl-4 border1">
+            <app-unit-combobox #externalTorque [configData]="extTorqueComboConfig()"></app-unit-combobox>
+          </div>
+          <div class="col-4 col-lg-1 col-xl-4 border1"></div>
+        </div>
+
+      </div>
+
+      <!-- col 2 -->
+      <div class="col-lg-1 hidden-1023 d-inline-flex justify-content-center">
+          <div class="vertical-border">
+          </div>
+      </div>
+      <!-- col 3 -->
+      <div class="col-12 col-lg-3 border1 rotary-load-img">
+        <img class="img-fluid" src="./assets/img/RotaryLoad/loadGraphic.svg?v2" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>

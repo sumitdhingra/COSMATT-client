@@ -1,0 +1,186 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+
+/*Modal Dialog variables*/
+$m-dialog-max-width: 935px;
+$m-dialog-min-width: 75vw;
+$m-dialog-max-height: 90%;
+$m-dialog-min-height: calc(100vh - 60px);
+
+/*Modal header variables*/
+$m-header-icon-size: $font-size-22;
+$m-header-item-margins: 0 10px;
+$m-header-padding: 10px 15px;
+
+/*Modal body variables*/
+$m-body-padding: 10px 10px;
+
+/*Modal footer variables*/
+$m-footer-padding: 10px 10px;
+
+#appPopup.modal {
+
+  z-index: 999999999;
+  padding-right: 0 !important;
+
+	.vertical-divider {
+		display: inline-block;
+		width: 1px;
+		height: 30px;
+		background: #DEDEDE;
+	}
+
+	.modal-dialog {
+		max-width: $m-dialog-max-width;
+    min-width: $m-dialog-min-width;
+    // margin: 15vh auto 0px auto;
+		// min-height: $m-dialog-min-height;
+    // max-height: $m-dialog-max-height;
+    min-height: $m-dialog-min-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+		align-items: center;
+
+    @media(max-width: 768px) {
+      min-height: calc(100vh - 20px);
+    }
+
+    @media screen and (min-height: 768px) and (max-height: 800px) {
+      margin: 5px auto !important;
+    }
+
+    @media screen and (min-height: 801px) and (max-height: 900px) {
+      margin: 10px auto !important;
+    }
+
+    @media screen and (min-height: 901px) {
+      margin: 15px auto !important;
+    }
+
+		.modal-content {
+			border-radius: 10px;
+			// margin: auto;
+			width: 100%;
+			height: auto;
+			// max-height: calc(100vh - 66px);
+			&.md-launcher-component{
+				height: 666px;
+				width: 887px;
+				@media screen and (min-width: 1366px) {
+					height: 726px;
+				  width: 832px;
+				}
+				@media screen and (min-width: 1680px) {
+					height: 853px;
+				  width: 900px;
+				}
+				@media screen and (min-width: 1920px) {
+					height: 875px;
+				  width: 1010px;
+				}
+				.modal-header{
+					background: #f5f5f5;
+					border-top-left-radius: 10px;
+    			border-top-right-radius: 10px;
+					.vertical-divider{
+						display: none;
+					}
+					.modal-title{
+						font-size: 30px;
+						font-weight: 600;
+						font-family: "Open Sans";
+						color: #343434;
+					}
+				}
+				.modal-footer{
+					border-top-color: #eeeeee!important;
+					border-top: 1px solid;
+					background: #f5f5f5;
+					.footer-buttons{
+						justify-content: center;
+						button.btn{
+							background: #555555;
+							color: white;
+							border: 1px solid #3c3c3c;
+						}
+					}
+				}
+			}
+			.modal-header {
+				display: inline-flex;
+				justify-content: flex-start;
+				align-items: center;
+				padding: $m-header-padding;
+
+				.header-icon {
+					margin: $m-header-item-margins;
+					font-size: $m-header-icon-size;
+				}
+				.modal-title {
+					margin: $m-header-item-margins;
+				}
+
+				.close {
+					margin-left: auto;
+				}
+			}
+
+			.modal-body {
+				height: auto;
+				overflow-y: auto;
+				overflow-x: hidden;
+				padding: $m-body-padding;
+				p {
+					font-weight: normal;
+				}
+				/*Temporary deep styling for IC. Remove this when IC has configurable styles*/
+				/deep/ #inertia-calculator-container {
+					padding: 0;
+					.inertia-calculator-component {
+						padding-left: 0;
+						padding-right: 0;
+					}
+					#inertia-calculator {
+						padding-top: 0px !important;
+						padding-bottom: 0px !important;
+						padding-left: 0px;
+						padding-right: 0px;
+					}
+				}
+			}
+
+			.modal-footer {
+				background: #d1d1d1;
+				border-bottom-left-radius: inherit;
+				border-bottom-right-radius: inherit;
+        padding: $m-footer-padding;
+
+        display: flex;
+        flex-direction: column;
+
+
+        .footer-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        .footer-buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 74px + 74px + 15px;
+
+          button.btn {
+            background: white;
+            border-color: gray;
+            color: black;
+            width: 74px;
+          }
+        }
+			} /* End modal footer */
+		} /* End modal content */
+	} /* End modal dialog */
+} /* End modal */

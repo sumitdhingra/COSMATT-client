@@ -1,0 +1,77 @@
+<div *ngIf="progressList" id="chapterProgressAccordion" class="fw-normal chapterSortable" role="tablist"
+  aria-multiselectable="true">
+  <div *ngFor="let chapter of progressList.data; let idx = index" class="card bb"
+    [ngClass]="{ disabled: progressList.data[idx].status != true }">
+
+    <div class="card-header d-inline-flex align-items-center bb-0 ch-chapter" role="tab"
+      [id]="'heading' + chapter['item-code']" [ngClass]="{ disabled: progressList.data[idx].status != true }">
+      <a data-toggle="collapse" class="accordion-toggle" [ngClass]="'collapsed'"
+        [href]="'#collapse'+ chapter['item-code']" [attr.aria-expanded]="'false'"
+        [attr.aria-controls]="'collapse'+ chapter['item-code']">
+        <div class="row mx-auto align-items-center">
+          <div class="col-6 col-md-6 col-lg-6 col-xl-5 pl-0 pr-1 d-inline-flex">
+            <span class="arrow fs-16"></span>
+            <span class="chapter-title" [ngClass]="{ disabledlabel: progressList.data[idx].status != true }"><span
+                class="index">{{idx+1}}</span>. {{chapter.title}}</span>
+          </div>
+        </div>
+      </a>
+      <div class="pl-0 functionality">
+        <div class=" progress-td row justify-content-end align-items-center px-0">
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 px-0">
+            <span class="switch">
+              <input id="cmn-toggle-{{idx+1}}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox"
+                (click)="chapterToggle(idx);" [checked]="this.progressList.data[idx].status">
+              <label for="cmn-toggle-{{idx+1}}"></label>
+            </span>
+            <span class="icon">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div [id]="'collapse'+ chapter['item-code']" class="collapse" role="tabpanel"
+      [attr.aria-labelledby]="'heading' + chapter['item-code']">
+      <div class="card-block section-table">
+        <table class="widget progress-list table bg-white table-hover no-margin fw-normal">
+          <tbody id="sectionSortable.{{idx}}" [ngClass]="{ disabled: progressList.data[idx].status != true }">
+            <div *ngFor="let section of chapter.items; let sdx = index" class="section-item bb">
+              <div class="row align-items-center section-row">
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-1 d-inline-flex section-name">
+                  <span class="arrow fs-16"
+                    [ngClass]="{ disabledlabel: progressList.data[idx].items[sdx].status != true }"></span>
+                  <ul>
+                    <li [ngClass]="{ disabledlabel: progressList.data[idx].items[sdx].status != true }">
+                      <span class="chapter-title">{{section.name}}</span>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+              <div class="pl-0 functionality">
+                <div class=" progress-td row justify-content-end align-items-center px-0">
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 px-0">
+                    <span class="switch">
+                      <input id="cmn-toggle-{{idx+1}}.{{sdx+1}}" class="cmn-toggle cmn-toggle-round-flat"
+                        type="checkbox" (click)="sectionToggle(idx, sdx);"
+                        [disabled]="!this.progressList.data[idx].status"
+                        [checked]="this.progressList.data[idx].items[sdx].status">
+                      <label for="cmn-toggle-{{idx+1}}.{{sdx+1}}"></label>
+                    </span>
+                    <span class="icon">
+                      <i class="fa fa-bars" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

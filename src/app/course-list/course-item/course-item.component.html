@@ -1,0 +1,307 @@
+<section class="course-widget mb-0" class="theme-product-{{productTheme}}" [ngClass]="courseType === 'application' ? 'application': ''">
+  <div class="widget-body clearfix course-widget-body" [ngClass]="courseType !== 'application' ? 'border-top-product-theme': ''">
+    <div class="d-flex flex-row">
+      <div class="p-0" [ngClass]="courseType === 'application' ? 'application': ''">
+
+        <div class="course-heading" [ngClass]="{'test-background': (courseType === 'application') , 'teacher-heading' : (userRole === UserRole.Teacher)}">
+          <div *ngIf="userRole === UserRole.Teacher && courseType === 'courseware'" class="ins-heading">
+            <div class="instructor-text border-bottom-color-product-theme">
+              <span>Instructor</span>
+            </div>
+          </div>
+          <div *ngIf="userRole === 'student'">
+            <img class="course-img float-left"
+              [ngClass]="{'training-img':courseType === 'courseware', 'application-img':courseType === 'application'}"
+              [src]="courseType === 'courseware' ? 'assets/img/homePage/Servo_Training.svg': 'assets/img/homePage/Servo_Analysis.svg'">
+          </div>
+          <div *ngIf="userRole === UserRole.Teacher">
+            <img class="course-img float-left"
+              [ngClass]="{'training-img':courseType === 'courseware', 'application-img':courseType === 'application'}"
+              [src]="courseType === 'courseware' ? 'assets/img/homePage/Servo_Training.png': 'assets/img/homePage/Servo_Analysis.svg'">
+          </div>
+        </div>
+      </div>
+      <div class="p-2">
+        <div class="course-details-container" *ngIf="userRole === 'student'">
+          <!-- for courseware -->
+          <div class="course-details" *ngIf="courseType === 'courseware'">
+            <div class="course-title fs-26 fw-normal">{{courseTitle}}</div>
+            <p [ngClass]="{'classtitle': classTitle!==undefined}" class="application-description mb-md fw-normal">{{description}}</p>
+            <table class="course-details-table" [ngClass]="{'set-label-margin-0': classTitle!==undefined}">
+              <tbody>
+                <!-- <tr *ngIf="classData !== undefined">
+                  <td class="col1">
+                        <label class="progress-label course-details-label fw-bold">Class Enrolled : </label>
+                      </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label">
+                      {{classData.title}}
+                    </label>
+                  </td>
+                </tr> -->
+                <tr [hidden]='classTitle===undefined'>
+                  <td class="col1">
+                    <label class="rogress-label course-details-label fw-bold">Class Name: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label">
+                      {{classTitle === undefined ? (user.userType === userType.NewUser ? 'Not Started' : 'Loading...') : classTitle}}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1">
+                    <label class="progress-label course-details-label fw-bold">Started On: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label">
+                      {{courseStartDate === undefined ? (user.userType === userType.NewUser ? 'Not Started' : 'Loading...') : utilsService.convertDateUtcToDateString(courseStartDate)
+                                                    }}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1">
+                    <label class="progress-label course-details-label fw-bold">Time Spent: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label">
+                      <!-- API_STUB Display 0 min incase of new user -->
+                      {{courseTimeSpent === undefined ? 'Loading...' : ((user.userType === userType.NewUser) ? '0 min' :utilsService.convertMillisecondsToDyHrMin(courseTimeSpent)) }}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1">
+                    <label class="progress-label course-details-label fw-bold">Progress: </label>
+                  </td>
+                  <td class="progressbar-td col2">
+                    <label *ngIf="courseProgress === undefined; else progressBar"
+                      class="progress-label course-details-label">
+                      Loading...
+                    </label>
+                    <ng-template #progressBar>
+                      <div class="progressbar-container">
+                        <div class="bg-gray-lighter m-t-2"
+                          [title]="!courseProgress ? 'Progress' : courseProgress + '%'">
+                          <div class="progress-bar progress-course bg-blue" role="progressbar"
+                            [style.width]="courseProgress + '%'" [style.height]="'10px'" aria-valuenow="item.progress"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <label class="progress-label course-details-label">{{courseProgress}}%</label>
+                      <span *ngIf="userRole == 'student'">
+                        <div *ngIf="user.userType == 'existing'" class="vertical-divider display-inline-block"></div>
+                        <span *ngIf="user.userType == 'existing'" class="bar-chart-icon bg-blue text-white"
+                          (click)="navigateToDashboard()" title="My Progress">
+                          <i class="fas fa-chart-bar"></i></span>
+                      </span>
+                    </ng-template>
+                  </td>
+                </tr>
+                <!--<tr>
+                                                        <td class="badges-label-td col1">
+                                                            <label class="badge-label course-details-label fw-bold">Badges: </label>
+                                                        </td>
+                                                        <td *ngIf="courseBadges.bronze > 0 || courseBadges.silver > 0 || courseBadges.gold > 0" class="badges-td col2">
+                                                            <span class="fa-stack fa-3x course-badges text-bronze">
+                                          <i class="fa fa-trophy fa-stack-2x"></i>
+                                          <span class="fa fa-stack-1x">
+                                            <span class="badge-text-bg fa fa-circle">
+                                               <span class="badge-text">
+                                                  {{courseBadges.bronze}}
+                                              </span>
+                                                            </span>
+                                                            </span>
+                                                            </span>
+                                                            <span class="fa-stack fa-3x course-badges text-silver">
+                                          <i class="fa fa-trophy fa-stack-2x"></i>
+                                          <span class="fa fa-stack-1x">
+                                            <span class="badge-text-bg fa fa-circle">
+                                               <span class="badge-text">
+                                                  {{courseBadges.silver}}
+                                              </span>
+                                                            </span>
+                                                            </span>
+                                                            </span>
+                                                            <span class="fa-stack fa-3x course-badges text-gold">
+                                          <i class="fa fa-trophy fa-stack-2x"></i>
+                                          <span class="fa fa-stack-1x">
+                                            <span class="badge-text-bg fa fa-circle">
+                                               <span class="badge-text">
+                                                  {{courseBadges.gold}}
+                                              </span>
+                                                            </span>
+                                                            </span>
+                                                            </span>
+                                                        </td>
+                                                        <td *ngIf="courseBadges.bronze == 0 && courseBadges.silver == 0 && courseBadges.gold == 0" class="badges-td col2">
+                                                            <label class="progress-label course-details-label"> None </label>
+                                                        </td>
+                        
+                                                    </tr>-->
+              </tbody>
+            </table>
+            <hr>
+          </div>
+
+          <!-- for enroll new course -->
+          <!--<div *ngIf="courseType === 'enroll'" class="enroll-course-container">
+                                  <label class="enroll-course-text mt-sm">Please click the <span class="fw-bold">PLUS</span> icon to enroll in a new course.</label>
+                                  <div class="enorll-course fa fa-plus text-center"></div>
+                                </div>-->
+
+          <!-- for application -->
+          <div *ngIf="courseType === 'application'">
+            <div class="course-title fs-26 fw-normal">{{courseTitle}}</div>
+            <label class="application-description">{{description}}
+            </label>
+            <div class="review-Early-Version">
+              <span>Review an Early Version: </span>
+              <a (click)="applicationSelectionButtonClicked($event)">Create New</a>
+              <span>|</span>
+              <a (click)="onDiskFileIconClick($event)">
+                Open Application From Disk
+                <input id="read-from-disk" accept="text/plain, .json" hidden type="file" appReadFromDisk
+                  (onFileRead)="onDiskFileRead($event)" />
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="course-details-container class-details-container" *ngIf="userRole === UserRole.Teacher">
+          <!-- for courseware -->
+          <div class="course-details" *ngIf="courseType === 'courseware'">
+            <div class="course-title class-title fs-26 fw-normal">{{courseTitle}}</div>
+            <p class="application-description class-description mb-md fw-normal">{{description}}</p>
+            <table class="course-details-table">
+              <tbody>
+                <tr>
+                  <td class="col1-1">
+                    <label class="progress-label course-details-label class-details-label fw-bold">Class Name: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label class-details-label">
+                      {{classTitle === undefined ? (user.userType === userType.NewUser ? 'Not Started' : 'Loading...') : classTitle}}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1-1">
+                    <label class="progress-label course-details-label fw-bold class-details-label">Started On: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label class-details-label">
+                      {{classStartDate === undefined ? (user.userType === userType.NewUser ? 'Not Started' : 'Loading...') : utilsService.convertDateUtcToDateString(classStartDate)
+                                                    }}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1-1">
+                    <label class="progress-label course-details-label fw-bold class-details-label">Students Enrolled: </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label class-details-label">
+                      {{totalStudentsEnrolled === undefined ? 'Loading...' : (totalStudentsEnrolled) }}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col1-1">
+                    <label class="progress-label course-details-label fw-bold class-details-label">Time Spent:
+                    </label>
+                  </td>
+                  <td class="col2">
+                    <label class="progress-label course-details-label class-details-label">
+                      {{classLastMonthTimeSpent === undefined ? 'Loading...' : classLastMonthTimeSpent }}
+                    </label>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+            <hr>
+          </div>
+
+          <!-- for enroll new course -->
+          <!--<div *ngIf="courseType === 'enroll'" class="enroll-course-container">
+                                  <label class="enroll-course-text mt-sm">Please click the <span class="fw-bold">PLUS</span> icon to enroll in a new course.</label>
+                                  <div class="enorll-course fa fa-plus text-center"></div>
+                                </div>-->
+
+          <!-- for application -->
+          <div *ngIf="courseType === 'application'">
+            <div class="course-title fs-26 fw-normal">{{courseTitle}}</div>
+            <label class="application-description">{{description}}
+            </label>
+            <div class="review-Early-Version">
+              <span>Review an Early Version: </span>
+              <a (click)="applicationSelectionButtonClicked($event)">Create New</a>
+              <span>|</span>
+              <a (click)="onDiskFileIconClick($event)">
+                Open Application From Disk
+                <input id="read-from-disk" accept="text/plain, .json" hidden type="file" appReadFromDisk
+                  (onFileRead)="onDiskFileRead($event)" />
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+        <!-- <div *ngIf="courseType === 'application'" class="open-saved-app-container">
+                   
+                </div> -->
+        <!--<footer *ngIf="courseType !== 'enroll'" class="course-widget-footer widget-footer-bottom">-->
+        <div *ngIf="courseType === 'courseware'">
+          <footer class="course-widget-footer">
+            <div class="btn-container text-center">
+              <!-- For courseware -->
+              <ng-container *ngIf="courseType === 'courseware'; else notCourseware">
+                <!--userType is undefined as it is not fetched now...-->
+                <ng-container *ngIf="user.userType === undefined; else userTypePresent">
+                  <button class="btn btn-inverse" disabled>Loading...</button>
+                  <button *ngIf="userRole === UserRole.Teacher" class="btn btn-inverse class-view-course" disabled>Loading...</button>
+                </ng-container>
+
+                <!--userType is now set...-->
+                <ng-template #userTypePresent>
+                  <ng-container *ngIf="courseType === 'courseware'">
+                    <button *ngIf="user.userType == userType.NewUser && userRole=='student'" class="btn btn-inverse" type="submit"
+                      (click)="courseSelectionButtonClicked($event)">Let's Begin
+                      <span class="fa fa-arrow-circle-right fs-18 btn-course-selection-fa"></span>
+                    </button>
+
+                    <button *ngIf="user.userType == userType.ExistingUser && userRole=='student'" class="btn btn-inverse" type="submit"
+                      (click)="courseSelectionButtonClicked($event)">Continue
+                      <span class="fa fa-arrow-circle-right fs-18 btn-course-selection-fa"></span>
+                    </button>
+                    <button *ngIf="userRole === UserRole.Teacher" class="btn btn-inverse teacherDashboard teacher-btn-top class-view-course" type="submit"
+                      (click)="courseSelectionButtonClicked($event, true)">View Course
+                      <span class="fa fa-arrow-circle-right fs-18 btn-course-selection-fa"></span>
+                    </button>
+                    <button *ngIf="userRole === UserRole.Teacher" class="btn btn-inverse teacherDashboard teacher-btn-top" type="submit"
+                      (click)="courseSelectionButtonClicked($event)">View Class
+                      <span class="fa fa-arrow-circle-right fs-18 btn-course-selection-fa"></span>
+                    </button>
+                  </ng-container>
+                </ng-template>
+              </ng-container>
+
+              <!-- For application -->
+              <!-- <ng-template #notCourseware>
+                                                    <button class="btn btn-inverse" (click)="applicationSelectionButtonClicked($event)">Create New</button>
+                                                </ng-template> -->
+              <!-- <button *ngIf="courseType === 'application'" class="btn btn-inverse"  appGooglePicker [googlePickerConfig] = "googlePickerConfig" [folderMode]="true" (onFolderSelect)="onGoogleDriveFolderSelect($event)">Create New</button> -->
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

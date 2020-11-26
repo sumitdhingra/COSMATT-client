@@ -1,0 +1,94 @@
+$nav-active-color: #0277bd;
+.table {
+    .pointer {
+        cursor: pointer;
+    }
+    tr.active {
+        background: $nav-active-color;
+        color: white;
+        border: 1px solid $nav-active-color;
+    }
+    &.border-all {
+        border: 1px solid #ddd;
+    }
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+    color: #646464;
+    thead {
+        background: #ececec;
+        .title {
+            color: #343434;
+        }
+    }
+    .no-result {
+        padding: 10px;
+    }
+    th {
+        user-select: none;
+        text-transform: none !important;
+        text-align: center;
+        vertical-align: middle;
+        height: 40px;
+        font-weight: 600;
+        &.sort-header {
+            cursor: pointer;
+            &.asc {
+                .down-arrow {
+                    color: #ccc;
+                }
+            }
+            &.desc {
+                .up-arrow {
+                    color: #ccc;
+                }
+            }
+            .sort-arrows {
+                display: inline-block;
+                position: relative;
+                padding-left: 3px;
+                color: #909090;
+                .up-arrow {
+                    display: inline;
+                    // &:before {
+                    //   content: "\f0de";
+                    //   font-family: "FontAwesome"  
+                    // }
+                }
+                .down-arrow {
+                    display: inline;
+                    position: absolute;
+                    left: 3px;
+                    top: 5px;                
+                    // &:before {
+                    //     content: "\f0dd";
+                    //     font-family: "FontAwesome"  
+                    //   }
+                }
+            }
+        }
+    }
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+.has-search {
+    margin: 0.5rem 0 1rem 0.5rem;
+    width: 360px;
+    .form-control {
+        padding: 8px 16px;
+        padding-left: 2.375rem;
+    }
+    .form-control-feedback {
+        position: absolute;
+        margin-top: 3px;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+        color: #aaa;
+    }
+}

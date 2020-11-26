@@ -1,0 +1,5 @@
+<section class="widget no-margin border-top-theme md-launcher">
+  <app-md-viewer [hidden]="false" [mdContent]="mdContent" [loading]="loading" [assetsPath]="publicAssetsPath" [embeddedAssessmentContent]="[]"
+    [numberFormatterOptions]="{}" (onCheckMyWorkClicked)="onCheckMyWorkClicked($event)" (onAssessmentSubmit)="eomTestCompleted($event)"
+    (navigateToSection)="navigateToSection($event)"></app-md-viewer>
+</section>

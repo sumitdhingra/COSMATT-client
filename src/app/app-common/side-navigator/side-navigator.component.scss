@@ -1,0 +1,339 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+// Side-nav variables
+$sidenav-bg-color: #F8F8F8;
+$sidenav-text-color: #343434;
+$sidenav-text-font-weight: $font-weight-semi-bold;
+$sidenav-text-font-size: $font-size-22;
+$sidenav-text-font-size-lowres: $font-size-18;
+$sidenav-name-height: 4rem;
+$sidenav-name-padding: 40px 25px 50px 20px;
+$sidenav-name-padding-lowres: 35px 25px 30px 15px;
+$sidenav-name-border: 1px solid #CCCCCC;
+$sidenav-name-focus-border: 1px solid #01579B;
+
+// Item circle variables.
+// Defaults to a disabled circle
+$item-circle-size: 32px;
+$item-circle-size-lowres: 22px;
+$item-circle-text-font-size: 18px;
+$item-circle-text-font-size-lowres: 14px;
+// $item-circle-bg-color: #C1C1C1;
+$item-circle-bg-color: #777777;
+$item-circle-text-color: white;
+$item-circle-text-font-weight: $font-weight-normal;
+// $item-circle-text-font-weight: $font-weight-semi-bold;
+
+// Generic item variables
+// Defaults to a disabled-like item,
+$item-content-margin: 0 0;
+$item-content-padding: 15px 0 15px 20px;
+$item-content-padding-lowres: 10px 0 10px 10px;
+$item-bg-color: #F8F8F8;
+$item-hover-bg-color: #F8F8F8;
+// $item-text-font-weight: $font-weight-normal;
+$item-text-font-weight: $font-weight-semi-bold;
+$item-text-font-size: $font-size-16;
+$item-text-font-size-lowres: $font-size-14;
+// $item-text-color: #838383;
+$item-text-color: #777777;
+
+// Disabled
+$disabled-item-circle-bg-color: #C1C1C1;
+$disabled-item-text-color: #838383;
+$disabled-item-text-font-weight: $font-weight-normal;
+
+// Active
+$selected-item-bg-color: #E8E8E8;
+$selected-item-hover-bg-color: #E8E8E8;
+$selected-item-text-color: #01579B;
+$selected-item-text-font-weight: $font-weight-semi-bold;
+$selected-item-circle-font-weight: $font-weight-semi-bold;
+$selected-item-circle-bg-color: #01579B;
+
+// Correct + !Active + !Disabled
+$corrected-item-text-color: #777777;
+$corrected-item-text-font-weight: $font-weight-semi-bold;
+$corrected-item-circle-bg-color: #777777;
+
+// !Disabled + !Active
+$hover-item-bg-color: #f1f1f1;
+
+// Step name variables
+$step-name-padding: 0 10px 0 16px;
+$step-name-padding-lowres: 0 5px 0 10px;
+
+// Step separator | variables
+$step-separator-color: #C1C1C1;
+$step-separator-height: 24px;
+
+// Step status - Tick cross variables
+$step-status-incorrect-color: #C1C1C1;
+$step-status-correct-color: #278546;
+$step-status-padding: 0 8px;
+$step-status-padding-lowres: 0 0 0 5px;
+$step-status-font-size-lowres: 12px;
+
+// Sidenav triangle variables
+$step-triangle-outer-border: 15px solid #CFCFCF;
+$step-triangle-inner-border: 15px solid white;
+
+@keyframes changeBorder {
+  from {
+    border-bottom: $sidenav-name-border;
+  }
+  to {
+    border-bottom: $sidenav-name-focus-border;
+  }
+}
+
+.sidenav-container {
+
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $sidenav-bg-color;
+  z-index: 1;
+  /* COSMATT-1341 - White triangle borders donot overlap the gray border
+    overflow: hidden; */
+
+  nav.nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: $sidenav-bg-color;
+
+      section.nav-name {
+        position: relative;
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: $sidenav-name-height;
+        color: $sidenav-text-color;
+        font-size: $sidenav-text-font-size;
+        @media (max-width: 1279px) {
+          padding: $sidenav-name-padding-lowres;
+        }
+        font-weight: $sidenav-text-font-weight;
+        padding: $sidenav-name-padding;
+
+        input {
+          font-weight: $sidenav-text-font-weight;
+          background: transparent;
+          border: none;
+          border-bottom: $sidenav-name-border;
+          border-radius: none;
+          color: $sidenav-text-color;
+          overflow: hidden;
+          transition: all 0.4s ease-in-out;
+          @media (max-width: 1279px) {
+            font-size: $sidenav-text-font-size-lowres;
+            padding-bottom: 5px;
+          }
+          &:focus {
+            outline: none;
+            border-bottom: $sidenav-name-focus-border;
+          }
+        }
+      }
+
+      section.nav-container {
+
+        ul.nav-items {
+
+          li.nav-item {
+
+            /*Default styles for nav-items*/
+            padding: $item-content-padding;
+            @media (max-width: 1279px) { padding: $item-content-padding-lowres; }
+            margin: $item-content-margin;
+            background: $item-bg-color;
+            z-index: 3;
+            border: none;
+            cursor: pointer;
+
+            /*Some tricks for vertical pipe connecting the circles*/
+            &:last-child {
+              border-bottom-right-radius: 0px;
+              border-bottom-left-radius: 0px;
+              .step-pipe {
+                height: 50%;
+              }
+            }
+
+            &:first-child {
+              border-top-right-radius: 0px;
+              border-top-left-radius: 0px;
+              .step-pipe {
+                top: 1.5em;
+              }
+            }
+
+            // .step-numbers {
+            //   @media (max-width: 1279px) { padding-top: 5px; }
+            // }
+
+            /*The vertical pipe connecting the circles*/
+            .step-pipe {
+              position: absolute;
+              z-index: 4;
+              width: 2px;
+              height: 100%;
+              left: 33px;
+              @media (max-width: 1279px) { left: 23px; }
+              top: 0%;
+              background: $step-separator-color;
+            }
+
+            .step-numbers {
+              @media (max-width: 1279px) { padding-top: 5px; }
+            }
+
+            /*Default styles for the stack of fa-circle and a number on top*/
+            .step-number {
+              .fa-stack {
+                z-index: 5;
+                .fa-circle {
+                  color: $item-circle-bg-color;
+                  font-size: $item-circle-size;
+                  @media (max-width: 1279px) { font-size: $item-circle-size-lowres; }
+                }
+                .fa-stack-1x {
+                  color: $item-circle-text-color;
+                  font-size: $item-circle-text-font-size;
+                  @media (max-width: 1279px) {
+                    top: -5px;
+                    font-size: $item-circle-text-font-size-lowres;
+                   }
+                  font-weight: $item-circle-text-font-weight;
+                  padding-top: 2px;
+                  font-family: Open Sans, sans-serif;
+                }
+              }
+            }
+
+            /*Default styles for the step name*/
+            .step-name {
+              padding: $step-name-padding;
+              color: $item-text-color;
+              font-size: $item-text-font-size;
+              @media (max-width: 1279px) {
+                padding: $step-name-padding-lowres;
+                font-size: $item-text-font-size-lowres;
+               }
+              font-weight: $item-text-font-weight;
+            }
+
+            /*The vertical separator between step text and tick/cross*/
+            .step-separator {
+              background: $step-separator-color;
+              height: $step-separator-height;
+              width: 1px;
+              margin: 0;
+            }
+
+            /*Default styles for tick and cross*/
+            .step-status {
+              padding: $step-status-padding;
+              @media (max-width: 1279px) {
+                padding: $step-status-padding-lowres;
+                font-size: $step-status-font-size-lowres;
+               }
+              .fa-times {
+                color: $step-status-incorrect-color;
+              }
+              .fa-check {
+                color: $step-status-correct-color;
+              }
+            }
+
+            /*The CSS triangle*/
+            .step-triangle {
+              margin-left: auto;
+              width: 0px;
+              height: 0px;
+              border-left: 10px solid transparent;
+              border-top: 10px solid transparent;
+              border-bottom: 10px solid transparent;
+
+              &.outer {
+                position: relative;
+                border-right: $step-triangle-outer-border;
+                z-index: 0;
+              }
+
+              &.inner {
+                position: absolute;
+                top: -10px;
+                left: -9px;
+                border-right: $step-triangle-inner-border;
+                z-index: 1;
+              }
+            }
+
+            /* Hover effect for NOT disabled + NOT active */
+            &:not(.disabled):not(.active):hover {
+              background: $hover-item-bg-color;
+            }
+
+            /*Disabled nav-item style*/
+            &.disabled {
+              cursor: not-allowed;
+              .step-number {
+                .fa-stack {
+                  .fa-circle {
+                    color: $disabled-item-circle-bg-color;
+                  }
+                }
+              }
+
+              .step-name {
+                color: $disabled-item-text-color;
+                font-weight: $disabled-item-text-font-weight;
+              }
+            }
+
+            /*Correct nav-item style*/
+            &.correct {
+              /*Correct + NOT Active + NOT Disabled*/
+              &:not(.active):not(.disabled) {
+                .step-name {
+                  color: $corrected-item-text-color;
+                  font-weight: $corrected-item-text-font-weight;
+                }
+                .step-number {
+                  .fa-circle {
+                    color: $corrected-item-circle-bg-color;
+                  }
+                }
+              }
+            }
+
+            /*Active nav-item style*/
+            &.active {
+              background: $selected-item-bg-color;
+              .step-number {
+                .fa-stack {
+                  .fa-circle {
+                    color: $selected-item-circle-bg-color;
+                  }
+                  .fa-stack-1x {
+                    font-weight: $selected-item-circle-font-weight;
+                  }
+                }
+              }
+              .step-name {
+                color: $selected-item-text-color;
+                font-weight: $selected-item-text-font-weight;
+              }
+            }
+          }
+        }
+      }
+  }
+}

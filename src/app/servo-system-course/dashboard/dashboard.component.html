@@ -1,0 +1,75 @@
+<main>
+    <ol ng-container *ngIf = '!studentClassProgress' class="breadcrumb cosmatt-breadcrumbs fw-normal">
+      <li class="breadcrumb-item">
+        <a routerLink='/courses'>Home</a>
+      </li>
+      <li class="breadcrumb-item active">My Progress</li>
+    </ol>
+  
+    <div class="row">
+      <ng-container *ngIf = '!studentClassProgress'>
+      <div class="col-12 widget-column mt-0">
+        <span class="dashboard-title">
+          <i class="fas fa-tachometer-alt"></i> My Progress -
+          <span class="course-name">{{courseData.title}}</span>
+        </span>
+      </div>
+      <div class="col-12 widget-column">
+        <section class="course-intro">
+          <app-course-intro [courseData]="courseData"></app-course-intro>
+        </section>
+      </div>
+      </ng-container>
+  
+      <div class="col-12 col-lg-6 widget-column">
+        <section class="progress-viewer border-top-theme">
+          <div class="progress-viewer-title bb">
+            <span>
+              <span class="icon"><i class="fa fa-tasks" aria-hidden="true"></i></span><span class="label">Progress</span>
+            </span>
+          </div>
+  
+          <ul class="nav bb">
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active':progressView=='chapters', 'btn-default':progressView=='objectives'}" (click)="onProgressViewSelectionChange('chapters')">
+                <span class="icon"><i class="fa fa-list"></i></span><span class="label">Chapters</span>
+              </a>
+            </li>
+            <li class="nav-item separator">
+              <a class="nav-link">
+                <div class="v-rule"></div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active':progressView=='objectives', 'btn-default':progressView=='chapters'}" (click)="onProgressViewSelectionChange('objectives')">
+                <span class="icon"><i class="fa fa-bullseye"></i></span><span class="label">Objectives</span>
+              </a>
+            </li>
+          </ul>
+  
+          <section class="chapter-progress-viewer" *ngIf="progressView=='chapters'">
+            <app-chapter-progress-viewer [progressList]="courseTopics" [chapterSectionAnalytics]="chapterSectionAnalytics" userRole = "student"></app-chapter-progress-viewer>
+          </section>
+          <section class="objective-progress-viewer" *ngIf="progressView=='objectives'">
+            <app-progress-viewer [progressList]="courseObjectives" [chapterList]="courseTopics"></app-progress-viewer>
+          </section>
+        </section>
+      </div>
+  
+      <div class="col-12 col-lg-6 widget-column">
+        <div class="row">
+          <div class="col-12">
+            <section class="pie-chart border-top-theme">
+              <app-pie-chart-plotter [pieChartDataTemp]="courseEngagementTemp"></app-pie-chart-plotter>
+            </section>
+          </div>
+          <div class="col-12">
+            <section class="time-spent border-top-theme">
+              <app-time-spent [userId] = currentStudentId></app-time-spent>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </main>

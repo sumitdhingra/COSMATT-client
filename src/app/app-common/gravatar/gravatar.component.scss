@@ -1,0 +1,60 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.row {
+    margin: 0;
+}
+
+.grav-container {
+
+    font-weight: $font-weight-normal;
+
+    .cntr-info {
+
+        .info-image {
+            border-bottom: 1px solid $gray-semi-lighter;
+            padding-bottom: 1rem;
+
+            .img-cntr {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+
+                .img {
+                    // height: 150px;
+                    // width: 150px;
+                }
+            }
+
+            .update-link-cntr {
+                margin-top: 1rem;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        hr {
+            color: #cbcbcb;
+        }
+
+        .info-about {
+            padding: 0 0;
+            margin-top: 1rem;
+            font-size: $font-size-16;
+
+            & > div > div.row {
+                text-align: center;
+
+                span.value, span.label {
+                    font-weight: $font-weight-semi-bold;
+                }
+
+                .label {
+                    font-size: $font-size-14;
+                }
+            }
+        }
+    }
+}

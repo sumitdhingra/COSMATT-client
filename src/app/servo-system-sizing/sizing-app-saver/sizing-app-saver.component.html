@@ -1,0 +1,18 @@
+<div class="saver-container">
+    <div class="horizontal-separator"></div>
+    <div class="row">
+        <div class="col-sm-4 save-text">
+            <span>Save:</span>
+        </div>
+        <div class="col-sm-8 save-icons">
+            <a (click)="onSaveButtonClickHandler(saveType.HardDisk)" class="hdd">
+                <i class="far fa-hdd"></i>
+            </a>
+            <div class="vertical-separator"></div>
+            <a (click)="onSaveButtonClickHandler(saveType.GoogleDrive)" class="g-drive">
+                <!-- <i class="fa fa-dropbox"></i> -->
+                <img class="img-fluid" src="./assets/img/common/google-disable.png">
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="modal fade" id="appPopup" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <ng-container *ngIf="popupService.popupConfig">
+        <!-- POPUP HEADER -->
+        <div class="modal-header">
+          <span class="header-icon" [ngClass]="popupService.popupInput.headerIcon"></span>
+          <div class="vertical-divider"></div>
+          <h4 class="modal-title fw-semi-bold">
+            {{popupService.popupInput.headerTitle}}
+          </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onPopupDismiss()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- MAIN POPUP BODY -->
+        <div class="modal-body" [ngSwitch]="popupService.popupConfig.hostMode">
+
+          <!-- For ng component as input -->
+          <ng-container *ngSwitchCase="hostMode.Component">
+            <ng-container [ngSwitch]="popupService.popupConfig.componentType">
+              <app-inertia-calculator *ngSwitchCase="widgetType.InertiaCalculator" [inertiaCalculatorSettings]="popupService.popupInput.inputData" (inertiaCalculatorOutput)="componentOutputHandler($event)"></app-inertia-calculator>
+
+              <!-- <app-md-launcher *ngSwitchCase="widgetType.MdViewerLauncher"></app-md-launcher> -->
+              <app-md-launcher *ngSwitchCase="componentType.MdViewerLauncher"  [publicAssetsPath]="popupService.popupInput.inputData.publicAssetPath" ></app-md-launcher>
+
+              <span *ngSwitchDefault>Error: Invalid componentType!</span>
+            </ng-container>
+          </ng-container>
+
+          <!-- For HTML inputs -->
+          <ng-container *ngSwitchCase="hostMode.HTML">
+            <div [innerHTML]="popupService.popupInput.inputData"></div>
+          </ng-container>
+        </div>
+
+        <!-- POPUP FOOTER -->
+        <div class="modal-footer border-top-theme">
+          <!-- Footer information to show (if any) -->
+          <div *ngIf="popupService.popupInput.footerInfo" class="footer-info">
+            <span>{{popupService.popupInput.footerInfo}}</span>
+          </div>
+
+          <!-- Footer buttons -->
+          <div class="footer-buttons">
+            <button *ngIf="popupService.popupConfig.popupUIConfig.showOkButton" type="button" class="btn btn-inverse btn-md mb-xs" data-dismiss="modal" (click)="onPopupSave()">Ok</button>
+            <button *ngIf="popupService.popupConfig.popupUIConfig.showCancelButton" type="button" class="btn btn-inverse btn-md mb-xs" data-dismiss="modal" (click)="onPopupDismiss()">Cancel</button>
+            <button *ngIf="popupService.popupConfig.popupUIConfig.showCloseButton" type="button" class="btn btn-inverse btn-md mb-xs" data-dismiss="modal" (click)="onPopupDismiss()">Close</button>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

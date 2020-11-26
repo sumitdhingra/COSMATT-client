@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='en' class='medium'>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+		<meta charset='utf-8'>
+		<title>Activity Content</title>
+		<!-- Book/Product SKIN Styles -->
+		<link rel='stylesheet' href='" + dependencyBase + "dist/css/libs-frontend-core-min-.css'>
+		<!-- END of Book/Product SKIN Styles -->
+		<style type='text/css'>@@include('../dist/css/styles-all-min.css')</style>
+	</head>
+	<body>
+		<!-- Mandatory placeholder, required by SHELL-->
+		<div id='placeholder' class='placeholder ribbon-adjustments'></div>
+		<!--Scripts -->
+		<script src='" + dependencyBase + "dist/js/require-min-.js' type='text/javascript'></script>
+		<script type='text/javascript'>require.config({paths: {'vendor': '" + dependencyBase + "dist/js/vendor-min-','shell': '" + dependencyBase + "dist/js/shell-min-'},shim: {'shell': {deps: ['vendor']}}});require(['shell'], function(shellRef){var shell = new Shell('" + uniqueTestId + "');shell.init();});</script>
+	</body>
+</html>

@@ -1,0 +1,339 @@
+@import "../../scss/theme/variables";
+@import "../../../node_modules/bootstrap/scss/_variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+$border-color: $gray-semi-light;
+$title-container-height: 62px;
+$nav-active-color: #0277bd;
+$nav-active-border-width: 4px;
+$vertical-rule-height: 30px;
+$box-top-margin: 30px;
+$box-top-margin-lowres: 20px;
+$border-top-width: 3px;
+
+.right-container {
+    font-family: $font-family-sans-serif;
+    font-weight: $font-weight-normal;
+    padding-left: 30px;
+    margin-left: 20px + 10px;
+    // padding-bottom: 30px;
+    position: relative;
+    z-index: auto; //For COSMATT-1669; changing this from 99 to auto;
+    // setting z-index of parent to 99 sets the z-index of modal-dialog(having z-index 1050) to its parent ; so it hides behind the container which has a z-index of 1040
+    transition: margin-left 0.5s, left 0.5s;
+    left: 0px;
+    @media all and (max-width: 1279px) {
+      margin-left: 30px !important;
+      z-index: 0;
+      left: 0px !important;
+    }
+    &.sidebar-open-click {
+      @include media-breakpoint-up(lg) {
+        margin-left: $class-sidebar-width + 20px + 10px;
+      }
+      @include media-breakpoint-down(lg) {
+        margin-left: $class-sidebar-width + 10px;
+      }
+      @include media-breakpoint-down(md) {
+        margin-left: $class-sidebar-width - 20px + 10px;
+      }
+      @include media-breakpoint-down(sm) {
+        margin-left: $class-sidebar-width - 40px + 10px;
+      }
+      @include media-breakpoint-down(xs) {
+        margin-left: $class-sidebar-width - 60px + 10px;
+      }
+      left: 0px;
+      z-index: auto;  //for COSMATT-1303 ; changing z-index from initial to auto since initial keyword is not supported in IE;
+      //initial sets this property to its default value whereas auto sets the stack order equal to its parents which  is default;
+    }
+    &.sidebar-open-hover {
+      margin-left: 20px + 10px;
+      @include media-breakpoint-up(lg) {
+        left: $class-sidebar-width;
+      }
+      @include media-breakpoint-down(lg) {
+        left: $class-sidebar-width - 20px;
+      }
+      @include media-breakpoint-down(md) {
+        left: $class-sidebar-width - 40px;
+      }
+      @include media-breakpoint-down(sm) {
+        left: $class-sidebar-width - 60px;
+      }
+      @include media-breakpoint-down(xs) {
+        left: $class-sidebar-width - 80px;
+      }
+    }
+    .title-header {
+      margin: 0 0 calc(1rem + 6px);
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      // flex-wrap: wrap;
+      .title-container {
+        .page-title {
+          margin: 0;
+          padding-right: 10px;
+        }
+        .page-title.right-separator {
+          border-right: 1px solid #A9A9A9;
+        }
+      }
+      .nav-top {
+        min-width: 325px;
+        @include media-breakpoint-down(md) {
+          min-width: 92px;
+        }
+        @include media-breakpoint-down(lg) {
+          &.sideopened {
+            // min-width: 92px;
+            // button .navbtn-text {
+            //   display: none;
+            // }
+            // button .compbtn-text {
+            //   display: none;
+            // }
+          }
+        }
+        button {
+          padding: 1px 16px;
+          .navbtn-text {
+            @include media-breakpoint-down(md) {
+              display: none;
+            }
+          }
+          .compbtn-text {
+            @include media-breakpoint-down(md) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .completed-container {
+      min-width: auto !important;
+      margin-top: 3px;
+      .mark-as-complete-btn {
+        padding-left: 0px !important;
+      }
+    }
+    .navigator-container {
+      margin-left: auto;
+    }
+    .right-arrow {
+      font-size: 26px;
+      position: relative;
+      top: 2px;
+    }
+    .left-arrow {
+      font-size: 26px;
+      position: relative;
+      top: 2px;
+    }
+    .ver-separaotr {
+      padding-left: 16px;
+      border-left: 1px solid #A9A9A9;
+    }
+    .marked-completed {
+      border: none;
+      background-color: transparent;
+      color: #2e7d32;
+      margin-right: 0px;
+      cursor: default;
+      .fa-check {
+        padding: 2px;
+        border-radius: 3px;
+        position: relative;
+      }
+    }
+    .marked-completed:hover {
+      background-color: transparent;
+    }
+    .navigation {
+      padding: 26px 0;
+      background-color: #dedede;
+      .mark-as-complete-btn {
+        position: relative;
+        top: 4px;
+        margin-right: 16px;
+        background-color: #01579b;
+        border: none;
+      }
+      .mark-as-complete-btn:hover {
+        background-color: #004479;
+      }
+      .marked-completed {
+        background-color: transparent;
+        color: #2e7d32;
+        margin-right: 0px;
+        cursor: default;
+        .fa-check {
+          padding: 2px;
+          border-radius: 3px;
+          position: relative;
+        }
+      }
+      .marked-completed:hover {
+        background-color: transparent;
+      }
+    }
+    .btn-link {
+      color: #01579b;
+      &:disabled,
+       :hover,
+       :focus,
+       :active {
+        color: inherit;
+      }
+    }
+
+
+
+
+    .v-rule {
+        width: 1px;
+        height: $vertical-rule-height;
+        background: lightgray;
+        margin: 0px 5px;
+        cursor: initial;
+      }
+    
+      .dashboard-title {
+        color: $gray-dark;
+        font-size: $font-size-28;
+    
+        .course-name {
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    
+      .widget-column {
+    
+        margin-top: $box-top-margin;
+    
+        section {
+          background: $white;
+    
+          &.course-intro {
+    
+          }
+    
+          &.progress-viewer {
+            border-top-left-radius: $border-radius-sm;
+            border-top-right-radius: $border-radius-sm;
+            border-top-width: $border-top-width;
+    
+            .icon { margin-right: $icon-label-spacing; }
+    
+            .progress-viewer-title {
+              padding: 0px 15px;
+              min-height: $title-container-height;
+    
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+    
+              font-size: $font-size-22;
+              font-weight: $font-weight-semi-bold;
+    
+            }
+    
+            ul.nav  {
+              min-height: $title-container-height;
+              justify-content: center;
+              align-items: center;
+    
+              & > li.nav-item {
+                height: $title-container-height;
+    
+                &:not(.separator) {
+                  flex-basis: 155px;
+                }
+    
+                &.separator {
+                  cursor: initial;
+                }
+    
+                a.nav-link {
+                  background: none;
+                  font-size: $font-size-18;
+                  color: $gray-dark;
+                  box-shadow: none;
+                  height: $title-container-height - 22px;
+    
+                  box-sizing: content-box;
+    
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+    
+                  & > .fa {
+                    padding-top: 2px;
+                  }
+    
+                  &:first-child > .label {
+                    flex-basis: 85px;
+                  }
+                  &:last-child > .label {
+                    flex-basis: 95px;
+                  }
+    
+                  &.active {
+                    font-weight: $font-weight-semi-bold;
+                    color: $nav-active-color;
+                    border-bottom: $nav-active-border-width solid $nav-active-color;
+                  }
+                }
+              }
+            }
+    
+            & > section.chapter-progress-viewer {
+    
+            }
+    
+            & > section.objective-progress-viewer {
+    
+            }
+          }
+    
+          &.pie-chart {
+            border-top-left-radius: $border-radius-sm;
+            border-top-right-radius: $border-radius-sm;
+            border-top-width: $border-top-width;
+          }
+    
+          &.time-spent {
+            border-top-left-radius: $border-radius-sm;
+            border-top-right-radius: $border-radius-sm;
+            border-top-width: $border-top-width;
+    
+            margin-top: $box-top-margin;
+          }
+        }
+      }
+    
+  }
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+    main {
+      .widget-column {
+        margin-top: $box-top-margin-lowres;
+        
+        section {
+          &.time-spent {
+            margin-top: $box-top-margin-lowres;
+          }
+        }
+      }
+    }   
+}

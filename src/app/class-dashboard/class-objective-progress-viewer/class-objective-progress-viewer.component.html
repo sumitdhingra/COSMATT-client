@@ -1,0 +1,86 @@
+<div class="loading-screen3 bg-f3 px-0 mx-0" *ngIf="showLoading">
+    <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+</div>
+<div *ngIf="!showLoading" id="learningObjectiveAccordion" role="tablist" aria-multiselectable="true" class='fw-normal'>
+    <div  *ngFor="let item of objectKeys(courseObjectives);let i=index" class="card bb">
+      <div class="card-header learningObjectiveHeader bb-0" role="tab" [id]="'learningObjectiveHeading'+ i">
+          <a class="accordion-toggle collapsed" data-toggle="collapse" [href]="'#learningObjCollapse' + i" [attr.aria-expanded]="{'true': i == 0, 'false': i > 0}" [attr.aria-controls]="'learningObjCollapse' + i">
+          <table class="table no-margin">
+              <!--<a class="accordion-toggle collapsed" data-toggle="collapse" [href]="'#learningObjCollapse' + i" [attr.aria-expanded]="{'true': i == 0, 'false': i > 0}" [attr.aria-controls]="'learningObjCollapse' + i">-->
+                  <tr>
+                      <!-- <td class="first-td bb-0 bt-0 fs-16">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#learningObjectiveAccordion" [href]="'#learningObjCollapse' + i" [attr.aria-expanded]="{'true': i == 0, 'false': i > 0}" [attr.aria-controls]="'learningObjCollapse' + i">
+                              <span class="arrow"></span>
+                          </a>
+                      </td> -->
+                      <td class="bb-0 bt-0 obj-name">
+                          {{courseObjectives[item]['learning-objective']}}: {{courseObjectives[item]['text']}}
+                      </td>
+                      <td class="progress-td bb-0 bt-0">
+                          <div class="progress-text fs-14 pr-2">
+                              {{courseObjectives[item].__analytics.studentsCompleted}} of {{courseObjectives[item].__analytics.totalStudents}} Students Completed
+                          </div>
+                          <!-- <div class="progressbar-container">
+                              <div class="bg-gray-lighter" [title]="courseObjectives[item].__analytics.progress + '%'">
+                                  <div class="progress">
+                                      <div class="progress-bar progress-primary" role="progressbar" [style.width]="courseObjectives[item].__analytics.progress + '%'" [style.height]="'12px'" aria-valuenow="courseObjectives[item].__analytics.progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                              </div>
+                          </div> -->
+                      </td>
+                  </tr>
+              <!--</a>-->
+          </table>
+          </a>
+      </div>
+
+      <!-- <div [id]="'learningObjCollapse' + i" class="collapse lo-items" role="tabpanel" [attr.aria-labelledby]="'learningObjectiveHeading'+ i">
+          <div class="card-block learningObjectives-card fs-16">
+              <table class="table bg-white table-hover no-margin">
+                  <tbody>
+                      <tr *ngFor="let mappedSection of learningObjectiveChapterMap[item].mappedSections; let i = index" class="tr-height" [class.bb]="i !== (learningObjectiveChapterMap[item].mappedSections.length-1)">
+                          <td class="bt-0 section-name-td">
+                              {{mappedSection.chapterName + ' - ' + mappedSection.sectionName}}
+                              <span *ngIf="mappedSection.isEmbedded">&nbsp;- Test Your Understanding</span>
+                          </td>
+                          <td class="bt-0 right-info text-right" [ngSwitch]="mappedSection.status">
+                              <div class="d-inline-flex justify-content-center align-items-center">
+
+                                  <ng-container *ngSwitchCase="'not_started'">
+                                      <span class="text-gray time-status font-size-small">Not Started</span>
+                                      <span class="font-size-small text-muted">&nbsp;&nbsp;|</span>
+                                      <span class="pl-2"><i class="fa fa-circle-thin"></i></span>
+                                  </ng-container>
+
+                                  <ng-container *ngSwitchCase="'in_complete'">
+                                      <ng-container *ngIf="mappedSection.timespent && mappedSection.timespent > 1000; else noTimespent1">
+                                        <span class="font-size-small" *ngFor="let vall of splitTimeString(this.utilsService.convertMillisecondsToDyHrMin(mappedSection.timespent)); let vall_i = index" [ngClass]="{'text-gray': vall_i % 2 != 0, 'time-status': true}">
+                                            {{vall}}&nbsp;
+                                        </span>
+                                      </ng-container>
+                                      <ng-template #noTimespent1><span class="font-size-small text-gray">Less than 1 min</span></ng-template>
+                                      <span class="font-size-small text-muted">&nbsp;&nbsp;|</span>
+                                      <span class="pl-2"><i class="fa fa-circle"></i></span>
+                                  </ng-container>
+
+                                  <ng-container *ngSwitchCase="'completed'">
+                                      <ng-container *ngIf="mappedSection.timespent && mappedSection.timespent > 1000; else noTimespent2">
+                                        <span class="font-size-small" *ngFor="let vall of splitTimeString(this.utilsService.convertMillisecondsToDyHrMin(mappedSection.timespent)); let vall_i = index" [ngClass]="{'text-gray': vall_i % 2 != 0, 'time-status': true}">
+                                            {{vall}}&nbsp;
+                                        </span>
+                                      </ng-container>
+                                      <ng-template #noTimespent2><span class="font-size-small text-gray">Less than 1 min</span></ng-template>
+                                      <span class="font-size-small text-muted">&nbsp;&nbsp;|</span>
+                                      <span class="pl-1"><div class="small-circle"><i class="fa fa-check"></i></div></span>
+                                  </ng-container>
+
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div> -->
+  </div>
+
+</div>

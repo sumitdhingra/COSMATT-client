@@ -1,0 +1,6 @@
+<section class="widget mb-sm-0 eom-assessment" [ngClass]="{'border-top-theme': loading}">
+  <app-assessment [hidden]="loading" *ngIf="activityData" [activityDataContent]="activityData" [activityId]="activityId" (onSubmit)="onAssessmentSubmit($event)" (onCheckMyWork)="onCheckMyWork($event)" [assessmentConfig]="assessmentConfig">
+  </app-assessment>
+
+  <div class="loading-screen" [hidden]="!loading"><i class="fa fa-spinner fa-spin fa-2x fa-fw"></i></div>
+</section>

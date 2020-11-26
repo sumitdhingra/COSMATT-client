@@ -1,0 +1,41 @@
+<div class="sidebar-container .toc-background-color-theme" (mouseleave)="hideSideBar()">
+    <div class="sidebar-items-container">
+        <a class="sidebar-item nav-toggler clicked" (mouseenter)="sidebarItemHovered()" (click)="sidebarItemClicked()">
+            <span class="icon">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+            </span>
+        </a>
+        <a *ngFor="let option of options; let idx = index;" class="sidebar-item"
+            [ngClass]="{'hover': hoveredItemIndex == idx, 'active': selectedItemIndex == idx}"
+            (click)="classNavOptionClicked(idx)"
+            tooltip="{{!class_sidebarStatus.clicked && !class_sidebarStatus.hovered ? option.name : ''}}"
+            placement="right" container="body" on-mouseover='hoveredItemIndex = idx'
+            on-mouseleave='hoveredItemIndex = -1'>
+            <span class="icon"><i [ngClass]="option.icon" aria-hidden="true"></i></span>
+        </a>
+    </div>
+    <div id="class-navbar" class="display clicked">
+        <nav sidebar id="sidebar" role="navigation" class="sidebar class-sidebar">
+            <div class="sidebar-component-container" [style.opacity]="'1'">
+                <div>
+                    <div class="title-text fw-bold class-title-text-container">
+                        <div class="class-title-text">{{className}}
+                            <!-- <span class="cross-icon float-right" (click)="closeSideMenu()"><span class="left"></span>
+                        <span class="right"></span></span> -->
+                        </div>
+                    </div>
+                    <div class="js-sidebar-content">
+                        <ul class="sidebar-nav module-container">
+                            <li *ngFor="let option of options; let idx = index;" class="module class-module">
+                                <a class="module-title class-module-title"
+                                    [ngClass]="{'hover': hoveredItemIndex == idx, 'active': selectedItemIndex == idx}"
+                                    (click)="classNavOptionClicked(idx)" on-mouseover='hoveredItemIndex = idx'
+                                    on-mouseleave='hoveredItemIndex = -1'>{{option.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

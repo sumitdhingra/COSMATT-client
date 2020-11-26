@@ -1,0 +1,20 @@
+@import "../../../scss/theme/variables";
+$highlight-color: #c5c5c5;
+$page-title-height: 37px;
+.eom-assessment {
+  min-height: calc(100vh - #{$footer-height} - #{$content-padding-top} - #{$page-title-height} - #{$content-padding-vertical} - 68px);
+  padding: 0;
+}
+
+.loading-screen {
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}

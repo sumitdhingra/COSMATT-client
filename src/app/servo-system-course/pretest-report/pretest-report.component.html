@@ -1,0 +1,58 @@
+<!--<ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+  <li class="breadcrumb-item"><a routerLink='/app/courses'>Home</a></li>
+  <li class="breadcrumb-item"><a routerLink='../introduction'>Servo System Training</a></li>
+  <li class="breadcrumb-item"><a routerLink='../pretest'>Pretest</a></li>
+  <li class="breadcrumb-item active">Report</li>
+</ol>
+<h2 class="page-title fw-normal"><span class="fa fa-book title-icon mr-sm"></span>Fundamentals - <span class="fw-semi-bold">Pretest Report</span></h2>-->
+<section class="go-to-course-container widget border-top-theme mb-xlg">
+  <section class="test-summary widget bg-primary text-white">
+    <div class="widget-body clearfix">
+      <div class="fs-larger">
+        <table class="summary-table">
+          <tr>
+            <td class="col1">
+              <label class="mr-md">Total Questions:</label>
+            </td>
+            <td class="col2">
+              <label>{{preTestResponses.length}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="col1">
+              <label class="mr-md">Questions Attempted:</label>
+            </td>
+            <td class="col2">
+              <label>{{attemptedQues}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="col1">
+              <label class="mr-md">Correctly Answered:</label>
+            </td>
+            <td class="col2">
+              <label>{{correctQues}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="col1">
+              <label class="mr-md">Incorrectly Answered:</label>
+            </td>
+            <td class="col2">
+              <label>{{incorrectQues}}</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="go-to-course">
+    <div class="goto-text lead mb-0">
+      <label>Course content has been customized based on your performance. Some topics of <span class="fw-semi-bold">Fundamentals</span> chapter have been marked <span class="fw-semi-bold">Completed</span> which you may skip reading.</label>
+    </div>
+    <div class="goto-btn text-center">
+      <button type="button" class="btn btn-inverse btn-lg mb-xs" (click)="goToCourseClicked()">Go To Fundamentals</button>
+    </div>
+  </section>
+</section>
+<app-assessment-report [responses]="preTestResponses"></app-assessment-report>

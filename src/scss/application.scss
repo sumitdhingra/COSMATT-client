@@ -1,0 +1,30 @@
+/* TEMPLATE SCSS*/
+$fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
+
+@import "theme/variables";
+@import "theme/mixins";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+//added font libraries directly in angular-cli.json
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+//@import "../../node_modules/glyphicons-halflings/scss/glyphicons-halflings";
+@import "../../node_modules/animate.css/animate";
+@import "../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox";
+@import "../../node_modules/bootstrap-select/dist/css/bootstrap-select";
+@import "theme/bootstrap-override";
+@import "theme/libs-override";
+//end custom libs
+//everything below this line is required for essential styling
+@import "theme/font";
+@import "theme/general";
+@import "theme/global-transitions";
+@import "theme/base";
+@import "theme/utils";
+@import "theme/print";
+@import "theme/widgets";
+
+/* APPLICATION SCSS*/
+
+@import "global";

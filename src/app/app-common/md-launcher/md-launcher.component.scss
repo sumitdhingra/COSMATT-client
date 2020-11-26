@@ -1,0 +1,25 @@
+.md-launcher {
+  height: 726px;
+  width: auto;
+  &.border-top-theme {
+    border-top: none;
+  }
+  .md-viewer{
+    border-top: none;
+    padding-top: 0px;
+    blockquote{
+     border-left: none; 
+    }
+    #md-content{
+      li{
+        list-style-type: disc;
+      }
+      #about-cosmatt-advanced-course{
+        font-size: 24px;
+				font-weight: 400;
+				font-family: "Open Sans";
+				color: #5b5b5b;
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+/* Global scss */
+
+body {
+  overflow-y: auto;
+  height: 100%;
+  .cosmatt-app {
+    // overflow-y: auto;
+    // overflow-x: hidden;
+    // height: calc(100% - (#{$navbar-height + $footer-height}));
+
+    // Changing height and padding top to remove always-on-scroll
+    height: 100%;
+    padding-top: $navbar-height;
+    // margin-top: $navbar-height;
+  }
+}
+.border-top-app-theme{
+  border-top: $app-theme-border-width solid $app-theme-border-color;
+}
+
+.border-top-theme {
+  border-top: 5px solid;
+  @include themify('border-top-color');
+}
+
+.border-top-color-theme {
+  @include themify('border-top-color');
+}
+
+.border-bottom-theme {
+  border-bottom: 5px solid;
+  @include themify('border-bottom-color');
+}
+
+.border-bottom-color-theme {
+  @include themify('border-bottom-color');
+}
+
+.background-color-theme {
+  @include themify('background-color');
+}
+
+.border-top-product-theme {
+  border-top: 5px solid;
+  @include themifyProductCard('border-top-color');
+}
+.border-bottom-color-product-theme {
+  @include themifyProductCard('border-bottom-color');
+}
+
+//TOC theme color based on theme
+.toc-background-color-theme {
+  @include themify('background-color', 
+  ( 'red': $toc-background-color-red,'blue': $toc-background-color-blue, "green": $toc-background-color-green));
+}
+.toc-active-background-color-theme {
+  @include themify('background-color', 
+  ( 'red': $toc-active-background-color-red,'blue': $toc-active-background-color-blue, "green": $toc-active-background-color-green));
+}
+.toc-hover-background-color-theme:hover:not(.toc-active-background-color-theme) { 
+  @include themify('background-color', 
+  ( 'red': $toc-hover-background-color-red,'blue': $toc-hover-background-color-blue, "green": $toc-hover-background-color-green));
+}
+.toc-timeline-background-color-theme {
+  @include themify('background-color', 
+  ( 'red': $toc-timeline-background-color-red,'blue': $toc-timeline-background-color-blue, "green": $toc-timeline-background-color-green));
+}
+.toc-section-title-color-theme {
+  @include themify('color', 
+  ( 'red': $toc-section-title-color-red,'blue': $toc-section-title-color-blue, "green": $toc-section-title-color-green));
+}
+.sidebar-item-color-theme {
+  @include themify('color', 
+  ( 'red': $sidebar-item-color-red,'blue': $sidebar-item-color-blue, "green": $sidebar-item-color-green));
+}
+.sidebar-item-click-color-theme {
+  @include themify('color', 
+  ( 'red': $sidebar-item-click-color-red,'blue': $sidebar-item-click-color-blue, "green": $sidebar-item-click-color-green));
+}
+.sidebar-item-background-color-theme:hover{ 
+  @include themify('background-color', 
+  ( 'red': $sidebar-item-background-color-red,'blue': $sidebar-item-background-color-blue, "green": $sidebar-item-background-color-green));
+}
+
+.sidebar-close-button-hover-background-color:hover {
+  @include themify('background-color', 
+  ( 'red': $sidebar-close-button-hover-background-color-red,'blue': $sidebar-close-button-hover-background-color-blue, "green": $sidebar-close-button-hover-background-color-green));
+}
+
+
+
+.color-theme {
+  @include themify('color');
+}
+
+.user-select-none {
+  @include user-select(none);
+}
+
+.page-title .title-icon {
+  font-size: larger;
+}
+
+svg {
+  outline: none !important;
+}
+
+.cosmatt-breadcrumbs {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.mt-9 {
+  margin-top: 9rem;
+}
+
+.display-none {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.widget-login-container .widget-login alert {
+  .alert {
+    // padding: 5px 10px !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.tooltip-inner {
+  background-color: #fffde7;
+  color: #1d1d1d;
+  font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 8px;
+}
+
+.tooltip.tooltip-right .tooltip-inner::before,
+.tooltip.bs-tether-element-attached-left .tooltip-inner::before {
+  border-right-color: #fffde7;
+}
+
+.tooltip.tooltip-bottom .tooltip-inner::before,
+.tooltip.bs-tether-element-attached-left .tooltip-inner::before {
+  border-bottom-color: #fffde7;
+}
+
+.tooltip.tooltip-top .tooltip-inner::before,
+.tooltip.bs-tether-element-attached-left .tooltip-inner::before {
+  border-top-color: #fffde7;
+}
+
+.tooltip.tooltip-left .tooltip-inner::before,
+.tooltip.bs-tether-element-attached-left .tooltip-inner::before {
+  border-left-color: #fffde7;
+}
+.pull-right{
+  float: right;
+}
+
+/* Fix for mac hiding scroll bars
+.cosmatt-widget ::-webkit-scrollbar,
+.code-math::-webkit-scrollbar {
+  -webkit-appearance: slider-horizontal;
+  height: 7px;
+}
+.cosmatt-widget ::-webkit-scrollbar-thumb,
+.code-math::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: darkgray;
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+*/

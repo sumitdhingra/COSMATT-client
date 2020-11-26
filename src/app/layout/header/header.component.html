@@ -1,0 +1,102 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top navbar-dashboard">
+  <button *ngIf="appDataService.getUser()" class="navbar-toggler navbar-toggler-right mt-2" type="button"
+    data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand fw-bold text-white cosmatt-logo-black" [ngClass]="{'is-login-page': location.path().startsWith('/auth/login')}"
+    (click)="logoClicked()"><img src="assets/img/logo/COSMATT-new-logo.png" alt="COSMATT"></a>
+  <span *ngIf="showCourseLogo" id="logo-divider"><span class="logo-divider"></span></span>
+  <img class="logo-image" *ngIf="showCourseLogo" src="{{courseLogoPath}}" alt="Course Logo">
+  <div class="collapse navbar-collapse" id="navbarNav" *ngIf="appDataService.getUser()">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item" *ngIf="showDashboard.about">
+        <a class="nav-link" (click)="courseIntroClicked()">
+          <i class="fab fa-leanpub fa-lg mr-2"></i>About</a>
+      </li>
+      <li class="nav-item" *ngIf="showDashboard.progress">
+        <a class="nav-link" (click)="dashboardClicked()">
+          <i
+            class="fas fa-tachometer-alt fa-lg mr-2"></i>{{appDataService.getUserRole() == UserRole.Student ? 'My Progress' : 'View Class'}}</a>
+      </li>
+      <!-- <li class="nav-item dropdown" *ngIf="appMode == AppMode.SizingApp">
+                <a href class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-floppy-o fa-lg mr-2"></i>Save Application<b class="caret"></b>
+                </a>
+                <div class="dropdown-menu user-options-menu dropdown-menu-right">
+                    <ul class="list-unstyled">
+                        <li><a class="dropdown-item" (click)="onSaveToDiskClick()"><i class="fa fa-hdd-o"></i> &nbsp; Save to Disk</a></li>
+                        <!-- <li><a class="dropdown-item" disabled (click)="onSaveToGoogleDriveClicked()"><i class="fa fa-google"></i> &nbsp; Save to Google Drive</a></li> -->
+      <!-- </ul>
+                </div>
+            </li>  -->
+      <!-- <li class="nav-item dropdown">
+
+            </li> -->
+      <li class="nav-item dropdown">
+        <a href class="nav-link dropdown-toggle" id="users-drop-down" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fa fa-user fa-lg mr-2"></i>{{appDataService.getUser().name}}
+          <b class="caret"></b>
+        </a>
+        <div class="dropdown-menu user-options-menu dropdown-menu-right" aria-labelledby="users-drop-down">
+          <ul class="list-unstyled">
+            <li>
+              <a class="dropdown-item" (click)="myAccountClicked()"><i class="fa fa-user"></i> &nbsp; My Account</a>
+            </li>
+
+            <li *ngIf="showDashboard.setting">
+              <a class="dropdown-item dropdown-toggle" id="settings-drop-down" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cog fa-lg mr-2"></i>Settings
+                <!-- <b class="caret"></b> -->
+              </a>
+              <div class="dropdown-menu settings-menu"  aria-labelledby="settings-drop-down">
+                <ul class="list-unstyled" *ngIf="showDashboard.theme">
+                  <li class="color-theme-settings" >
+                    <h5 class="fw-normal color-theme-heading mt-0">Theme Colors</h5>
+                    <ul class="color-themes-list list-unstyled">
+                      <li *ngFor="let theme of colorThemes; let i = index" class="display-inline-block">
+                        <a class="dropdown-item no-padding mr-xs" [ngClass]="theme" (click)="applyTheme(theme, i)"
+                          [class.selected]="i == selectedColor">
+                          <i class="fa fa-2x fa-square" *ngIf="i != selectedColor"></i>
+                          <i class="fa fa-2x fa-check-square" *ngIf="i == selectedColor"></i>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                  <li class="reset-section" *ngIf="showDashboard.resetSection">
+                    <a (click)="onResetCurrentSection()">
+                      <i class="fas fa-redo-alt"></i>
+                      Reset Section
+                    </a>
+                  </li>
+                  <!-- <li class="unit-theme-settings">
+                          <h5 class="fw-normal color-theme-heading mt-0">Unit Systems</h5>
+                          <div class="btn-group">
+                            <label class="btn btn-primary btn-sm" (click)="changeUnitSystem(unitSystem.metric)" [ngModel]="this.appDataService.getUnitSystem()"
+                              btnRadio="{{unitSystem.metric}}">Metric</label>
+                            <label class="btn btn-primary btn-sm" (click)="changeUnitSystem(unitSystem.imperial)" [ngModel]="this.appDataService.getUnitSystem()"
+                              btnRadio="{{unitSystem.imperial}}">Imperial</label> -->
+                  <!-- <label class="btn btn-primary" [(ngModel)]="checkModel.middle" btnCheckbox>Imperial</label> -->
+                  <!-- </div> -->
+                  <!-- <ul class="color-themes-list list-unstyled">
+                                                  <li *ngFor="let unitSystem of unitSystems;">
+                                                      <i (click)="changeUnitSystem(unitSystem)" [ngClass]="{'fa': true, 'fa-1x': true, 'fa-square': unitSystem != this.appDataService.getUnitSystem(), 'fa-check-square' : unitSystem == this.appDataService.getUnitSystem()}"></i>                                    {{unitSystem}}
+                                                  </li>
+                                              </ul> -->
+                  <!-- </li> -->
+                </ul>
+              </div>
+            </li>
+
+            <li>
+              <a class="dropdown-item" (click)="onLogout()"><i class="fas fa-sign-out-alt"></i> &nbsp; Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

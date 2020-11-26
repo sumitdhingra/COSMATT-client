@@ -1,0 +1,30 @@
+<main class="grav-container" role="main">
+  <div class="cntr-info row">
+
+    <div class="info-image col-12 row">
+      <!--<span class=""><i class="fa fa-user" aria-hidden="true"></i></span>-->
+      <div class="col-12 img-cntr">
+        <img class="user-avatar img-responsive" [src]="gravatarPictureUrl"/>
+      </div>
+      <div class="col-12 update-link-cntr">
+        <a href="https://www.gravatar.com" target="_blank">Update image</a>
+      </div>
+    </div>
+    
+    <div class="info-about col-12 row">
+      <div class="col-12">
+        <div class="row">
+          <span class="col-12 col-sm-4 col-md-4 col-lg-3 label">Name: </span>
+          <span class="col-12 col-sm-8 col-md-8 col-lg-9 value">{{userBasics.name}}</span>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <span class="col-12 col-sm-4 col-md-4 col-lg-3 label">E-mail: </span>
+          <span class="col-12 col-sm-8 col-md-8 col-lg-9 value">{{userBasics.email}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

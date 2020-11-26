@@ -1,0 +1,47 @@
+<section class="bg-f3">
+  <div class="loading-screen2" [hidden]="!loading">
+    <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+  </div>
+
+  <div class="title-time-spent-container bg-white">
+    <h4 class="title fw-semi-bold mb-md">
+      <span class="title-icon"><i class="fas fa-user-friends"> </i></span>Students Login
+    </h4>
+  </div>
+
+  <!-- <div class="tab-menu-container bg-white">
+    <ul class="nav bb">
+      <li class="nav-item">
+        <a class="nav-link overall" [ngClass]="{'active':mode=='overall', 'btn-default':mode=='chapterWise'}" (click)="onModeChange('overall')">
+          Overall
+        </a>
+      </li>
+      <li class="nav-item separator">
+        <a class="nav-link">
+          <div class="v-rule"></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active':mode=='chapterWise', 'btn-default':mode=='overall'}" (click)="onModeChange('chapterWise')">
+          Chapter-Wise
+        </a>
+      </li>
+    </ul>
+  </div> -->
+
+  <div class="graph-container bg-f3">
+    <div *ngIf="mode == 'overall'" class="row mx-0 bg-f3">
+      <div class="container pull-right pt-2 mr-4">
+        <select class="custom-select pull-right" (change)="onTimeModeChange()" id="timeSpentModeDropDown">
+          <option *ngFor="let modeOption of timeModeList | keys" [value]="modeOption" [selected]="modeOption === timeMode ? 'selected' : ''">{{timeModeList[modeOption].displayName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="px-3 bg-f3">
+      <div class="loading-screen3 bg-f3 px-0 mx-0" [hidden]="!loadingTimeMode">
+        <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+      </div>
+      <div class="time-spent-graph" [ngClass]="{'time-spent-graph-chapter':mode != 'overall'}"></div>
+    </div>
+  </div>
+</section>

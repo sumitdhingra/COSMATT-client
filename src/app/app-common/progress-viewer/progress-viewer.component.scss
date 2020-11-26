@@ -1,0 +1,209 @@
+@import "../../../scss/theme/_variables";
+.title {
+    .title-font {
+        font-size: $font-size-18
+    }
+}
+
+.progress-list {
+    .lo-count-td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    .title-td {
+        width: 70%;
+        vertical-align: middle;
+    }
+    .progress-td {
+        width: 30%;
+        vertical-align: middle;
+        .progressbar-container {
+            width: 80%;
+            display: inline-block;
+            .progress {
+                height: 10px;
+                background-color: #D0D0D0;
+                .progress-bar {
+                    background-color: #0064B4;
+                }
+            }
+        }
+        .progress-text {
+            margin-top: -2px;
+        }
+    }
+}
+
+.card {
+    .card-header {
+        background-color: #ffffff;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+        .arrow-div {
+            padding-right: 5px;
+        }
+    }
+}
+
+.accordion-toggle {
+    display: table-row;
+    width: 100%;
+    .arrow:before {
+        font-family: 'Glyphicons Halflings';
+        content: "\e114";
+        float: left;
+        color: grey;
+        padding-right: 5px;
+    }
+}
+
+.accordion-toggle.collapsed {
+    .arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .arrow:before {
+        content: "\e080";
+    }
+}
+
+#learningObjectiveAccordion {
+    .table {
+        cursor: pointer !important;
+    }
+    .learningObjectiveHeader {
+        padding-left: 9px;
+        padding-right: 7px;
+        min-height: 64px;
+        display: inline-flex;
+        align-items: center;
+    }
+    .lo-items.collapse.show {
+        // display: inline-flex !important;
+        // align-items: center;
+        // min-height: 54px;
+    }
+    .learningObjectives-card {
+        padding: 0 22px 0 49px;
+        .table-hover tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+    }
+    .first-td {
+        width: 5%;
+        vertical-align: middle;
+    }
+    td.obj-name {
+        width: 55%;
+        font-size: $font-size-18;
+        @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+            font-size: $font-size-16;
+            width: 50%;
+        }
+        @media screen and (min-width: 1440px) {
+            width: 60%;
+        }
+    }
+    .progress-td {
+        width: 40%;
+        // width: 100%;
+        // display: inline-flex;
+        // justify-content: flex-end;
+        // align-items: center;
+        vertical-align: middle;
+        text-align: right;
+        @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+            width: 45%;
+        }
+        @media screen and (min-width: 1440px) {
+            width: 35%;
+        }
+        .progressbar-container {
+            // flex-basis: 40%;
+            width: 40%;
+            @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+                width: 25%;
+            }
+            display: inline-block;
+            .progress {
+                height: 10px;
+                background-color: #D0D0D0;
+                .progress-bar {
+                    background-color: #0064B4;
+                }
+            }
+        }
+        .progress-text {
+            margin-top: -2px;
+            display : inline-block;
+            text-align: center;
+        }
+    }
+    tr.tr-height {
+        height: 54px;
+        td {
+            vertical-align: middle;
+        }
+    }
+    .section-name-td {
+        width: 60%;
+        @media screen and (max-width: $breakpoint-width), screen and (max-height: $breakpoint-height) {
+            width: 50%;
+        }
+    }
+    .right-info {
+        display: table-cell;
+        vertical-align: middle;
+
+        .time-status {
+            color: #000000;
+            .text-gray {
+                color: gray;
+            }
+        }
+        .small-circle {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid darkgray;
+            border-radius: 50%;
+            .fa-check {
+                color: #3FA612;
+            }
+        }
+        .fa.fa-circle {
+            color: darkgray;
+            padding-left: 4px;
+            padding-right: 3px;
+            font-size: 14px;
+        }
+        
+        .far.fa-circle {
+            color: darkgray;
+            font-size: 10px;
+            padding-left: 4px;
+            padding-right: 5px;
+        }
+    }
+}
+
+.thead-default {
+    th {
+        text-transform: none;
+    }
+}
+
+.font-size-small {
+    font-size: $font-size-14;
+}
+
+.card:has(.collapse.show) {
+    border: 1px solid black
+}

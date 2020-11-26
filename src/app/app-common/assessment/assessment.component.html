@@ -1,0 +1,138 @@
+<section class="widget assessment-container no-margin"
+[ngClass]="{'boxed border-top-color-theme': !assessmentConfig.config.useMinimalUI,
+            'minimal': assessmentConfig.config.useMinimalUI,
+            'full-page-view': assessmentConfig.config.useFullPageView
+          }"
+  widget>
+  <div class="widget-body">
+    <!-- QUESTION NAVIGATOR PART -->
+    <div class="assessment-header" *ngIf="assessmentConfig.config.showQuestionNavigator">
+      <div class="total-questions fw-bold mr-3">Question {{quesIndex + 1}} of {{activityDataContent.length}}</div>
+      <div class="question-separator mr-4"></div>
+      <div class="quesState fw-normal disable-select">
+        <div class="ques-nav">
+
+          <span class="mr-2 ques-nav-item prev-ques" [attr.disabled]="quesIndex==0 ? 'disabled' : null" [ngClass]="{'disabled': quesIndex==0}"
+            (click)="prevBtnClicked()" tooltip="Previous Question" placement="bottom" container="body">
+            <span class="value fa fa-chevron-left" [ngClass]="{'disabled': quesIndex==0}"></span>
+          </span>
+
+          <span class="question-palette">
+
+            <span class="mr-2 ques-nav-item ques-inst" *ngFor="let ques of questionsArr" (click)="questionNavClicked(ques)" [ngClass]="{'selected-question background-color-theme':ques==quesIndex}">
+              <span class="value" [ngClass]="{'fw-bold':ques==quesIndex}">{{ques+1}}</span>
+              <span *ngIf="ques==quesIndex" class="current-question-pointer border-top-color-theme"></span>
+            </span>
+
+          </span>
+
+          <span class="mr-2 ques-nav-item next-ques" [ngClass]="{'disabled': quesIndex==activityDataContent.length-1}" (click)="nextBtnClicked()"
+            tooltip="Next Question" placement="bottom" container="body">
+            <span class="value fa fa-chevron-right" [ngClass]="{'disabled': quesIndex==activityDataContent.length-1}"></span>
+          </span>
+
+        </div>
+      </div>
+      <div class="next-prev">
+        <button class="btn btn-inverse" [attr.disabled]="quesIndex==0 ? 'disabled' : null" (click)="prevBtnClicked()">Previous Question</button>
+        <button class="btn btn-inverse" [attr.disabled]="quesIndex==activityDataContent.length-1 ? 'disabled' : null" (click)="nextBtnClicked()">Next Question</button>
+      </div>
+    </div>
+
+    <!-- LOADING SCREEN FOR ASSESSMENT -->
+    <div class="loading-screen2" [hidden]="!loading">
+      <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+    </div>
+
+    <!-- DIV FOR TESTRUNNER'S IFRAME -->
+    <div class="question-container" [ngClass]="{'full-page-view': assessmentConfig.config.useFullPageView}">
+      <div class="inner iframeContainer text-center" id="{{getUniqueTestId()}}">
+      </div>
+    </div>
+
+    <!-- Show horizonal line only if using minimal UI -->
+    <div *ngIf="assessmentConfig.config.showCMWButton" class="separator" [ngClass]="{'minimal': assessmentConfig.config.useMinimalUI, 'hidden-loading': (loading)}"></div>
+
+    <!-- ASSESSMENT INTERACTION PART -->
+    <div class="interaction" [ngClass]="{'minimal': assessmentConfig.config.useMinimalUI}">
+      <!--<span *ngIf="attemptDetails.status != 'completed'">-->
+      <button class="btn btn-link fw-normal hint-btn display-inline-block"
+      *ngIf="assessmentConfig.config.showHintButton"
+      [attr.disabled]="(loading || tryAgainMode || disableShowHintButton) ? 'disabled' : null"
+      (click)="hintButtonClicked()" 
+      [ngClass]="{'hidden-loading': loading, 'hidden': (!displayHintButtons)}">
+        <em class="fa fa-lightbulb-o mr-2"></em>{{hintButtonText}}
+      </button>
+    
+    <div *ngIf="assessmentConfig.config.showHintButton" [ngClass]="{'hidden-loading': loading, 'hidden': (!displayHintButtons)}" class="vertical-separator"></div>
+      
+      <!-- hide the hide hint button for now and will be enabled in case of sequence hints when there is an scenario -->
+      <!-- <button class="btn btn-link fw-normal hint-btn display-inline-block"
+      *ngIf="assessmentConfig.config.showHintButton"
+      [attr.disabled]="(loading || tryAgainMode || disableHideHintButton ) ? 'disabled' : null"
+      (click)="hideHintBtnClicked()"
+      [ngClass]="{'hidden': (!displayHintButtons)}">
+        <em class="fa fa-lightbulb-o mr-2"></em>Hide Hint
+      </button>
+      
+      <div *ngIf="assessmentConfig.config.showHintButton" [ngClass]="{'hidden': (!displayHintButtons)}" class="vertical-separator"></div> -->
+
+      <button title={{checkMyWorkTitle}} class="btn btn-link fw-normal check-my-work-btn display-inline-block"
+        *ngIf="assessmentConfig.config.showCMWButton"
+        [attr.disabled]="checkAnsDisable ? 'disabled' : loading || checking ? 'disabled' : null"
+        [ngClass]="{'hidden-loading': (loading)}"
+        (click)="checkMyWorkBtnClicked()">
+        <i [ngClass]="{'fas': true, 'mr-2' : true, 'fa-check' : !tryAgainMode, 'fa-sync-alt' : tryAgainMode}" class="fa fa-check mr-2">
+        </i>
+        {{checkMyWorkText}}
+      </button>
+
+      <!-- Show vertical separator for previous CMW button -->
+      <div *ngIf="assessmentConfig.config.showCMWButton" [ngClass]="{'hidden-loading': (loading)}" class="vertical-separator"></div>
+
+      <button 
+      title="Clears all the entries that you have added to the sheet"
+      *ngIf="assessmentConfig.config.showResetButton"  class="btn btn-link fw-normal reset-btn display-inline-block" [ngClass]="{'hidden-loading': (loading)}" [attr.disabled]="(loading || tryAgainMode) ? 'disabled' : null"
+        (click)="reset()" >
+        <i class="fas fa-redo-alt mr-2"></i>Reset
+      </button>
+
+      <!-- Show vertical separator for previous Reset button -->
+      <div *ngIf="assessmentConfig.config.showSubmitButton" class="vertical-separator mx-4" [ngClass]="{'invisible': assessmentConfig.type === assessmentType.Summative}">
+      </div>
+      <!--  -->
+      
+
+      <button *ngIf="assessmentConfig.config.showSubmitButton" class="btn btn-inverse float-right" [attr.disabled]="(loading || checking || tryAgainMode) ? 'disabled' : (attemptDetails.status == 'completed') ? 'disabled' : null"
+        [ngClass]="{'ml-auto': assessmentConfig.type === assessmentType.Summative}"
+        (click)="submitTestBtnClicked()">Submit
+      </button>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL TO BE SHOWN ON SUBMISSION -->
+<div class="modal fade" id="reportModal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fw-semi-bold" id="myModalLabel">Confirm Submission</h4>
+      </div>
+      <div class="modal-body">
+        <p [hidden]="submitting">Are you sure you want to submit your assessment?</p>
+        <div [hidden]="!submitting" class="loading-screen2 text-center">
+          <div>Submitting your responses...</div>
+          <div>
+            <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer text-right">
+        <button [attr.disabled]="submitting ? 'disabled' : null" type="button" class="btn btn-default btn-md mb-xs" data-dismiss="modal">No</button>
+        <button [attr.disabled]="submitting ? 'disabled' : null" type="button" (click)="submitTest()" class="btn btn-inverse btn-md mb-xs">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

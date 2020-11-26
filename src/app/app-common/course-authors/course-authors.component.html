@@ -1,0 +1,172 @@
+<div class="course-authors">
+    <section class="author-section widget" widget="">
+        <div class="page-title-block">
+            <div class="page-title">
+                <!-- <div class="cosmatt-logo"><img  src="assets/img/logo/acct-logo3.png"></div> -->
+                <div class="course-title">{{titleData.title}}</div>
+                <div class="fw-semi-bold author-by">By:</div>
+                <div class="author-name" *ngFor="let courseAuthor of this.courseAuthors;let lastIndex=last">
+                    {{courseAuthor.firstname}} {{courseAuthor.lastname }}<div class="author-comma"
+                        [ngClass]="{'display-none': lastIndex}">,</div>
+                </div>
+                <div class="publisher-copyright">©2019
+                    <a target="_blank" href="http://www.comprotechnologies.com">
+                        Compro Technologies</a> All Rights Reserved
+                </div>
+            </div>
+        </div>
+        <!-- <h4 class="heading-title mt-n-0"><span class="fw-semi-bold">Authors</span></h4> -->
+        <div class="authore-title" *ngIf="showAuthorTitle">Authors</div>
+        <div class="row author-block">
+            <div class="col-12 col-lg-4 col-container" *ngFor="let courseAuthor of this.courseAuthors">
+                <div class="course-author-box fw-normal" *ngIf="courseAuthor.showprofile">
+                    <div class="top-band">
+                    </div>
+                    <div class="details-band text-center">
+                        <div class="intials-band text-white">
+                            <div class="initials">
+                                <img src="{{this.publicAssetsPath+'/'+courseAuthor.thumbnail}}" alt="img"
+                                    class="author-img" />
+                            </div>
+                        </div>
+                        <div class="name value5 fw-bold">
+                            {{courseAuthor.firstname}} {{courseAuthor.lastname }}
+                        </div>
+                        <div class="designation">
+                            {{courseAuthor.affiliation?courseAuthor.affiliation.jobtitle : '&nbsp;' }}
+                        </div>
+                        <div class="description description-collapsed" [innerHTML]="courseAuthor.bio">
+                        </div>
+                        <div class="see-more-link">
+                            <a class="" (click)="showAuthDetails(courseAuthor)">See More..</a>
+                        </div>
+                        <hr class="hr-separator" />
+                        <div class="row">
+                            <!-- <div class="contact-number col-6 text-right">
+                                <a class="author-phone" href="tel://{{courseAuthor.contact.phone}}"><i class="fa fa-phone"></i> {{courseAuthor.contact.phone}}</a>
+                            </div> -->
+                            <div class="location col-12 text-center">
+                                <i class="fa fa-map-marker"></i>
+                                <a href="https://goo.gl/maps/qVyZnKFaKUv" target="_blank">{{courseAuthor.contact.city}},
+                                    {{courseAuthor.contact.country}}</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="email">
+                                    <i class="fa fa-envelope"></i>
+                                    <a class="author-phone" href="mailto://{{courseAuthor.contact.email}}"
+                                        title="{{courseAuthor.contact.email}}">&nbsp;{{courseAuthor.contact.email}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="social-links"
+                                    *ngIf="courseAuthor.contact.linkedin || courseAuthor.contact.twitter">
+                                    <a *ngIf="courseAuthor.contact.linkedin"
+                                        class="btn linkedin-button-container no-padding"
+                                        [href]=courseAuthor.contact.linkedin target="_blank">
+                                        <i class="fab fa-2x fa-linkedin linkedin-logo-color"></i>
+                                    </a>
+                                    <a *ngIf="courseAuthor.contact.twitter"
+                                        class="btn twitter-button-container no-padding"
+                                        [href]=courseAuthor.contact.twitter target="_blank">
+                                        <i class="fa fa-2x fa-twitter-square twitter-logo-color"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center social-links-empty"
+                            *ngIf="!courseAuthor.contact.linkedin && !courseAuthor.contact.twitter">
+                            <i class="fa fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="appModal" role="dialog" tabindex="-1" data-keyboard="true">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+
+
+                    <div class="modal-body padding-zero">
+
+                        <div class="col-container" *ngIf="this.courseAuthorDetails != undefined">
+
+                            <div class="course-author-box fw-normal">
+                                <div class="top-band modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="close-button">×</span>
+                                    </button>
+                                </div>
+                                <div class="details-band text-center">
+                                    <div class="modal-intials-band text-white">
+                                        <div class="modal-initials">
+                                            <img src="{{this.publicAssetsPath+'/'+this.courseAuthorDetails.thumbnail}}"
+                                                alt="img" class="author-img-cursor modal-author-img" />
+                                        </div>
+                                    </div>
+                                    <div class="name value5 fw-bold">
+                                        {{this.courseAuthorDetails.firstname}} {{this.courseAuthorDetails.lastname }}
+                                    </div>
+                                    <div class="designation">
+                                        {{this.courseAuthorDetails.affiliation?this.courseAuthorDetails.affiliation.jobtitle : '&nbsp;' }}
+                                    </div>
+                                    <div class="description" [innerHTML]="this.courseAuthorDetails.bio">
+                                    </div>
+                                    <hr class="hr-separator" />
+                                    <div class="row">
+                                        <!-- <div class="contact-number col-6 text-right">
+                                            <a class="author-phone" href="tel://{{this.courseAuthorDetails.contact.phone}}"><i class="fa fa-phone"></i> {{this.courseAuthorDetails.contact.phone}}</a>
+                                        </div> -->
+                                        <div class="location col-12 text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <a href="https://goo.gl/maps/qVyZnKFaKUv"
+                                                target="_blank">{{this.courseAuthorDetails.contact.city}},
+                                                {{this.courseAuthorDetails.contact.country}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="email">
+                                                <i class="fa fa-envelope"></i>
+                                                <a class="author-phone"
+                                                    href="mailto://{{this.courseAuthorDetails.contact.email}}"
+                                                    title="{{this.courseAuthorDetails.contact.email}}">&nbsp;{{this.courseAuthorDetails.contact.email}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="social-links"
+                                                *ngIf="this.courseAuthorDetails.contact.linkedin || this.courseAuthorDetails.contact.twitter">
+                                                <a *ngIf="this.courseAuthorDetails.contact.linkedin"
+                                                    class="btn linkedin-button-container no-padding"
+                                                    [href]=this.courseAuthorDetails.contact.linkedin target="_blank">
+                                                    <i class="fab fa-2x fa-linkedin linkedin-logo-color"></i>
+                                                </a>
+                                                <a *ngIf="this.courseAuthorDetails.contact.twitter"
+                                                    class="btn twitter-button-container no-padding"
+                                                    [href]=this.courseAuthorDetails.contact.twitter target="_blank">
+                                                    <i class="fa fa-2x fa-twitter-square twitter-logo-color"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center social-links-empty"
+                                        *ngIf="!this.courseAuthorDetails.contact.linkedin && !this.courseAuthorDetails.contact.twitter">
+                                        <i class="fa fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

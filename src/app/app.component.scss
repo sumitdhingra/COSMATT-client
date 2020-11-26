@@ -1,0 +1,48 @@
+@import "../scss/theme/variables";
+$font-size-footer: 12px;
+
+#content-wrap {
+  /*SAFARI bottom padding issue - COSMATT-1685 */
+  padding-bottom: 5px;
+
+  &.content-mode-view {
+    margin-top: -50px;
+  }
+}
+
+.content.app {
+    margin-bottom: 30px;
+}
+
+/* Absolute Center Spinner */
+
+.loading-screen {
+    z-index: 1032;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(20, 20, 20, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-footer {
+    font-size: $font-size-footer;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 1.0rem 0.5rem 1.0rem;
+    color: $black;
+    font-weight: 500;
+    background-color: $white;
+    border-top: 1px solid $cosmatt-layout-border;
+    z-index: 1050;
+    .dls-logo {
+        height: 18px;
+        vertical-align: text-bottom;
+    }
+}

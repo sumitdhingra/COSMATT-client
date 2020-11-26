@@ -1,0 +1,100 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+.course-about-page {    
+    .about-page-header{
+        margin-bottom: 20px;
+    }
+    .course-intro-container{
+        margin-left: -30px;
+        margin-right: -30px;
+        display: -webkit-box;          
+        display: -moz-box;             
+        display: -ms-flexbox;           
+        display: -webkit-flex;         
+        display: flex;                 
+    } 
+    
+    .left-nav-sidebar{        
+        background: #fff;       
+        flex: 0;                      
+        flex-basis: 350px;      
+        .left-nav-cotainer{
+          
+            position: sticky;
+            z-index: 1;
+            top: 30px;
+            left: 18px;
+            padding: 8px 0;
+            .left-pane-list{
+                list-style: none;
+                width: 100%;
+                max-width: 350px;
+                margin: 10px auto 20px;
+                background: #fff;
+                border-radius: 4px;
+                padding: 0;
+                margin-left: 20px;
+                li{
+                    cursor: pointer;
+                    display: block;
+                    padding: 5px 15px 7px 10px;                   
+                    position: relative;
+                  
+                   
+                    a{
+                        text-decoration: none;
+                        font-family: "Open Sans";
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #504f4f;
+                        padding: 5px 5px 0 5px;
+                    }
+                    a.active{                      
+                        color: #0166ad;
+                    }
+                   
+                }
+                li.active{
+                    font-weight: bold;
+                    color: #0166ad;                    
+                    background-image: url("/assets/img/border.png");
+                    background-repeat:no-repeat;
+                    background-position-y: center;
+                }
+                
+               
+            }
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1280px) {
+        
+        .left-nav-sidebar{   
+            flex-basis: 300px;
+        }
+        
+      }
+    @media (max-width: 1024px) {
+        .left-nav-sidebar{   
+            flex-basis: 260px;
+        }
+    }  
+    .right-container{
+        background: #fff;       
+        flex: 1;                        /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    }
+    .button-get-started{
+        margin-left: 10px;
+    }
+    .get-started-btnconta{
+        margin-top: 20px;
+    }
+    .cosmatt-breadcrumbs{
+        display: inline-block;
+        margin-top: 0;
+    }
+
+    
+   
+
+}

@@ -1,0 +1,17 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+
+
+
+#TSCurveArea {
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+}
+
+.cosmatt-unitComboBox .form-control[readonly], .tsCruveContainer .cosmatt-unitComboBox .form-control[disabled]{
+  background-color: #f8f8f8 !important;
+}
+.cosmatt-unitComboBox .spinner.input-group .input-group-addon .spin-up, .spinner.input-group .input-group-addon .spin-down{
+  font-size: 10px;
+}

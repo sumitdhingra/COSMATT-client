@@ -1,0 +1,71 @@
+<div class="row box-row">
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme start-date">
+    <div class="col-3 col-1279-12 box-icon">
+      <i class="far fa-calendar-alt"></i>
+    </div>
+    <div class="col-9 col-1279-12 row box-content">
+      <div class="col-12 box-heading">Start Date</div>
+      <div class="col-12 box-body">{{courseData.startDate ? utilsService.convertDateUtcToDateString(courseData.startDate): 'Not Started'}}</div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme days-elapsed">
+      <div class="col-3 col-1279-12 box-icon">
+        <i class="far fa-clock"></i>
+      </div>
+      <div class="col-9 col-1279-12 row box-content">
+        <div class="col-12 box-heading">Days Elapsed</div>
+        <div class="col-12 box-body">{{courseData.startDate ? utilsService.getDaysElapsed(courseData.startDate) + ' days': '0 days'}} </div>
+      </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme overall-progress">
+    <div class="col-3 col-1280-2 col-1279-12 box-icon">
+      <div class="pie-chart-container">
+        <span class="chart" [attr.data-percent]="courseData.courseProgress"></span>
+      </div>
+    </div>
+    <div class="col-9 col-1280-10 col-1279-12 row box-content">
+      <div class="col-12 box-heading">Overall Progress</div>
+      <div class="col-12 box-body">{{courseData.courseProgress ? courseData.courseProgress : 0}}%
+        <span class="text-warning">&nbsp;Complete</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-2 row box border-top-theme time-spent">
+      <div class="col-3 col-1279-12 box-icon">
+        <i class="fa fa-hourglass-start"></i>
+      </div>
+      <div class="col-9 col-1279-12 row box-content">
+        <div class="col-12 box-heading">Time Spent</div>
+        <div class="col-12 box-body" [title]="getOriginalTime()">
+          <span class="" *ngFor="let time of getSplitTime(); let index_time = index">
+            {{(index_time+1) !== getSplitTime().length ? (time+',&nbsp;') : (time + '&nbsp;')}}
+          </span>
+        </div>
+      </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-3 row box border-top-theme last-visited">
+      <div class="col-7 col-1279-12 row box-content">
+        <div class="col-12 box-heading">Last Visited</div>
+        <div class="col-12 box-body" 
+        title="{{courseData.lastActivity ? (lastActivityChapterNo + '.' + lastActivitySectionNo + ' ' + courseData.lastSection) : '-'}}">
+        {{courseData.lastActivity ? ((lastActivitySectionNo != -1) ?(lastActivityChapterNo + '.' + lastActivitySectionNo + ' ' + courseData.lastSection) : (lastActivityChapterNo + '.' + courseData.lastChapter))
+          : '-'}}
+        </div>
+      </div>
+      <div class="col-5 col-1279-12 box-aside">
+        <div class="v-rule">
+        </div>
+        <button class="btn btn-inverse btn-sm resume-button" (click)="lastActivityLinkClicked()">{{appDataService.getUserType() === userType.ExistingUser ? 'Resume' : 'Start Course'}}
+          <span class="circle bg-white button-get-started">
+            <i class="fa fa-arrow-right text-inverse"></i>
+          </span>
+        </button>
+      </div>
+  </div>
+
+</div>

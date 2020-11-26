@@ -1,0 +1,374 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../scss/theme/variables";
+
+/***********************************/
+
+
+/**             LOGIN             **/
+
+
+/***********************************/
+
+:host(.login-page) {
+  //background-color: $gray-semi-lighter;
+
+  .widget-login-container {
+    display: flex;
+    min-height: calc(100vh - 145px);
+    margin: 0 auto;
+    // align-items: center;
+    max-width: 583px;
+    & > div {
+      min-width: 100%;
+    }
+    .widget-header {
+      .title-line1 {
+        font-size: 30px;
+        margin-bottom: 32px;
+        .header-separator {
+          width: 1px;
+          height: 37px;
+          background-color: $gray2;
+          position: relative;
+          top: 10px;
+          margin: 0 5px;
+        }
+      }
+      .title-line2 {
+        font-size: $font-size-18;
+        margin-bottom: 16px;
+      }
+      .title-line3 {
+        margin-bottom: 32px;
+      }
+    }
+    .widget-login {
+      box-shadow: 0 2px 4px 2px rgba(0, 0, 0, .2);
+      .widget-body {
+        height: 260px;
+        &.invalid-cred {
+          height: 310px;
+          .login-form {
+            margin-top: 0 !important;
+          }
+          .submit-btn {
+            top: -29px !important;
+          }
+        }
+        .login-form {
+          .input-label {
+            font-size: $font-size-18;
+          }
+          padding: 5px 10px 20px;
+          .form-group {
+            margin-bottom: 8px;
+          }
+          .form-control {
+            font-size: $font-size-root;
+            border-bottom: 1px solid #cbcbcb !important;
+            border: 0px;
+            padding: 0 6px;
+            background-color: none;
+          }
+          .forgot-container {
+            min-width: 280px;
+            .abc-checkbox {
+              label {
+                padding-left: 0px;
+              }
+              /* Create the checkmark/indicator (hidden when not checked) */
+              label::after {
+                content: "";
+                position: absolute;
+                display: none;
+              }
+              /* When the checkbox is checked, add a blue background */
+              input:checked ~ label::before {
+                background-color: #2069a2;
+              }
+              /* Style the checkmark/indicator */
+              label::after {
+                left: 6px;
+                top: 4px;
+                width: 5px;
+                height: 11px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+              /* Show the checkmark when checked */
+              input:checked ~ label:after {
+                display: block;
+              }
+            }
+            .forgot-separator {
+              width: 1px;
+              height: 24px;
+              background-color: #cbcbcb;
+              position: relative;
+              top: 5px;
+              margin: 0 5px;
+            }
+          }
+        }
+        .submit-btn {
+          font-size: 40px;
+          cursor: pointer;
+          position: relative;
+          top: -34px;
+          color: #565656;
+        }
+        .custom-hidden {
+          height: 0;
+          width: 0;
+          border: 0;
+          padding: 0
+        }
+      }
+      .login-footer {
+        .sign-up {
+          display: flex;
+          align-items: flex-start;
+          height: 100%;
+          margin-top: 3px;
+          div {
+            margin-left: 15px;
+          }
+        }
+        height: 118px;
+        background-color: #f7f7f7;
+        font-size: $font-size-16;
+        vertical-align: middle;
+        .link-container{
+          display: flex;
+          align-items: center;
+          margin-right: 90px;
+          .link-style{
+            border: 1px solid #ACACAC;
+            border-radius: 8px;
+            background-color: white;
+            height: 35px;
+            margin: 8px;
+            width: 100%;
+            padding-top: 3px;
+            cursor: pointer;
+          }
+        }
+        .ic {
+          display: block;
+          height: 30px;
+          width: 190px;
+          .social-icon{ 
+          background-repeat: no-repeat;
+          background-size: 18px;
+          width: 20px;
+          height: 20px;
+          float: left;
+          margin: 1px 5px 0 9px; } 
+        }
+        .ic-google {
+         
+          color: #000;
+          .social-icon{
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNi4ycHgiIGhlaWdodD0iMjYuMXB4IiB2aWV3Qm94PSIwIDAgMjYuMiAyNi4xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNi4yIDI2LjE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiM0Mjg1RjQ7fQ0KCS5zdDF7ZmlsbDojMzRBODUzO30NCgkuc3Qye2ZpbGw6I0ZCQkMwNTt9DQoJLnN0M3tmaWxsOiNFQjQzMzU7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yNS4yLDEzLjRjMC0xLTAuMS0xLjctMC4zLTIuNUgxMy41djQuNWg2LjdjLTAuMSwxLjEtMC45LDIuOC0yLjUsNGwwLDAuMmwzLjYsMi44bDAuMywwDQoJCUMyMy45LDIwLjIsMjUuMiwxNy4xLDI1LjIsMTMuNCIvPg0KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMy41LDI1LjNjMy4zLDAsNi4xLTEuMSw4LjEtM2wtMy45LTNjLTEsMC43LTIuNCwxLjItNC4yLDEuMmMtMy4yLDAtNi0yLjEtNi45LTUuMWwtMC4xLDBsLTMuOCwyLjlsMCwwLjENCgkJQzQuNiwyMi42LDguNywyNS4zLDEzLjUsMjUuMyIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik02LjUsMTUuNWMtMC4zLTAuOC0wLjQtMS42LTAuNC0yLjRjMC0wLjgsMC4xLTEuNywwLjQtMi40bDAtMC4ybC0zLjgtM0wyLjYsNy42Yy0wLjgsMS43LTEuMywzLjUtMS4zLDUuNQ0KCQlzMC41LDMuOCwxLjMsNS41TDYuNSwxNS41Ii8+DQoJPHBhdGggY2xhc3M9InN0MyIgZD0iTTEzLjUsNS42YzIuMywwLDMuOCwxLDQuNywxLjhsMy40LTMuNGMtMi4xLTItNC45LTMuMi04LjItMy4yYy00LjgsMC04LjksMi43LTEwLjksNi43bDMuOSwzLjENCgkJQzcuNSw3LjgsMTAuMyw1LjYsMTMuNSw1LjYiLz4NCjwvZz4NCjwvc3ZnPg0K);
+        
+          }
+        }
+        .ic-facebook {
+        
+          color: #000;
+        .social-icon{
+          background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEyOCAxMjgiIGhlaWdodD0iMTI4cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxnPjxjaXJjbGUgY3g9IjY0IiBjeT0iNjQiIGZpbGw9IiMxNzZBRTYiIHI9IjY0Ii8+PC9nPjxnPjxwYXRoIGQ9Ik04Ny4zMDgsODEuMDExbDIuNzM4LTE2Ljc1NmgtMTkuMzlWNTEuNDc5YzAtNS4yNzYsMS40MTUtOS4wMjksOC45ODEtOS4wMjlsMTEuMiwwLjAwNVYyNS41NTkgICAgYzAsMC03LjEwOC0xLjU1OS0xMy43NzYtMS41NTljLTEzLjkxNSwwLTIzLjEyNCw5LjE5LTIzLjEyNCwyNC43OXYxNS40NjZIMzcuMTYydjE2Ljc1NmgxNi43NzF2NDYuMTkzICAgIGMzLjI4MSwwLjUxOSw2LjY0MiwwLjc5NSwxMC4wNjcsMC43OTVjMi4yNDgsMCw0LjQ2OC0wLjExOSw2LjY1Ni0wLjM0NVY4MS4wMTFIODcuMzA4eiIgZmlsbD0iI0ZGRkZGRiIvPjwvZz48L2c+PC9zdmc+);
+        }
+        }
+        .mdc-typography--subtitle2 {
+        font-family: 'Open Sans Semibold', sans-serif !important;
+        color: #343434;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.375rem;
+        text-decoration: none;
+        width: 100%;
+        margin-top: 4px;
+        }
+        .link-color {
+          color: #0d47a1;
+        }
+      }
+      .form-submitted .ng-invalid:not(form) {
+        border-bottom: 1px solid #dd5826 !important;
+        background-color: #fff2ef;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1275px),
+screen and (max-height: 880px) {
+
+   :host(.login-page) {
+     margin-top: -25px !important;
+    //background-color: $gray-semi-lighter;
+    .widget-login-container {
+      // display: flex;
+      // margin: 0 auto;
+      // align-items: center;
+       max-width: 583px;
+       width: 583px;
+      .widget-header {
+        .title-line1 {
+          font-size: 26px;
+          margin-bottom: 14px;
+          // .header-separator {
+          //   width: 1px;
+          //   height: 44px;
+          //   background-color: $gray2;
+          //   position: relative;
+          //   top: 10px;
+          //   margin: 0 5px;
+          // }
+        }
+        .title-line2 {
+          font-family: 'Arial Narrow';
+          font-size: 18px;
+          margin-bottom: 6px;
+          .login-text{
+            font-size: 24px;
+          }
+        }
+        .title-line3 {
+          font-size: 14px;
+          margin-bottom: 22px;
+        }
+      }
+      .widget-login {
+        // max-height: 363px;
+        // height: 363px;
+        margin-bottom: 0px;
+        // padding-top: 0px !important;
+        // box-shadow: 0 2px 4px 2px rgba(0, 0, 0, .2);
+        .widget-body {
+          height: 225px;
+          max-height: 277px !important;
+          &.invalid-cred {
+            // height: 310px;
+            // .login-form {
+            //   margin-top: 0 !important;
+            // }
+
+            .submit-btn {
+              top: -33px !important;
+            }
+          }
+          .login-form {
+            & > div:first-child {
+              margin-bottom: 31px !important;
+            }
+            .input-label {
+              font-size: 16px;
+              font-family: 'Open Sans Semibold', sans-serif !important;
+              margin-bottom: 8px !important;
+            }
+            // padding: 5px 10px 20px;
+            // .form-group {
+            //   margin-bottom: 8px;
+            // }
+            .form-control {
+              font-size: 14px;
+              // border-bottom: 1px solid #cbcbcb !important;
+              // border: 0px;
+              // padding: 0 6px;
+              // background-color: none;
+            }
+            // .forgot-container {
+            //   min-width: 280px;
+            //   .abc-checkbox {
+            //     label {
+            //       padding-left: 0px;
+            //     }
+            //   }
+            //   .forgot-separator {
+            //     width: 1px;
+            //     height: 24px;
+            //     background-color: #cbcbcb;
+            //     position: relative;
+            //     top: 5px;
+            //     margin: 0 5px;
+            //   }
+            // }
+          }
+          .submit-btn {
+            // font-size: 40px;
+            // cursor: pointer;
+            // position: relative;
+            top: -40px;
+            // color: #565656;
+          }
+          // .custom-hidden {
+          //   height: 0;
+          //   width: 0;
+          //   border: 0;
+          //   padding: 0
+          // }
+        }
+        .login-footer {
+          .sign-up {
+            // display: flex;
+            // align-items: center;
+            // height: 100%;
+            div {
+              font-size: 14px;
+              //margin-left: 15px;
+            }
+          }
+          height: 107px;
+          // background-color: #f7f7f7;
+          // font-size: $font-size-16;
+          // vertical-align: middle;
+        }
+        // .form-submitted .ng-invalid:not(form) {
+        //   border-bottom: 1px solid #dd5826 !important;
+        //   background-color: #fff2ef;
+        // }
+      }
+    }
+  } // font-family: 'Open Sans Semibold', sans-serif !important;
+}
+
+// @media screen and (max-height: 610px) {
+//     :host(.login-page) {
+//     //background-color: $gray-semi-lighter;
+//       .widget-login-container div > section:first-child {
+//         margin-top: 80px;
+//       }
+//     }
+// }
+
+
+@media screen and (max-height: 768px) {
+  .widget-login-container {
+    & > div {
+      margin-top: 14px;
+    }
+  }
+}
+
+@media screen and (min-height: 769px) and (max-height: 900px) {
+  .widget-login-container {
+    & > div {
+      margin-top: 34px;
+    }
+  }
+}
+
+@media screen and (min-height: 901px) and (max-height: 1080px) {
+  .widget-login-container {
+    & > div {
+      margin-top: 54px;
+    }
+  }
+}

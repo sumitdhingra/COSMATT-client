@@ -1,0 +1,61 @@
+@import "../servo-system-sizing.component.scss";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.trans-main {
+
+    margin-top: 75px;
+    @media (max-width: 1279px) { margin-top: 60px;
+        min-height: calc(100vh - 448px); }
+    .trans-form {
+
+        .label {
+            text-align: right;
+        }
+
+        /**
+          * Overriding unit combo box's max-*** CSS
+          * TODO - Remove this when this change in incorporated in UCB
+        ***/
+        /deep/ .cosmatt-unitComboBox {
+            width: 100% !important;
+            /deep/ .unitTextBox {
+              max-width: none !important;
+            }
+            /deep/ .unitComboBox {
+              max-width: none !important;
+              .btn-group button {
+                max-width: none !important;
+              }
+            }
+        }
+
+        #trans-ratio {
+            color: #555;
+            border: 1px solid #ccc;
+            height: 28px;
+
+            &:hover {
+                border: 1px solid #ccc;
+            }
+        }
+        .row{
+            margin-top : 18px;
+        }
+    }
+
+    .trans-image {
+      text-align: center;
+      padding: 0 15px;
+      @include media-breakpoint-down(xl) { padding: 0 0; }
+      img {
+       margin-top: 0;
+       @include media-breakpoint-down(xl) { margin-top: 10px }
+      }
+    }
+    .vertical-border{
+      background: #cfcfcf;
+      width: 1px;
+      height: 100%;
+    }
+}

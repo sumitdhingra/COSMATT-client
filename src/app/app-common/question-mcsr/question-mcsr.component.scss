@@ -1,0 +1,7 @@
+@import "../../../scss/theme/variables";
+$page-title-height: 37px;
+.question-container {
+    min-height: calc(100vh - #{$footer-height} - #{$content-padding-top} - #{$page-title-height} - #{$content-padding-vertical} - 60px - 120px - 14px);
+    margin: 15px 0px;
+    position: relative;
+}

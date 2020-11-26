@@ -1,0 +1,30 @@
+<div class="sidebar-container " (mouseleave)="hideSideBar()">
+  <div class="sidebar-items-container toc-background-color-theme">
+    <a class="sidebar-item sidebar-item-color-theme sidebar-item-background-color-theme" [ngClass]="{'clicked sidebar-item-click-color-theme': sidebarState.clickedItem == 'toc' && sidebarState.open(), 'abc': true}" (mouseenter)="sidebarItemHovered('toc')" (click)="sidebarItemClicked('toc')" tooltip="Table of Contents" placement="right" container="body">
+      <span class="icon">
+      <i class="fa fa-list-ul" aria-hidden="true"></i>
+      </span>
+    </a>
+    <!-- <a class="sidebar-item" [ngClass]="{'clicked': sidebarState.clickedItem == 'analytics' && sidebarState.open()}" (mouseenter)="sidebarItemHovered('analytics')" (click)="sidebarItemClicked('analytics')" tooltip="Analytics" placement="right" container="body">
+      <span class="icon">
+      <i class="fa fa-bar-chart fs-21" aria-hidden="true"></i>
+      </span>
+    </a>
+    <a class="sidebar-item" [ngClass]="{'clicked': sidebarState.clickedItem == 'notes' && sidebarState.open()}" (mouseenter)="sidebarItemHovered('notes')" (click)="sidebarItemClicked('notes')" tooltip="Notes" placement="right" container="body">
+      <span class="icon">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </span>
+    </a>
+    <a class="sidebar-item" [ngClass]="{'clicked': sidebarState.clickedItem == 'glossary' && sidebarState.open()}" (mouseenter)="sidebarItemHovered('glossary')" (click)="sidebarItemClicked('glossary')" tooltip="Glossary" placement="right" container="body">
+      <span class="icon">
+      <i class="fa fa-book" aria-hidden="true"></i>
+      </span>
+    </a> -->
+  </div>
+  <div class="sidebar-component-container" [style.opacity]="'1'">
+    <app-toc *ngIf="tocArr" [tocArr]="tocArr" [activatedItem]="tocSelectedItem" [ngClass]="{'display': sidebarState.selected === 'toc', 'clicked': sidebarState.clickedItem == 'toc'}" (sidebarClosed)="closeSidebar($event)" (chapterClicked)="tocChapterClicked($event)" (sectionClicked)="tocItemClicked($event)"></app-toc>
+    <!-- <app-analytics [ngClass]="{'display': sidebarState.selected === 'analytics', 'clicked': sidebarState.clickedItem == 'analytics'}" (sidebarClosed)="closeSidebar($event)"></app-analytics>
+    <app-notes [ngClass]="{'display': sidebarState.selected === 'notes', 'clicked': sidebarState.clickedItem == 'notes'}" (sidebarClosed)="closeSidebar($event)"></app-notes>
+    <app-glossary [ngClass]="{'display': sidebarState.selected === 'glossary', 'clicked': sidebarState.clickedItem == 'glossary'}" (sidebarClosed)="closeSidebar($event)"></app-glossary> -->
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="course-toc">
+    <section class="course-toc-section widget" widget="">
+        <!-- <h4 class="heading-title mt-n-0"><span class="fw-semi-bold">Contents</span></h4> -->
+        <div class="contents-title">Contents</div>
+        <div class="chapter-container" *ngFor="let module of tocArray;let lastIndex=last;let loop=index"
+            [ngClass]="{'first-chapter': loop==0}">
+            <div class="chapter-name">Chapter {{loop + 1}}: {{module.name}}</div>
+            <div class="chapter-desc">{{module.description}}</div>
+            <div class="learning-section" *ngIf="getLoList(module);let lists">
+                <div class="course-objective-title" *ngIf="lists.length>0">Learning Objectives</div>
+                <ul class="learn-list">
+                    <li class="learning-item" *ngFor="let learningItem of lists">
+                        {{learningItem.id}} {{learningItem.text}}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-border" [ngClass]="{'display-none': lastIndex}"></div>
+        </div>
+    </section>
+</div>

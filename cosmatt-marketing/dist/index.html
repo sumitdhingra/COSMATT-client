@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Compro's Online Skill Mastery and Training Tool</title>
+
+  <!-- CSS Plugins -->
+  <link rel="stylesheet" href="assets/plugins/ionicons/css/ionicons.min.css?v1.46">
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="assets/css/theme.css?v1.46">
+  <link rel="stylesheet" href="assets/css/customThemeMarketing.css?v1.46">
+  <link rel="stylesheet" href="assets/css/feature.css?v1.46">
+  <!--endbuild-->
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar_main" data-offset="80">
+
+  <!-- PRELOADER
+    ================================================== -->
+  <div class="preloader">
+    <img src="assets/img/spinner.svg" alt="Loading..." class="preloader__spinner">
+  </div>
+
+  <!-- MODAL
+    ================================================== -->
+  <div class="modal fade" id="modal_portfolio" tabindex="-1" role="dialog" aria-labelledby="modal_portfolio__heading">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="modal_portfolio__heading"></h4>
+        </div>
+        <div class="modal-body">
+          <img id="modal_portfolio__img" class="img-responsive" src="assets/img/1.jpg" alt="...">
+          <p id="modal_portfolio__content"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR
+    ================================================== -->
+  <nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+
+      <!-- Brand name -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img src="assets/img/logo.png" width="126" height="30" alt="" />
+      </div>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbar_main">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="#section_banner">Home</a>
+          </li>
+          <li><a href="#section_features">Features</a></li>
+          <li><a href="#section_about">Solutions</a></li>
+          <li><a href="#section_pricing">Advantages</a></li>
+          <li><a href="#section_news">Vision</a></li>
+          <li><a href="#section_contact">Contact</a></li>
+          <li>
+            <a class="btn-secondary dropdown-toggle dropdown-button sign-in-dropdown-button" href="#" role="button"
+              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              GET EARLY ACCESS
+              <div class="dropdown-menu get-early-access-dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item sign-in-dropdown-item1 earlyAccessFormLauncher" href="#" data-toggle="modal"
+                  data-target="#earlyAccessModel" data-id="accounting">For Financial Accounting</a>
+                <a class="dropdown-item sign-in-dropdown-item2 earlyAccessFormLauncher" href="#" data-toggle="modal"
+                  data-target="#earlyAccessModel" data-id="cosmatt">For Servo Engineering</a>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="btn-secondary dropdown-toggle dropdown-button sign-in-dropdown-button" href="#" role="button"
+              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign In
+              <div class="dropdown-menu sign-in-dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item sign-in-dropdown-item1 " target="_blank"
+                  href="https://accounting.leonardodls.com/auth/login">COSMATT Financial Accounting</a>
+                <a class="dropdown-item sign-in-dropdown-item2" target="_blank"
+                  href="https://cosmatt.comprodls.com/app/auth/login">COSMATT Servo Engineering</a>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <!-- BANNER
+    ================================================== -->
+  <section class="section_banner" id="section_banner">
+
+    <!-- Images -->
+    <div class="banner__carousel__img" data-images="assets/img/1.jpg, assets/img/image2.jpg, assets/img/image3.jpg,">
+    </div>
+
+    <!-- Carousel -->
+    <div id="banner__carousel" class="banner__carousel banner__carousel__top carousel" data-pause="false"
+      data-ride="carousel">
+
+      <!-- Slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 overlay">
+
+                <h1 class="h0 page-header text-white text-center">
+                  Welcome to <span>COMPRO'S ONLINE SKILL MASTERY AND TRAINING TOOL</span>
+                </h1>
+                <p class="page-subheader text-white-muted text-center text-style">
+                  A NEW APPROACH FOR QUANTITATIVE ASSESSMENT AND COURSEWARE
+                </p>
+                <!-- <div class="text-center">
+                  <a href="#section_features" class="btn btn-primary animate-down animate-xs-step-2">
+                    Find out more
+                  </a>
+                </div> -->
+
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .container -->
+
+        </div>
+        <div class="item">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 overlay">
+
+                <h1 class="h0 page-header text-white text-center">
+                  Welcome to <span>COMPRO'S ONLINE SKILL MASTERY AND TRAINING TOOL</span>
+                </h1>
+                <p class="page-subheader text-white-muted text-center text-style">
+                  A NEW APPROACH FOR QUANTITATIVE ASSESSMENT AND COURSEWARE
+                </p>
+                <!-- <div class="text-center">
+                  <a href="#section_features" class="btn btn-primary animate-down animate-xs-step-2">
+                    Find out more
+                  </a>
+                </div> -->
+
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .container -->
+
+        </div>
+        <div class="item">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 overlay">
+
+                <h1 class="h0 page-header text-white text-center">
+                  Welcome to <span>COMPRO'S ONLINE SKILL MASTERY AND TRAINING TOOL</span>
+                </h1>
+                <p class="page-subheader text-white-muted text-center text-style">
+                  A NEW APPROACH FOR QUANTITATIVE ASSESSMENT AND COURSEWARE
+                </p>
+                <!-- <div class="text-center">
+                  <a href="#section_features" class="btn btn-primary animate-down animate-xs-step-2">
+                    Find out more
+                  </a>
+                </div> -->
+
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .container -->
+
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#banner__carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#banner__carousel" data-slide-to="1"></li>
+        <li data-target="#banner__carousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Controls -->
+      <!-- <a class="left carousel-control" href="#banner__carousel" role="button" data-slide="prev">
+        <span class="ion-android-arrow-back" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#banner__carousel" role="button" data-slide="next">
+        <span class="ion-android-arrow-forward" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a> -->
+
+    </div> <!-- / .carousel -->
+
+  </section>
+
+  <!-- FEATURES
+    ================================================== -->
+  <section class="section_features" id="section_features">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header text-center"> Features <span></span></h2>
+          <p class="page-subheader text-center">
+
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-0" data-animate="animate-up">
+            <div class="features__item__icon"><em class="ion-android-laptop"></em></div>
+            <h3 class="features__item__heading"> Courseware </h3>
+            <div class="features__item__body">
+              Present Assessment, readings, interactive exercises, and robust analytics integrated with your LMS.
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-1" data-animate="animate-up">
+            <div class="features__item__icon">
+              <i class="ion-android-options"></i>
+            </div>
+            <h3 class="features__item__heading"> Unique Spreadsheet Exercises and Problem Sets
+
+            </h3>
+            <div class="features__item__body">
+              Table / matrix-based emulation to assess students understanding using actual applications they will
+              encounter post graduation
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-2" data-animate="animate-up">
+            <div class="features__item__icon">
+              <i class="ion-android-add-circle6"></i>
+            </div>
+            <h3 class="features__item__heading"> Interoperability</h3>
+            <div class="features__item__body">
+              Supports LTI, xAPI, SCORM, and other common standards so that you may present your course the way you
+              designed it, yet keep it within the context of your Learning Management System.
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-0" data-animate="animate-up">
+            <div class="features__item__icon">
+              <i class="ion-android-add-circle5"></i>
+            </div>
+            <h3 class="features__item__heading"> Accessibility </h3>
+            <div class="features__item__body">
+              From the initial design, and through the entire product lifecycle, audited and designed for all users.
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-1" data-animate="animate-up">
+            <div class="features__item__icon">
+              <i class="ion-android-send"></i>
+            </div>
+            <h3 class="features__item__heading"> Book Mapping </h3>
+            <div class="features__item__body">
+              All assessment content mapped to popular textbooks in use by today’s college students.
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="features__item animate-sm-step-2" data-animate="animate-up">
+            <div class="features__item__icon">
+              <i class="ion-android-add-circle4"></i>
+            </div>
+            <h3 class="features__item__heading"> Analytics and Scoring </h3>
+            <div class="features__item__body">
+              Evaluate and Monitor student’s progress in real time an export data to analysis toll of user’s choice.
+              Dynamic presentation with many algorithmically generated exercises and questions.
+
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .row -->
+      <!-- / .container -->
+  </section>
+
+  <!-- PORTFOLIO
+    ================================================== -->
+
+  <!-- PRICING
+    ================================================== -->
+
+
+  <!-- STATS
+    ================================================== -->
+  <!-- SKILLS
+    ================================================== -->
+
+  <!-- ABOUT
+    ================================================== -->
+  <section class="section_about section_alt" id="section_about">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <h2 class="page-header text-center">
+          Solutions <span></span>
+        </h2>
+
+        <p class="page-subheader text-center ">
+          COSMATT is available for the Financial Accounting and Servo Engineering.
+        </p>
+        <div class="container">
+          <div class="row row_centered">
+            <div class="col-sm-6 col-sm-push-6">
+
+              <h3>
+                COSMATT Financial Accounting
+              </h3>
+
+              <p>
+                COSMATT Financial Accounting is a digital first Courseware and a Set of Problems available as a bundle or separately. The courseware is an online study material which includes interactive spreadsheet-based in-line exercises, real-time feedback and graded assignments. The Problem Sets are a set of individualized spreadsheet-based exercises that can be used for homework assignments or for assessments. All problems are academically-vetted and linked to common learning objectives in many popular introductory financial accounting texts. The questions cover the fundamentals of financial accounting including recording transactions, the accounting cycle, financial statements and investment analysis.<br>
+                <a href="#" data-toggle="modal" data-target="#read_more_cosmatt_accounting">View More</a>
+              </p>
+
+            </div>
+            <div class="col-sm-6 col-sm-pull-6">
+
+              <div class="about__img">
+                <!-- Carousel -->
+                <div id="banner__carousel1" data-interval="4000" class="banner__carousel carousel" data-pause="false" data-ride="carousel" 
+                 >
+
+                  <!-- Slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item  active">
+                      <img src="assets/img/Asset_Acc_01.png" class="img-responsive carousel-inner" alt="...">
+                    </div>
+                    <div class="item ">
+                      <img src="assets/img/Asset_Acc_02.png" class="img-responsive carousel-inner" alt="...">
+
+                    </div>
+                    <div class="item  ">
+                      <img src="assets/img/Asset_Acc_03.png" class="img-responsive carousel-inner" alt="...">
+                    </div>
+                  </div>
+
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#banner__carousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#banner__carousel1" data-slide-to="1"></li>
+                    <li data-target="#banner__carousel1" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Controls -->
+                  <!-- <a class="left carousel-control" href="#banner__carousel1" role="button" data-slide="prev">
+                    <span class="ion-android-arrow-back" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#banner__carousel1" role="button" data-slide="next">
+                    <span class="ion-android-arrow-forward" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a> -->
+
+                </div> <!-- / .carousel -->
+              </div>
+
+            </div>
+          </div> <!-- / .row -->
+          <div class="row row_centered">
+            <div class="col-sm-6">
+
+              <h3>
+                COSMATT Servo Engineering
+              </h3>
+
+              <p>
+                COSMATT Engineering is a Digital First Servo Sizing E-Learning Course With Advanced Analytical Content.
+                It explains how servo systems work and how to select and optimise electric servo system components. In
+                addition a complementary COSMATT sizing software tool is provided to extend the learning experience with
+                complete sizing exercises.<br>
+                <a href="#" data-toggle="modal" data-target="#read_more_cosmatt_servo">View More</a>
+              </p>
+
+            </div>
+            <div class="col-sm-6">
+              <div class="about__img">
+                <!-- Carousel -->
+                <div id="banner__carousel2" data-interval="4000" class="banner__carousel carousel" data-ride="carousel" data-pause="false">
+
+                  <!-- Slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item  active">
+                      <img src="assets/img/Asset_Cosmatt_01.png" class="img-responsive carousel-inner" alt="...">
+                    </div>
+                    <div class="item ">
+                      <img src="assets/img/Asset_Cosmatt_02.png" class="img-responsive carousel-inner" alt="...">
+
+                    </div>
+                    <div class="item ">
+                      <img src="assets/img/Asset_Cosmatt_03.png" class="img-responsive carousel-inner" alt="...">
+                    </div>
+                  </div>
+
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#banner__carousel2" data-slide-to="0" class="active"></li>
+                    <li data-target="#banner__carousel2" data-slide-to="1"></li>
+                    <li data-target="#banner__carousel2" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Controls -->
+                  <!-- <a class="left carousel-control" href="#banner__carousel2" role="button" data-slide="prev">
+                      <span class="ion-android-arrow-back" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#banner__carousel2" role="button" data-slide="next">
+                      <span class="ion-android-arrow-forward" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a> -->
+
+                </div> <!-- / .carousel -->
+              </div>
+            </div>
+          </div> <!-- / .row -->
+        </div> <!-- / .container -->
+  </section>
+
+  <!-- WHY COSMATT
+    ================================================== -->
+  <section class="section_pricing" id="section_pricing">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <h2 class="page-header text-center">
+            Advantages of <span>COSMATT Courseware</span>
+          </h2>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-sm-3">
+
+          <div class="pricing__item animate-sm-step-0" data-animate="animate-up">
+            <h3 class="pricing__item__heading">
+              Dynamic exercises
+            </h3>
+            <ul class="pricing__item__features">
+              <li>Visual interactive based problems that allow a student to study, manipulate, and evaluate alternative
+                variables and data for design and analytical outcomes.</li>
+            </ul>
+          </div> <!-- / .pricing__item -->
+
+        </div>
+        <div class="col-sm-3">
+
+          <div class="pricing__item animate-sm-step-1" data-animate="animate-up">
+            <h3 class="pricing__item__heading">
+              Integrated content
+            </h3>
+            <ul class="pricing__item__features">
+              <li>All content is presented inline for students and ties to specific learning objectives to master the
+                course.</li>
+            </ul>
+          </div> <!-- / .pricing__item -->
+
+        </div>
+        <div class="col-sm-3">
+
+          <div class="pricing__item animate-sm-step-2" data-animate="animate-up">
+            <h3 class="pricing__item__heading">
+              Problem Sets
+            </h3>
+            <ul class="pricing__item__features">
+              <li>Advanced problems tied to largest selling texts associated with the subject matter.</li>
+            </ul>
+          </div> <!-- / .pricing__item -->
+
+        </div>
+
+        <div class="col-sm-3">
+
+          <div class="pricing__item animate-sm-step-2" data-animate="animate-up">
+            <h3 class="pricing__item__heading">
+              Builder
+            </h3>
+            <ul class="pricing__item__features">
+              <li>Intuitive authoring and assembly tool to create and manipulate your own content, or make changes to
+                existing problems sets and interactives</li>
+            </ul>
+          </div> <!-- / .pricing__item -->
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+
+  <!-- ACHIEVE
+    ================================================== -->
+  <section class="section_news section_alt section-top-border" id="section_news">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <h2 class="page-header text-center">
+            Achieve your unique product vision<span> using our other products </span>
+          </h2>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <blockquote class="testimonials__blockquote animate-sm-step-0" data-animate="animate-up">
+              <p>
+                SaaS based Enterprise Learning Ecosystem engineered to augment and or replace existing learning tools.
+              </p>
+              <footer>
+
+                <div>
+                  <p style="font-size: 22px; font-weight: bold; color: #000000;">comproDLS</p>
+                  <a href="http://www.comprodls.com/home#/app/home" target="_blank">View More</a>
+                </div>
+              </footer>
+            </blockquote>
+
+          </div>
+          <div class="col-sm-4">
+
+            <blockquote class="testimonials__blockquote animate-sm-step-1" data-animate="animate-up">
+              <p>
+                Compile and present content to specific workflows and product models.
+              </p>
+              <footer>
+
+                <div>
+                  <p style="font-size: 22px; font-weight: bold; color: #000000;">Builder</p>
+                  <a href="http://www.comprodls.com/products#/app/products" target="_blank">View More</a>
+                </div>
+              </footer>
+            </blockquote>
+
+          </div>
+          <div class="col-sm-4">
+
+            <blockquote class="testimonials__blockquote animate-sm-step-2" data-animate="animate-up">
+              <p>
+                Spreadsheet Emulation tool designed to assess and simulate actual problems and cases relevant to the
+                student’s chosen future profession.
+              </p>
+              <footer>
+
+                <div>
+                  <p style="font-size: 22px; font-weight: bold; color: #000000;">LeonardoDLS</p>
+                  <a href="http://www.comprodls.com/leonardo#/app/leonardo" target="_blank">View More</a>
+                </div>
+              </footer>
+            </blockquote>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+  </section>
+
+  <!-- SOULTION
+    ================================================== -->
+  <section class="section_news section_alt" style="margin-top:-130px;" >
+      <div class=" container">
+    <div class="row">
+      <div class="col-sm-6">
+
+        <a  class="news__item animate-sm-step-0" data-animate="animate-up">
+          <div class="news__item__img" style="margin-top:-30px;" >
+            <img src="assets/img/2.jpg" class="img-responsive" alt="...">
+            <time datetime="2017-01-12" class="news__item__img__date">
+              <span>1</span>
+            </time>
+          </div>
+          <div class="news__item__footer content-width">
+            <h3 class="news__item__footer__heading">
+              Higher Education
+            </h3>
+            <div class="news__item__footer__content">
+              Designed and implemented with college students in mind, and the requirements of their instructors to
+              prepare their students for future careers.
+            </div>
+          </div>
+        </a> <!-- / .news__item -->
+
+      </div>
+      <div class="col-sm-6">
+
+        <a  class="news__item animate-sm-step-1" data-animate="animate-up">
+          <div class="news__item__img" style="margin-top:-30px;" >
+            <img src="assets/img/5.jpg" class="img-responsive" alt="...">
+            <time datetime="2017-02-17" class="news__item__img__date">
+              <span>2</span>
+            </time>
+          </div>
+          <div class="news__item__footer content-width">
+            <h3 class="news__item__footer__heading">
+              Corporate
+            </h3>
+            <div class="news__item__footer__content">
+              Real world examples and exercises present the student with the training they require to immediately apply
+              training in your business.
+            </div>
+          </div>
+        </a> <!-- / .news__item -->
+
+      </div>
+    </div>
+    </a> <!-- / .news__item -->
+
+    </div>
+    </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+
+  </section>
+
+
+
+  <!-- CONTACT
+    ================================================== -->
+  <section class="section_contact" id="section_contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <h2 class="page-header text-center">
+            CONTACT <span> us</span>
+          </h2>
+
+          <p class="page-subheader text-white-muted text-center">
+            Thanks for looking. We would love to hear from you. Feel free to call or email us directly. Or fill out the
+            form with your questions, and someone from our team will get back to you. We look forward to hearing from
+            you.
+          </p>
+
+        </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="contact__container">
+            <div class="row">
+              <div class="col-sm-8">
+
+                <!-- Form -->
+                <form class="contact__container__form" id="form_sendemail">
+
+                  <!-- Header -->
+                  <div class="form-group">
+                    <h3 class="bold_font">Send us a message</h3>
+                  </div>
+
+                  <!-- Alert message -->
+                  <div class="alert" id="form_message" role="alert"></div>
+
+                  <!-- Name -->
+                  <div class="form-group">
+                    <label for="name2" class="sr-only">Name *</label>
+                    <input type="text" name="name" class="form-control" minlength="1" maxlength="50" id="name2"
+                      placeholder="Enter your name" required>
+                    <span class="help-block"></span>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="form-group">
+                    <label for="email2" class="sr-only">Email address *</label>
+                    <input type="email" name="email" class="form-control" id="email2"
+                      placeholder="Enter your email address" required>
+                    <span class="help-block"></span>
+                  </div>
+                  <!-- Subject -->
+                  <div class="form-group">
+                    <label for="subject" class="sr-only">Subject *</label>
+                    <input type="text" name="subject" class="form-control" minlength="1" maxlength="100" id="subject"
+                      placeholder="Enter your subject" required>
+                    <span class="help-block"></span>
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <label for="message" class="sr-only">Message *</label>
+                    <textarea name="message" class="form-control" minlength="0" maxlength="500" id="message"
+                      placeholder="Enter your message"></textarea>
+                    <span class="help-block"></span>
+                  </div>
+
+                  <!-- Submit -->
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+
+                </form>
+
+              </div>
+              <div class="col-sm-4">
+
+                <ul class="contact__container__info">
+                  <li>
+                    <h3>Contact info</h3>
+                  </li>
+                  <p>Compro Technologies helps EdTech innovators create practical and affordable learning technology
+                    solutions.<br> For two decades, startups to large multinational educational publishing organizations
+                    have appreciated our ability to help them imagine, develop, and deploy award-winning digital
+                    products for millions of students and educators. </p>
+                  <li>
+                    <i class="ion-android-pin"></i>
+                    <p>
+                      <strong>Head Office:</strong> LSC Uday Park, Khel Gaon Marg, New Delhi – 110049, India <br>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="ion-android-call"></i>
+                    <p>
+                      <a href="tel:00000000000">+91 (11) 42011900</a>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="ion-android-pin"></i>
+                    <p>
+                      <strong>US Office:</strong> 1288 N Summit Ave, Ste 107-261, Oconomowoc, WI 53066 <br>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="ion-android-call"></i>
+                    <p>
+                      <a href="tel:00000000000">+1 859-653-7254</a>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="ion-android-mail"></i>
+                    <p>
+                      <a
+                        href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=info@comprotechnologies.com">info@comprotechnologies.com</a>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="ion-android-globe"></i>
+                    <p>
+                      <a href="http://www.comprotechnologies.com">www.comprotechnologies.com</a>
+                    </p>
+                  </li>
+                </ul>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
+
+
+  <!-- FOOTER
+    ================================================== -->
+  <footer class="section_footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <p class="footer__copyright">
+            <a href="http://www.comprotechnologies.com" target="_blank">© 2019 Compro Technologies</a>
+            All Rights Reserved | Email:
+            <a href="https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@comprotechnologies.com"
+              target="_blank">info@comprotechnologies.com</a </p> </div> </div> </div> <!-- / .row -->
+        </div> <!-- / .container -->
+  </footer>
+
+  <!-- MODAL
+    ================================================== -->
+  <div id="early_access_modal_container">
+  </div>
+  <div id="read_more_cosmatt_servo_container">
+  </div>
+  <div id="read_more_cosmatt_accounting_container">
+  </div>
+  <!-- JAVASCRIPT
+    ================================================== -->
+
+  <!-- JS Global -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- JS Plugins -->
+  <script src="assets/plugins/smoothscroll/smoothscroll.min.js"></script>
+  <script src="assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+  <script src="assets/plugins/countTo/jquery.countTo.js"></script>
+  <script src="assets/plugins/contact-form/contact.js"></script>
+  <script src="assets/plugins/waypoints/jquery.waypoints.min.js"></script>
+
+  <!-- JS Custom -->
+  <script src="assets/js/theme.js?v1.46"></script>
+  <script src="assets/js/custom.js?v1.47"></script>
+
+</body>
+
+</html>

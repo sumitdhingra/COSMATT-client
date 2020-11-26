@@ -1,0 +1,65 @@
+<!--<ol class="breadcrumb cosmatt-breadcrumbs fw-normal">
+    <li class="breadcrumb-item"><a routerLink='/app/courses'>Home</a></li>
+    <li class="breadcrumb-item"><a routerLink='../introduction'>Servo System Training</a></li>
+    <li class="breadcrumb-item"><a routerLink='../pretest'>Pretest</a></li>
+    <li class="breadcrumb-item active">Report</li>
+</ol>-->
+<section class="go-to-course-container widget border-top-theme mb-xlg">
+    <section class="test-summary widget bg-primary text-white">
+        <div class="widget-body clearfix">
+            <div class="fs-larger">
+                <table class="summary-table">
+                    <tr>
+                        <td class="col1">
+                            <label class="mr-md">Total Questions:</label>
+                        </td>
+                        <td class="col2">
+                            <label>{{totalQuestions}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">
+                            <label class="mr-md">Questions Attempted:</label>
+                        </td>
+                        <td class="col2">
+                            <label>{{attemptedQues}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">
+                            <label class="mr-md">Correctly Answered:</label>
+                        </td>
+                        <td class="col2">
+                            <label>{{correctQues}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">
+                            <label class="mr-md">Incorrectly Answered:</label>
+                        </td>
+                        <td class="col2">
+                            <label>{{incorrectQues}}</label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="col1">
+                            <label class="mr-md">Your Score:</label>
+                        </td>
+                        <td class="col2">
+                            <label>{{grade}} %</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="go-to-course">
+        <div class="goto-text lead mb-0">
+            <label>Congratulations you have completed this Chapter.</label>
+        </div>
+        <div class="goto-btn text-center">
+            <button type="button" class="btn btn-inverse btn-lg mb-xs" (click)="goToCourseClicked()">Next Chapter</button>
+        </div>
+    </section>
+</section>
+<app-assessment-report [responses]="this.eomTestResponse.assessment"></app-assessment-report>

@@ -1,0 +1,49 @@
+<div id="course-list-container">
+    <div class="course-description" *ngIf="userRole === UserRole.Student">
+        <h1><span class="welcome-text fs-30 text-gray2">Welcome</span>
+            <div class="welcome-sub-text">
+                <span class="large-font">C</span>OMPRO'S&nbsp;<span class="large-font">O</span>NLINE&nbsp;<span
+                    class="large-font">S</span>KILL&nbsp;<span class="large-font">M</span>ASTERY&nbsp;<span
+                    class="large-font">A</span>ND&nbsp;<span class="large-font">T</span>RAINING&nbsp;<span
+                    class="large-font">T</span>OOL
+            </div>
+        </h1>
+        <p class="select-option mb-xs fs-18 ">Please select the course to proceed.</p>
+        <!-- <p class="fw-normal fs-root">
+            We recommend that you should take the course first, understand how electric servo systems work and then use
+            the sizing tool to create the applications and validate the learned concepts.
+        </p> -->
+    </div>
+    <div class="course-description" *ngIf="userRole === UserRole.Teacher">
+        <h1><span class="welcome-text fs-30 text-gray2">Welcome</span>
+            <div class="welcome-sub-text">
+                <span class="large-font">C</span>OMPRO'S&nbsp;<span class="large-font">O</span>NLINE&nbsp;<span
+                    class="large-font">S</span>KILL&nbsp;<span class="large-font">M</span>ASTERY&nbsp;<span
+                    class="large-font">A</span>ND&nbsp;<span class="large-font">T</span>RAINING&nbsp;<span
+                    class="large-font">T</span>OOL
+            </div>
+        </h1>
+        <p class="select-option mb-xs fs-18 ">Please select the desired option and proceed.</p>
+        <!-- <p class="fw-normal fs-root">
+            Select View Course to review the learning path of Servo Motor Training & Analysis course as a student OR
+            select View Class to review the progress of your class.
+        </p> -->
+    </div>
+
+    <div class="courses-container container no-padding">
+        <span *ngFor="let course of coursesArr;let i=index">
+
+            <div class="row justify-content-center widget" *ngIf="course.meta.producttype === 'courseware'">
+                <div class="course-container col-12" id="{{course.id}} ">
+                    <app-course-item [courseData]="course" [classData]="classes[0]">
+                    </app-course-item>
+                </div>
+            </div>
+            <div class="row justify-content-center item-List-Height" *ngIf="course.meta.producttype === 'application' ">
+                <div class=" course-container col-12" id="{{course.id}} ">
+                    <app-course-item [courseData]="course" [classData]="classes[0]">
+                    </app-course-item>
+                </div>
+            </div>
+        </span>
+    </div>

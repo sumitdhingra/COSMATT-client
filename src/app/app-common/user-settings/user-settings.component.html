@@ -1,0 +1,63 @@
+<main class="us-container" role="main">
+
+  <header>
+    <div class="heading-main">
+       Update Password
+    </div>
+  </header>
+  
+  <section class="password">
+    <form class="pwd-form mt-sm" (submit)="onPwdFormSubmit(pwdForm)" [formGroup]="pwdForm" novalidate>
+        <!--{{pwdForm.controls['currPassword'].errors | json}}-->
+        <div class="row">
+            <div class="form-group col-12">
+              <label><span class="icon"><i class="fa fa-key"></i></span>Current Password</label>
+              
+              <!-- <em *ngIf="pwdForm.controls['currPassword'].errors?.minlength || pwdForm.controls['currPassword'].errors?.maxlength">{{MSG_PWD_INVALID_LENGTH}}</em>
+              <em *ngIf="pwdForm.controls['currPassword'].errors?.pattern">{{MSG_PWD_INVALID_CHARS}}</em> -->
+              
+              <input type="password" class="form-control" name="currPassword" formControlName="currPassword" [ngClass]="{'error' : pwdForm.controls['currPassword'].errors && !pwdForm.controls['currPassword'].pristine, 'okay' : !pwdForm.controls['currPassword'].errors && !pwdForm.controls['currPassword'].pristine}" maxLength="15" required>
+            </div>
+    
+            <!--{{pwdForm.controls['currPassword'].errors | json}}-->
+            <div class="form-group col-12">
+              <label><span class="icon"><i class="fa fa-key"></i></span>New Password</label>
+      
+              <!-- <em *ngIf="pwdForm.controls['newPassword'].errors?.minlength || pwdForm.controls['newPassword'].errors?.maxlength">{{MSG_PWD_INVALID_LENGTH}}</em>
+              <em *ngIf="pwdForm.controls['newPassword'].errors?.pattern">{{MSG_PWD_INVALID_CHARS}}</em> -->
+              
+              <input type="password" class="form-control" name="newPassword" formControlName="newPassword" [ngClass]="{'error' : pwdForm.controls['newPassword'].errors && !pwdForm.controls['newPassword'].pristine, 'okay' : !pwdForm.controls['newPassword'].errors && !pwdForm.controls['newPassword'].pristine}" maxLength="15" required>
+            </div>
+    
+            <!--{{pwdForm.controls['confPassword'].errors | json}}-->
+            <div class="form-group col-12">
+              <label><span class="icon"><i class="fa fa-key"></i></span>Confirm Password</label>
+              
+              <!-- <em *ngIf="pwdForm.controls['confPassword'].errors?.minlength || pwdForm.controls['confPassword'].errors?.maxlength">{{MSG_PWD_INVALID_LENGTH}}</em>
+              <em *ngIf="pwdForm.controls['confPassword'].errors?.pattern">{{MSG_PWD_INVALID_CHARS}}</em>
+              <em *ngIf="pwdForm.controls['confPassword'].errors?.matchOther">{{MSG_PWD_MISMATCH}}</em> -->
+              
+              <input type="password" class="form-control" name="confPassword" formControlName="confPassword" [ngClass]="{'error' : (pwdForm.controls['confPassword'].errors && !pwdForm.controls['confPassword'].pristine) || !pwdForm.controls['newPassword'].pristine, 'okay' : !pwdForm.controls['confPassword'].errors && !pwdForm.controls['confPassword'].pristine}" maxLength="15" required>
+            </div>
+        </div>
+
+
+        <div class="form-footer" [ngClass]="{'after-update': alerts.updateMessage.visible}">
+          <button type="submit" class="btn btn-inverse" [disabled]="componentLoading || pwdForm.controls['confPassword'].pristine || pwdForm.controls['newPassword'].pristine || pwdForm.controls['currPassword'].pristine">Save</button>
+          <i class="fa fa-spinner fa-spin fa-2x fa-fw" [hidden]="!componentLoading"></i>
+          <alert [type]="alerts.updateMessage.type" *ngIf="alerts.updateMessage.visible">
+            {{alerts.updateMessage.message}}
+          </alert>
+          <!--<div class="alert alert-success alert-dismissable out">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Success!</strong> Password update successful.
+          </div>
+          <div class="alert alert-danger alert-dismissable out">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Failed!</strong> Password update failed.
+          </div>-->
+        </div>
+    </form>
+  </section>
+  
+</main>

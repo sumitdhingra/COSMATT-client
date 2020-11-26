@@ -1,0 +1,74 @@
+@import "../../../scss/theme/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+$pie-chart-dimension: 60px;
+$border-color: lightgray;
+$title-container-height: 62px;
+
+section {
+
+  padding-bottom: 15px;
+  .title-container {
+    min-height: $title-container-height;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    .title {
+      font-size: $font-size-22;
+      font-weight: $font-weight-semi-bold;
+
+      .title-icon { margin-right: $icon-label-spacing; }
+    }
+  }
+  .pie-chart-table {
+    .pie-chart-td {
+      .pie-chart-container {
+        height: $pie-chart-dimension;
+        width: $pie-chart-dimension;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        .percentage-value {
+          position: absolute;
+          top: 20px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+        }
+        .chart {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+      }
+      .pie-chart-title {
+        font-size: $font-size-18;
+        color: $gray-dark;
+
+        @media screen and (max-width: $breakpoint-width), 
+        screen and (max-height: $breakpoint-height) {
+          font-size: $font-size-16;
+        }
+      }
+
+      .pie-chart-caption {
+        font-size: $font-size-16;
+        @media screen and (max-width: $breakpoint-width), 
+        screen and (max-height: $breakpoint-height) {
+          font-size: $font-size-14;
+        }
+      }
+    }
+    .section-right-border {
+      border-right: 1px solid $border-color;
+    }
+  }
+}
